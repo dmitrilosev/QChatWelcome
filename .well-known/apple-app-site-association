@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": [ "QChat", "6739166946", "6739166946.QChat" ],
+        "appIDs": [ "S4DYQ487Z2.QChat", "QChat", "6739166946", "6739166946.QChat" ],
         "components": [
           { 
             "/": "/share/store/*" 
