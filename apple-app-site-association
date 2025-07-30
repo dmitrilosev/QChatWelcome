@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [ "S4DYQ487Z2.QChat" ],
+        "components": [
+          { 
+            "/": "/share/store/*" 
+          },
+          { 
+            "/": "/store/*" 
+          }
+        ]
+      }
+    ]
+  }
+}
