@@ -4,7 +4,12 @@
       {
         "appIDs": [ "QChat" ],
         "components": [
-          { "/": "/share/store/*" }
+          { 
+            "/": "/share/store/*" 
+          },
+          { 
+            "/": "/store/*" 
+          }
         ]
       }
     ]
