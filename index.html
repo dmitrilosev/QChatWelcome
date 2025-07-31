@@ -1,46 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QChat Support</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f9f9f9;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            text-align: center;
-        }
-        img {
-            max-width: 200px;
-            height: auto;
-        }
-        h1 {
-            margin-top: 20px;
-            font-size: 2rem;
-            color: #333;
-        }
-        p {
-            color: #666;
-            font-size: 1rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Open in QChat</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function() {
+  var appStoreURL = 'https://apps.apple.com/app/id6739166946';
+  var link = window.location.href;
+  var meta = document.createElement('meta');
+  meta.name = 'apple-itunes-app';
+  meta.content = 'app-id=id6739166946, app-argument=' + link;
+  document.head.appendChild(meta);
+  setTimeout(function() {
+    window.location.href = appStoreURL;
+  }, 1000);
+})();
+</script>
 </head>
 <body>
-    <div class="container">
-        <img src="qchatlogo.png" alt="QChat Logo">
-        <h1>Welcome to QChat</h1>
-        <p>Need help or have any questions?<br>Reach out to us anytime!</p>
-        <p>Email: <a href="mailto:qchatwelcome@gmail.com
-">qchatwelcome@gmail.com
-</a></p>
-    </div>
+<p>Перенаправление в App Store…</p>
 </body>
 </html>
