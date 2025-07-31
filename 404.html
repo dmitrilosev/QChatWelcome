@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function() {
+  var path = window.location.pathname;
+  var prefix = '/QChatWelcome/store/';
+  if (path.startsWith(prefix)) {
+    var appStoreURL = 'https://apps.apple.com/app/id6739166946';
+    var link = window.location.href;
+    var meta = document.createElement('meta');
+    meta.name = 'apple-itunes-app';
+    meta.content = 'app-id=id6739166946, app-argument=' + link;
+    document.head.appendChild(meta);
+    setTimeout(function() {
+      window.location.href = appStoreURL;
+    }, 1000);
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.innerHTML = '<p>Перенаправление в App&nbsp;Store…</p>';
+    });
+  }
+})();
+</script>
+</head>
+<body>
+<h1>404</h1>
+<p>File not found</p>
+</body>
+</html>
