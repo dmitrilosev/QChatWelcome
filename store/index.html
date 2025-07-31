@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Open in QChat</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function() {
+  var appStoreURL = 'https://apps.apple.com/app/id6739166946';
+  var link = window.location.href;
+  var meta = document.createElement('meta');
+  meta.name = 'apple-itunes-app';
+  meta.content = 'app-id=id6739166946, app-argument=' + link;
+  document.head.appendChild(meta);
+  setTimeout(function() {
+    window.location.href = appStoreURL;
+  }, 1000);
+})();
+</script>
+</head>
+<body>
+<p>Перенаправление в App Store…</p>
+</body>
+</html>
