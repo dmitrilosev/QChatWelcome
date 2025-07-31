@@ -9,11 +9,12 @@
   var path = window.location.pathname;
   var prefix = '/QChatWelcome/store/';
   if (path.startsWith(prefix)) {
-    var appStoreURL = 'https://apps.apple.com/app/id6739166946';
+    var APP_ID = '6739166946';
+    var appStoreURL = 'https://apps.apple.com/app/id' + APP_ID;
     var link = window.location.href;
     var meta = document.createElement('meta');
     meta.name = 'apple-itunes-app';
-    meta.content = 'app-id=id6739166946, app-argument=' + link;
+    meta.content = 'app-id=' + APP_ID + ', app-argument=' + link;
     document.head.appendChild(meta);
     setTimeout(function() {
       window.location.href = appStoreURL;
