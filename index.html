@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Открыть в QChat</title>
+  <title>Скачать QChat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Убираем app-argument, чтобы не было автопрыжка -->
   <meta name="apple-itunes-app" content="app-id=6739166946">
 
   <style>
@@ -36,8 +35,9 @@
     /* === Контейнер === */
     .container {
       text-align: center;
-      padding: 20px;
       max-width: 400px;
+      width: 90%;
+      box-sizing: border-box;
     }
 
     .logo {
@@ -62,11 +62,12 @@
       opacity: 0.9;
     }
 
-    /* === Кнопки === */
+    /* === Кнопка === */
     .button {
       display: block;
       width: 100%;
-      margin: 10px 0;
+      max-width: 100%;
+      margin: 0 auto;
       padding: 14px;
       font-size: 18px;
       font-weight: bold;
@@ -74,36 +75,24 @@
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .button:hover {
-      transform: scale(1.03);
-    }
-
-    .button-primary {
+      box-sizing: border-box;
       background: white;
       color: #6c63ff;
     }
 
-    .button-secondary {
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.3);
+    .button:hover {
+      transform: scale(1.03);
+      background: #f5f5f5;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- сюда подставь иконку knot_transparentлор.png -->
-    <img src="knot_transparentлор.png" alt="QChat Logo" class="logo">
+    <img src="qchat.png" alt="QChat Logo" class="logo">
     <h1>QChat</h1>
-    <p>Войдите в приложение или скачайте его из App Store</p>
+    <p>Скачайте приложение из App Store</p>
 
-    <!-- Кнопка для открытия deep link -->
-    <a class="button button-secondary" href="qchat://">Открыть приложение</a>
-
-    <!-- Кнопка для App Store -->
-    <a class="button button-primary" href="https://apps.apple.com/app/id6739166946">Скачать в App Store</a>
+    <a class="button" href="https://apps.apple.com/app/id6739166946">Скачать в App Store</a>
   </div>
 </body>
 </html>
