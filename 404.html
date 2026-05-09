@@ -46,18 +46,35 @@
   }
 
   if (appURL || hasPrefix('/QChatWelcome/store/')) {
+    var appStoreTimer = null;
+
+    function cancelAppStoreRedirect() {
+      if (appStoreTimer) {
+        clearTimeout(appStoreTimer);
+        appStoreTimer = null;
+      }
+    }
+
     var meta = document.createElement('meta');
     meta.name = 'apple-itunes-app';
     meta.content = 'app-id=' + APP_ID + ', app-argument=' + link;
     document.head.appendChild(meta);
 
+    window.addEventListener('pagehide', cancelAppStoreRedirect);
+    window.addEventListener('blur', cancelAppStoreRedirect);
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        cancelAppStoreRedirect();
+      }
+    });
+
     if (appURL) {
       window.location.href = appURL;
     }
 
-    setTimeout(function() {
+    appStoreTimer = setTimeout(function() {
       window.location.href = appStoreURL;
-    }, 1500);
+    }, appURL ? 3500 : 1500);
 
     document.addEventListener('DOMContentLoaded', function() {
       document.body.innerHTML = '<p>Открываем QChat…</p><p><a href="' + (appURL || appStoreURL) + '">Открыть вручную</a></p>';
