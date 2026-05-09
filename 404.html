@@ -2,25 +2,65 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Redirecting...</title>
+<title>Open in QChat</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>
 (function() {
+  var APP_ID = '6739166946';
+  var appStoreURL = 'https://apps.apple.com/app/id' + APP_ID;
   var path = window.location.pathname;
-  var prefix = '/QChatWelcome/store/';
-  if (path.startsWith(prefix)) {
-    var APP_ID = '6739166946';
-    var appStoreURL = 'https://apps.apple.com/app/id' + APP_ID;
-    var link = window.location.href;
+  var search = window.location.search || '';
+  var link = window.location.href;
+  var appURL = null;
+
+  function hasPrefix(prefix) {
+    return path.indexOf(prefix) === 0;
+  }
+
+  function queryValue(name) {
+    return new URLSearchParams(search).get(name) || '';
+  }
+
+  if (hasPrefix('/QChatWelcome/link/telegram-group-order-participant')) {
+    var participantToken = queryValue('token');
+    if (participantToken) {
+      appURL = 'qchat://telegram-group-order-participant-link?token=' + encodeURIComponent(participantToken);
+    }
+  } else if (hasPrefix('/QChatWelcome/link/telegram-group-order')) {
+    var ownerToken = queryValue('token');
+    if (ownerToken) {
+      appURL = 'qchat://telegram-group-order-link?token=' + encodeURIComponent(ownerToken);
+    }
+  } else if (hasPrefix('/QChatWelcome/group-order/participant-chat')) {
+    var participantSessionId = queryValue('sessionId');
+    if (participantSessionId) {
+      appURL = 'qchat://group-order-participant-chat?sessionId=' + encodeURIComponent(participantSessionId);
+    }
+  } else if (hasPrefix('/QChatWelcome/group-order')) {
+    var sessionId = queryValue('sessionId');
+    if (sessionId) {
+      appURL = 'qchat://group-order?sessionId=' + encodeURIComponent(sessionId);
+    }
+  } else if (hasPrefix('/QChatWelcome/store/')) {
+    appURL = null;
+  }
+
+  if (appURL || hasPrefix('/QChatWelcome/store/')) {
     var meta = document.createElement('meta');
     meta.name = 'apple-itunes-app';
     meta.content = 'app-id=' + APP_ID + ', app-argument=' + link;
     document.head.appendChild(meta);
+
+    if (appURL) {
+      window.location.href = appURL;
+    }
+
     setTimeout(function() {
       window.location.href = appStoreURL;
-    }, 1000);
+    }, 1500);
+
     document.addEventListener('DOMContentLoaded', function() {
-      document.body.innerHTML = '<p>Перенаправление в App&nbsp;Store…</p>';
+      document.body.innerHTML = '<p>Открываем QChat…</p><p><a href="' + (appURL || appStoreURL) + '">Открыть вручную</a></p>';
     });
   }
 })();
