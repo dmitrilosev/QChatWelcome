@@ -21,7 +21,27 @@
     return new URLSearchParams(search).get(name) || '';
   }
 
-  if (hasPrefix('/QChatWelcome/link/telegram-group-order-participant')) {
+  if (hasPrefix('/QChatWelcome/link/group-session-participant')) {
+    var groupParticipantToken = queryValue('token');
+    if (groupParticipantToken) {
+      appURL = 'qchat://group-session-participant-link?token=' + encodeURIComponent(groupParticipantToken);
+    }
+  } else if (hasPrefix('/QChatWelcome/link/group-session-owner')) {
+    var groupOwnerToken = queryValue('token');
+    if (groupOwnerToken) {
+      appURL = 'qchat://group-session-owner-link?token=' + encodeURIComponent(groupOwnerToken);
+    }
+  } else if (hasPrefix('/QChatWelcome/group-session/participant-chat')) {
+    var groupParticipantSessionId = queryValue('sessionId');
+    if (groupParticipantSessionId) {
+      appURL = 'qchat://group-session-participant-chat?sessionId=' + encodeURIComponent(groupParticipantSessionId);
+    }
+  } else if (hasPrefix('/QChatWelcome/group-session')) {
+    var groupSessionId = queryValue('sessionId');
+    if (groupSessionId) {
+      appURL = 'qchat://group-session?sessionId=' + encodeURIComponent(groupSessionId);
+    }
+  } else if (hasPrefix('/QChatWelcome/link/telegram-group-order-participant')) {
     var participantToken = queryValue('token');
     if (participantToken) {
       appURL = 'qchat://telegram-group-order-participant-link?token=' + encodeURIComponent(participantToken);
