@@ -21,6 +21,13 @@
     return new URLSearchParams(search).get(name) || '';
   }
 
+  function pathValueAfter(prefix) {
+    if (!hasPrefix(prefix)) {
+      return '';
+    }
+    return decodeURIComponent(path.slice(prefix.length).split('/')[0] || '');
+  }
+
   if (hasPrefix('/QChatWelcome/link/group-session-participant')) {
     var groupParticipantToken = queryValue('token');
     if (groupParticipantToken) {
@@ -62,7 +69,10 @@
       appURL = 'qchat://group-order?sessionId=' + encodeURIComponent(sessionId);
     }
   } else if (hasPrefix('/QChatWelcome/store/')) {
-    appURL = null;
+    var vendorId = pathValueAfter('/QChatWelcome/store/');
+    if (vendorId) {
+      appURL = 'qchat://store/' + encodeURIComponent(vendorId);
+    }
   }
 
   if (appURL || hasPrefix('/QChatWelcome/store/')) {
