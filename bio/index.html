@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-itunes-app" content="app-id=6739166946">
+  <title>Dmitrii Losev | QChat</title>
+  <meta name="description" content="Dmitrii Losev builds AI-native products for millions. Download QChat, build with the skill pack, or turn on the music.">
+  <meta property="og:title" content="Dmitrii Losev | QChat">
+  <meta property="og:description" content="QChat, AgentFoundry skill pack, and music by Dmitrii Losev.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dmitrilosev.github.io/QChatWelcome/bio/">
+  <meta property="og:image" content="https://dmitrilosev.github.io/QChatWelcome/bio/assets/qchat.png">
+  <meta name="theme-color" content="#5b9ef4">
+  <link rel="icon" href="assets/qchat.png">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --blue: #5b9ef4;
+      --blue-dark: #347fd7;
+      --ink: #0b1020;
+      --muted: rgba(11, 16, 32, 0.58);
+      --white: #ffffff;
+      --card: rgba(255, 255, 255, 0.96);
+      --card-soft: rgba(255, 255, 255, 0.84);
+      --line: rgba(255, 255, 255, 0.48);
+      --shadow: 0 18px 48px rgba(17, 74, 150, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--blue);
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: var(--blue);
+      color: var(--white);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 390px;
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: max(22px, env(safe-area-inset-top)) 22px max(18px, env(safe-area-inset-bottom));
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: calc(100svh - max(22px, env(safe-area-inset-top)) - max(18px, env(safe-area-inset-bottom)));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(14px, 2.6svh, 24px);
+    }
+
+    .profile {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .story-ring {
+      width: clamp(92px, 24vw, 118px);
+      height: clamp(92px, 24vw, 118px);
+      display: grid;
+      place-items: center;
+      padding: 4px;
+      border-radius: 50%;
+      background: conic-gradient(from 205deg, #f7c948 0deg, #ffb000 54deg, #ff7a00 118deg, #ff3040 184deg, #e0009a 258deg, #cf00ff 318deg, #f7c948 360deg);
+      box-shadow: 0 18px 44px rgba(26, 85, 171, 0.28);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      padding: 4px;
+      border-radius: 50%;
+      background: var(--blue);
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #dfeeff;
+    }
+
+    .name {
+      margin: 13px 0 0;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 20px;
+      line-height: 1.08;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .bio {
+      width: 100%;
+      max-width: 342px;
+      margin: 9px auto 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13.5px;
+      line-height: 1.26;
+      font-weight: 620;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    .bio span {
+      display: block;
+    }
+
+    h1 {
+      max-width: 11ch;
+      margin: 13px auto 0;
+      color: var(--white);
+      font-size: clamp(31px, 8.5vw, 39px);
+      line-height: 1.03;
+      font-weight: 860;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .subhead {
+      max-width: 330px;
+      margin: 10px auto 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: clamp(15px, 4vw, 18px);
+      line-height: 1.28;
+      font-weight: 560;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .cards {
+      display: grid;
+      gap: 10px;
+    }
+
+    .card {
+      display: grid;
+      gap: 11px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: 46px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    .mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #f5f8ff;
+      color: var(--blue-dark);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 860;
+      letter-spacing: 0;
+      box-shadow: inset 0 0 0 1px rgba(39, 90, 160, 0.08);
+    }
+
+    .mark img {
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+    }
+
+    .github-mark img {
+      width: 58%;
+      height: 58%;
+    }
+
+    .copy {
+      min-width: 0;
+    }
+
+    .title,
+    .text {
+      display: block;
+      overflow-wrap: anywhere;
+      letter-spacing: 0;
+    }
+
+    .title {
+      font-size: 20px;
+      line-height: 1.08;
+      font-weight: 820;
+    }
+
+    .text {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.24;
+      font-weight: 560;
+    }
+
+    .qchat-headline {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.18;
+      font-weight: 790;
+      letter-spacing: 0;
+    }
+
+    .use-cases {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .use-cases li {
+      padding: 5px 7px;
+      border-radius: 999px;
+      color: rgba(11, 16, 32, 0.68);
+      background: rgba(91, 158, 244, 0.12);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .tag {
+      width: fit-content;
+      display: inline-grid;
+      place-items: center;
+      margin: 7px 0 0;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--blue-dark);
+      background: rgba(91, 158, 244, 0.13);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 840;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .title-long {
+      font-size: 18px;
+      line-height: 1.12;
+    }
+
+    .appstore-badge {
+      width: min(100%, 178px);
+      display: inline-block;
+      justify-self: start;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(3, 18, 44, 0.18);
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .install-cta {
+      margin-top: 0;
+    }
+
+    .appstore-badge img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .appstore-badge:active,
+    .card-link:active {
+      transform: scale(0.988);
+    }
+
+    .card-link {
+      grid-template-columns: 46px minmax(0, 1fr) 34px;
+      align-items: center;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .arrow {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: rgba(11, 16, 32, 0.42);
+      background: rgba(91, 158, 244, 0.12);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .soon {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: rgba(11, 16, 32, 0.66);
+      background: rgba(91, 158, 244, 0.12);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 760;
+      letter-spacing: 0.02em;
+    }
+
+    .below {
+      display: grid;
+      gap: 26px;
+      padding: 34px 0 54px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(30px, 8vw, 42px);
+      line-height: 1.08;
+      font-weight: 860;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      margin: 10px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 540;
+    }
+
+    .gallery-intro {
+      display: grid;
+      gap: 8px;
+    }
+
+    .gallery-note {
+      width: fit-content;
+      display: inline-grid;
+      place-items: center;
+      padding: 6px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 760;
+      letter-spacing: 0.02em;
+    }
+
+    .screenshot-rail {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 78%;
+      gap: 12px;
+      margin: 18px -22px 0;
+      padding: 0 22px 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .screenshot-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .screenshot-card {
+      margin: 0;
+      display: grid;
+      gap: 10px;
+      scroll-snap-align: center;
+    }
+
+    .screenshot-card figcaption {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 13px;
+      line-height: 1.18;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .screenshot-frame {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 26px;
+      background: var(--card-soft);
+      box-shadow: 0 20px 48px rgba(17, 74, 150, 0.24);
+      aspect-ratio: 690 / 1500;
+    }
+
+    .screenshot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      line-height: 1.25;
+      font-weight: 640;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    @media (max-height: 760px) {
+      .page {
+        padding-top: max(14px, env(safe-area-inset-top));
+        padding-bottom: max(14px, env(safe-area-inset-bottom));
+      }
+
+      .hero {
+        justify-content: start;
+        gap: 14px;
+      }
+
+      .story-ring {
+        width: 78px;
+        height: 78px;
+        padding: 3px;
+      }
+
+      .avatar {
+        padding: 3px;
+      }
+
+      .name {
+        margin-top: 9px;
+        font-size: 18px;
+      }
+
+      .bio {
+        margin-top: 7px;
+        font-size: 12px;
+        line-height: 1.18;
+      }
+
+      h1 {
+        margin-top: 10px;
+        font-size: 28px;
+      }
+
+      .subhead {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+
+      .cards {
+        gap: 9px;
+      }
+
+      .card {
+        padding: 11px;
+        border-radius: 20px;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 13px;
+      }
+
+      .card-row,
+      .card-link {
+        grid-template-columns: 40px minmax(0, 1fr) auto;
+      }
+
+      .title {
+        font-size: 18px;
+      }
+
+      .title-long {
+        font-size: 16px;
+      }
+
+      .text {
+        font-size: 13px;
+      }
+
+      .appstore-badge {
+        width: min(100%, 164px);
+      }
+
+      .qchat-headline {
+        font-size: 14.5px;
+      }
+
+      .use-cases {
+        gap: 5px;
+      }
+
+      .use-cases li {
+        padding: 4px 6px;
+        font-size: 10.8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-label="Dmitrii Losev bio links">
+      <header class="profile">
+        <a class="story-ring" href="https://www.instagram.com/dmitrilosev/" target="_blank" rel="noopener" aria-label="Dmitrii Losev on Instagram">
+          <span class="avatar">
+            <img src="assets/dmitrii-avatar.jpg" alt="Dmitrii Losev">
+          </span>
+        </a>
+        <p class="name">Dmitrii Losev</p>
+        <p class="bio">
+          <span>AI Product Lead · ex-Sber · ex-Uzum</span>
+          <span>QChat — AI agents for city life</span>
+          <span>Build your own iOS app + backend + OpenAI Agents with my skill pack</span>
+          <span>Music on ↓</span>
+        </p>
+      </header>
+
+      <nav class="cards" aria-label="Primary links">
+        <article class="card qchat-card">
+          <div class="card-row">
+            <span class="mark"><img src="assets/qchat.png" alt=""></span>
+            <span class="copy">
+              <span class="title">QChat</span>
+            </span>
+          </div>
+          <p class="qchat-headline">Голосом ставьте ежедневные задачи AI-агентам.</p>
+          <ul class="use-cases" aria-label="QChat use cases">
+            <li>тренировки и питание</li>
+            <li>советы по здоровью</li>
+            <li>Доставка курьерами ресторанов</li>
+            <li>Продукты с доставкой</li>
+            <li>Самовывоз из ресторанов</li>
+            <li>кондитерские</li>
+            <li>запись на тренировки</li>
+            <li>аренда жилья</li>
+            <li>открыть бизнес</li>
+          </ul>
+          <a class="appstore-badge install-cta" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
+            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+          </a>
+        </article>
+
+        <a class="card card-link" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
+          <span class="mark github-mark"><img src="assets/github-mark.svg" alt=""></span>
+          <span class="copy">
+            <span class="title title-long">Create your own iOS app + backend + OpenAI Agents</span>
+            <span class="tag">Skill pack</span>
+            <span class="text">Раньше у меня на создание приложения уходило от 2 месяцев, а enterprise-продукты мы с командой развивали годами. Теперь я упаковал этот опыт в skillpack для Codex, и вы можете создать production-ready iOS-приложение с Firebase бэкендом и OpenAI Agency SDK агентами за 2 часа.</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="card card-link" href="https://www.instagram.com/dmitrilosev/reels/" target="_blank" rel="noopener">
+          <span class="mark">M</span>
+          <span class="copy">
+            <span class="title">Моя музыка</span>
+            <span class="text">Та правда, которая живет внутри меня, проявленная через песни. Каждое слово наполнено смыслом. Планирую скоро выпустить полные треки.</span>
+          </span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </nav>
+    </section>
+
+    <section class="below" aria-label="QChat preview">
+      <div>
+        <div class="gallery-intro">
+          <span class="gallery-note">Swipe the gallery</span>
+          <h2 class="section-title">QChat в реальных задачах</h2>
+          <p class="section-copy">Голосом ставьте задачи агентам. QChat превращает их в карточки, корзины, дневник, подборки и историю действий.</p>
+        </div>
+        <div class="screenshot-rail" aria-label="QChat screenshots gallery">
+          <figure class="screenshot-card">
+            <figcaption>Главный экран: агенты, приложения и последние задачи</figcaption>
+            <div class="screenshot-frame">
+              <img src="assets/qchat-gallery-home.jpg" alt="QChat home screen with agents, apps, and recent tasks">
+            </div>
+          </figure>
+          <figure class="screenshot-card">
+            <figcaption>Дневник еды: круассан и капучино голосом</figcaption>
+            <div class="screenshot-frame">
+              <img src="assets/qchat-gallery-food-log.jpg" alt="QChat food diary result for croissant and cappuccino">
+            </div>
+          </figure>
+          <figure class="screenshot-card">
+            <figcaption>Фитнес: тренировка записана из длинной голосовой команды</figcaption>
+            <div class="screenshot-frame">
+              <img src="assets/qchat-gallery-workout.jpg" alt="QChat workout logging result with cardio and strength metrics">
+            </div>
+          </figure>
+          <figure class="screenshot-card">
+            <figcaption>Продукты: агент собирает корзину и считает доставку</figcaption>
+            <div class="screenshot-frame">
+              <img src="assets/qchat-gallery-groceries.jpg" alt="QChat grocery delivery cart with products and total price">
+            </div>
+          </figure>
+          <figure class="screenshot-card">
+            <figcaption>Еда и продукты: подбор тортов из магазинов</figcaption>
+            <div class="screenshot-frame">
+              <img src="assets/qchat-gallery-cake.jpg" alt="QChat cake shopping results from stores">
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>QChat, AgentFoundry, Music</span>
+        <a href="mailto:qchatwelcome@gmail.com">Contact</a>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
