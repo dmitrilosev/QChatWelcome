@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="apple-itunes-app" content="app-id=6739166946">
   <title>Dmitrii Losev | QChat</title>
-  <meta name="description" content="Dmitrii Losev builds AI-native products for millions. Download QChat, build with the skill pack, or turn on the music.">
+  <meta name="description" content="Dmitrii Losev builds AI-native products for millions. Download QChat, build with the Codex Skillpack, or turn on the music.">
   <meta property="og:title" content="Dmitrii Losev | QChat">
-  <meta property="og:description" content="QChat, AgentFoundry skill pack, and music by Dmitrii Losev.">
+  <meta property="og:description" content="QChat, AgentFoundry Codex Skillpack, and music by Dmitrii Losev.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dmitrilosev.github.io/QChatWelcome/bio/">
   <meta property="og:image" content="https://dmitrilosev.github.io/QChatWelcome/bio/assets/qchat.png">
@@ -64,7 +64,7 @@
       min-height: 100svh;
       margin: 0 auto;
       padding: max(22px, env(safe-area-inset-top)) 22px max(18px, env(safe-area-inset-bottom));
-      overflow-x: hidden;
+      overflow-x: visible;
     }
 
     .hero {
@@ -207,6 +207,13 @@
       height: 58%;
     }
 
+    .music-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 38% 42%;
+    }
+
     .copy {
       min-width: 0;
     }
@@ -224,12 +231,42 @@
       font-weight: 820;
     }
 
+    .card-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.18;
+      font-weight: 620;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .card-body {
+      display: grid;
+      gap: 8px;
+    }
+
+    .content-title {
+      display: block;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.18;
+      font-weight: 790;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
     .text {
       margin-top: 5px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.24;
       font-weight: 560;
+    }
+
+    .card-body .text {
+      margin-top: 0;
     }
 
     .qchat-headline {
@@ -265,7 +302,7 @@
       width: fit-content;
       display: inline-grid;
       place-items: center;
-      margin: 7px 0 0;
+      margin: 0;
       padding: 4px 8px;
       border-radius: 999px;
       color: var(--blue-dark);
@@ -275,6 +312,12 @@
       font-weight: 840;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+    }
+
+    .copy .tag {
+      margin-top: 6px;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
     .title-long {
@@ -303,14 +346,16 @@
     }
 
     .appstore-badge:active,
-    .card-link:active {
+    .action-card:active {
       transform: scale(0.988);
     }
 
-    .card-link {
-      grid-template-columns: 46px minmax(0, 1fr) 34px;
-      align-items: center;
+    .action-card {
       transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .action-card .card-row {
+      grid-template-columns: 46px minmax(0, 1fr) 34px;
     }
 
     .arrow {
@@ -342,7 +387,17 @@
     .below {
       display: grid;
       gap: 26px;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
       padding: 34px 0 54px;
+    }
+
+    .below > * {
+      min-width: 0;
+    }
+
+    .below > div {
+      width: 100%;
     }
 
     .section-title {
@@ -360,11 +415,14 @@
       font-size: 16px;
       line-height: 1.4;
       font-weight: 540;
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
 
     .gallery-intro {
       display: grid;
       gap: 8px;
+      padding: 0 22px;
     }
 
     .gallery-note {
@@ -383,13 +441,18 @@
     }
 
     .screenshot-rail {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 78%;
+      --screenshot-card-width: min(78vw, 330px);
+      --screenshot-side-space: max(22px, calc((100vw - var(--screenshot-card-width)) / 2));
+      width: 100%;
+      max-width: 100vw;
+      min-width: 0;
+      display: flex;
       gap: 12px;
-      margin: 18px -22px 0;
-      padding: 0 22px 12px;
+      margin: 18px 0 0;
+      padding: 0 var(--screenshot-side-space) 12px;
       overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-padding-inline: var(--screenshot-side-space);
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
     }
@@ -399,18 +462,27 @@
     }
 
     .screenshot-card {
+      flex: 0 0 var(--screenshot-card-width);
       margin: 0;
       display: grid;
+      grid-template-rows: 48px auto;
       gap: 10px;
+      min-width: 0;
       scroll-snap-align: center;
     }
 
     .screenshot-card figcaption {
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
       color: rgba(255, 255, 255, 0.9);
       font-size: 13px;
       line-height: 1.18;
       font-weight: 760;
       letter-spacing: 0;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      white-space: normal;
     }
 
     .screenshot-frame {
@@ -432,6 +504,7 @@
       display: flex;
       justify-content: space-between;
       gap: 14px;
+      padding: 0 22px;
       color: rgba(255, 255, 255, 0.72);
       font-size: 12px;
       line-height: 1.25;
@@ -499,13 +572,20 @@
         border-radius: 13px;
       }
 
-      .card-row,
-      .card-link {
+      .card-row {
+        grid-template-columns: 40px minmax(0, 1fr);
+      }
+
+      .action-card .card-row {
         grid-template-columns: 40px minmax(0, 1fr) auto;
       }
 
       .title {
         font-size: 18px;
+      }
+
+      .card-subtitle {
+        font-size: 12px;
       }
 
       .title-long {
@@ -514,6 +594,10 @@
 
       .text {
         font-size: 13px;
+      }
+
+      .content-title {
+        font-size: 14.5px;
       }
 
       .appstore-badge {
@@ -559,7 +643,7 @@
         <p class="bio">
           <span>AI Product Lead · ex-Sber · ex-Uzum</span>
           <span>QChat — AI agents for city life</span>
-          <span>Build your own iOS app + backend + OpenAI Agents with my skill pack</span>
+          <span>Build your own iOS app + backend + OpenAI Agents with my Codex Skillpack</span>
           <span>Music on ↓</span>
         </p>
       </header>
@@ -572,40 +656,52 @@
               <span class="title">QChat</span>
             </span>
           </div>
-          <p class="qchat-headline">Голосом ставьте ежедневные задачи AI-агентам.</p>
-          <ul class="use-cases" aria-label="QChat use cases">
-            <li>тренировки и питание</li>
-            <li>советы по здоровью</li>
-            <li>Доставка курьерами ресторанов</li>
-            <li>Продукты с доставкой</li>
-            <li>Самовывоз из ресторанов</li>
-            <li>кондитерские</li>
-            <li>запись на тренировки</li>
-            <li>аренда жилья</li>
-            <li>открыть бизнес</li>
-          </ul>
-          <a class="appstore-badge install-cta" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
-            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
-          </a>
+          <div class="card-body">
+            <p class="qchat-headline content-title">Голосом ставьте ежедневные задачи AI-агентам.</p>
+            <ul class="use-cases" aria-label="QChat use cases">
+              <li>тренировки и питание</li>
+              <li>советы по здоровью</li>
+              <li>доставка курьерами ресторанов</li>
+              <li>свежие фрукты и овощи</li>
+              <li>кондитерские</li>
+              <li>запись на тренировки</li>
+              <li>аренда жилья</li>
+              <li>открытие бизнеса</li>
+            </ul>
+            <a class="appstore-badge install-cta" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
+              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+            </a>
+          </div>
         </article>
 
-        <a class="card card-link" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
-          <span class="mark github-mark"><img src="assets/github-mark.svg" alt=""></span>
-          <span class="copy">
-            <span class="title title-long">Create your own iOS app + backend + OpenAI Agents</span>
-            <span class="tag">Skill pack</span>
-            <span class="text">Раньше у меня на создание приложения уходило от 2 месяцев, а enterprise-продукты мы с командой развивали годами. Теперь я упаковал этот опыт в skillpack для Codex, и вы можете создать production-ready iOS-приложение с Firebase бэкендом и OpenAI Agency SDK агентами за 2 часа.</span>
-          </span>
-          <span class="arrow" aria-hidden="true">&rarr;</span>
+        <a class="card action-card" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
+          <div class="card-row">
+            <span class="mark github-mark"><img src="assets/github-mark.svg" alt=""></span>
+            <span class="copy">
+              <span class="title">Agent Foundry</span>
+              <span class="tag">Codex Skillpack</span>
+            </span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <div class="card-body">
+            <span class="content-title">Create your own iOS app + back-end + OpenAI agents</span>
+            <span class="text">Раньше у меня на создание приложения уходило от 2 месяцев, а enterprise-продукты мы с командой развивали годами. Теперь я упаковал этот опыт в Codex Skillpack, и вы можете создать production-ready iOS-приложение с Firebase бэкендом и агентами на OpenAI Agents SDK за 2 часа.</span>
+          </div>
         </a>
 
-        <a class="card card-link" href="https://www.instagram.com/dmitrilosev/reels/" target="_blank" rel="noopener">
-          <span class="mark">M</span>
-          <span class="copy">
-            <span class="title">Моя музыка</span>
+        <a class="card action-card" href="https://www.instagram.com/dmitrilosev/reels/" target="_blank" rel="noopener">
+          <div class="card-row">
+            <span class="mark music-mark"><img src="assets/dkaii-music-avatar.jpg" alt=""></span>
+            <span class="copy">
+              <span class="title">DKAII</span>
+              <span class="tag">Музыка</span>
+            </span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </div>
+          <div class="card-body">
+            <span class="content-title">Правда через песни</span>
             <span class="text">Та правда, которая живет внутри меня, проявленная через песни. Каждое слово наполнено смыслом. Планирую скоро выпустить полные треки.</span>
-          </span>
-          <span class="arrow" aria-hidden="true">&rarr;</span>
+          </div>
         </a>
       </nav>
     </section>
@@ -614,36 +710,36 @@
       <div>
         <div class="gallery-intro">
           <span class="gallery-note">Swipe the gallery</span>
-          <h2 class="section-title">QChat в реальных задачах</h2>
-          <p class="section-copy">Голосом ставьте задачи агентам. QChat превращает их в карточки, корзины, дневник, подборки и историю действий.</p>
+          <h2 class="section-title">QChat в ваших задачах</h2>
+          <p class="section-copy">Голосом ставьте задачи агентам. Делегируйте то, что делаете в течение дня, и решайте задачи за секунды вместо получаса кликов в приложениях на телефоне.</p>
         </div>
         <div class="screenshot-rail" aria-label="QChat screenshots gallery">
           <figure class="screenshot-card">
-            <figcaption>Главный экран: агенты, приложения и последние задачи</figcaption>
+            <figcaption>Ставьте задачи агентам голосом или текстом</figcaption>
             <div class="screenshot-frame">
               <img src="assets/qchat-gallery-home.jpg" alt="QChat home screen with agents, apps, and recent tasks">
             </div>
           </figure>
           <figure class="screenshot-card">
-            <figcaption>Дневник еды: круассан и капучино голосом</figcaption>
+            <figcaption>Скажите агенту голосом добавить капучино</figcaption>
             <div class="screenshot-frame">
               <img src="assets/qchat-gallery-food-log.jpg" alt="QChat food diary result for croissant and cappuccino">
             </div>
           </figure>
           <figure class="screenshot-card">
-            <figcaption>Фитнес: тренировка записана из длинной голосовой команды</figcaption>
+            <figcaption>Голосом отслеживайте прогресс по своим тренировкам</figcaption>
             <div class="screenshot-frame">
               <img src="assets/qchat-gallery-workout.jpg" alt="QChat workout logging result with cardio and strength metrics">
             </div>
           </figure>
           <figure class="screenshot-card">
-            <figcaption>Продукты: агент собирает корзину и считает доставку</figcaption>
+            <figcaption>Попросите агента собрать корзину продуктов</figcaption>
             <div class="screenshot-frame">
               <img src="assets/qchat-gallery-groceries.jpg" alt="QChat grocery delivery cart with products and total price">
             </div>
           </figure>
           <figure class="screenshot-card">
-            <figcaption>Еда и продукты: подбор тортов из магазинов</figcaption>
+            <figcaption>Если хочется сладкого, попросите голосом, потом скажите: «Оплати»</figcaption>
             <div class="screenshot-frame">
               <img src="assets/qchat-gallery-cake.jpg" alt="QChat cake shopping results from stores">
             </div>
