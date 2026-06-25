@@ -26,6 +26,8 @@
       --card-soft: rgba(255, 255, 255, 0.88);
       --line: rgba(255, 255, 255, 0.74);
       --shadow: 0 18px 48px rgba(104, 82, 80, 0.15), 0 1px 0 rgba(255, 255, 255, 0.74);
+      --page-bg: #fbf8f6;
+      --page-gradient: linear-gradient(145deg, rgba(247, 224, 216, 0.28) 0%, rgba(236, 245, 255, 0.46) 48%, rgba(251, 248, 246, 0.92) 100%);
     }
 
     * {
@@ -34,9 +36,7 @@
 
     html {
       min-height: 100%;
-      background:
-        linear-gradient(145deg, rgba(247, 224, 216, 0.28) 0%, rgba(236, 245, 255, 0.46) 48%, rgba(251, 248, 246, 0.92) 100%),
-        #fbf8f6;
+      background-color: var(--page-bg);
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
     }
@@ -44,12 +44,21 @@
     body {
       min-height: 100%;
       margin: 0;
-      background:
-        linear-gradient(145deg, rgba(247, 224, 216, 0.28) 0%, rgba(236, 245, 255, 0.46) 48%, rgba(251, 248, 246, 0.92) 100%),
-        #fbf8f6;
+      background-color: var(--page-bg);
       color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", sans-serif;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -40svh 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        var(--page-gradient),
+        var(--page-bg);
     }
 
     a {
@@ -67,6 +76,8 @@
     }
 
     .page {
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 390px;
       min-height: 100svh;
@@ -316,6 +327,17 @@
     .github-mark img {
       width: 58%;
       height: 58%;
+    }
+
+    .qchat-mark {
+      background: #f5f8ff;
+    }
+
+    .qchat-mark img {
+      width: 86%;
+      height: 86%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     .music-mark img {
@@ -801,13 +823,13 @@
       <nav class="cards" aria-label="Primary links">
         <article class="card qchat-card">
           <div class="card-row">
-            <span class="mark"><img src="assets/qchat.png" alt=""></span>
+            <span class="mark qchat-mark"><img src="assets/qchat.png" alt=""></span>
             <span class="copy">
               <span class="title">QChat</span>
             </span>
           </div>
           <div class="card-body">
-            <p class="qchat-headline content-title" data-i18n="qchat.headline">Delegate all your daily tasks to AI agents by voice.</p>
+            <p class="qchat-headline content-title" data-i18n="qchat.headline">Delegate your daily tasks to AI agents.</p>
             <ul class="use-cases" aria-label="QChat use cases">
               <li data-i18n="qchat.tag.workouts">workouts &amp; nutrition</li>
               <li data-i18n="qchat.tag.health">health advice</li>
@@ -833,9 +855,9 @@
             <span class="arrow" aria-hidden="true">&rarr;</span>
           </div>
           <div class="card-body">
-            <span class="content-title" data-i18n="foundry.headline">Create your own iOS app + backend + OpenAI agents</span>
+            <span class="content-title" data-i18n="foundry.headline">Create your own iOS app with a Firebase backend and an AI agent built on the OpenAI Agents SDK</span>
             <span class="tag" data-i18n="foundry.tag">Codex Skill Pack</span>
-            <span class="text" data-i18n="foundry.text">Previously, building an app took me at least 2 months, and our team developed enterprise products for years. Now I packaged that experience into a Codex Skill Pack, so you can build a production-ready iOS app with Firebase backend and OpenAI Agents SDK agents in 2 hours.</span>
+            <span class="text" data-i18n="foundry.text">I launched four startups and grew an enterprise app from 14M to 65M monthly active users. Now I packaged that experience into a Codex Skill Pack, so you can create your own iOS apps with a Firebase backend and AI agents powered by the OpenAI Agents SDK in 1-2 hours.</span>
           </div>
         </a>
 
@@ -921,7 +943,7 @@
           "bio.qchat": "QChat — AI agents for city life",
           "bio.skillpack": "Build your own iOS app + backend + OpenAI Agents with my Codex Skill Pack",
           "bio.music": "Music on ↓",
-          "qchat.headline": "Delegate all your daily tasks to AI agents by voice.",
+          "qchat.headline": "Delegate your daily tasks to AI agents.",
           "qchat.tag.workouts": "workouts & nutrition",
           "qchat.tag.health": "health advice",
           "qchat.tag.couriers": "restaurant courier delivery",
@@ -930,9 +952,9 @@
           "qchat.tag.training": "workout booking",
           "qchat.tag.rentals": "housing rental",
           "qchat.tag.business": "business launch",
-          "foundry.headline": "Create your own iOS app + backend + OpenAI agents",
+          "foundry.headline": "Create your own iOS app with a Firebase backend and an AI agent built on the OpenAI Agents SDK",
           "foundry.tag": "Codex Skill Pack",
-          "foundry.text": "Previously, building an app took me at least 2 months, and our team developed enterprise products for years. Now I packaged that experience into a Codex Skill Pack, so you can build a production-ready iOS app with Firebase backend and OpenAI Agents SDK agents in 2 hours.",
+          "foundry.text": "I launched four startups and grew an enterprise app from 14M to 65M monthly active users. Now I packaged that experience into a Codex Skill Pack, so you can create your own iOS apps with a Firebase backend and AI agents powered by the OpenAI Agents SDK in 1-2 hours.",
           "music.headline": "Music and meaning",
           "music.tag": "My music",
           "music.text": "Moments that changed me from the inside: when the old no longer works and the new is only beginning to emerge. This music is about choice, strength, movement and returning to yourself. I’m planning to release full tracks soon.",
@@ -965,7 +987,7 @@
           "qchat.tag.business": "открытие бизнеса",
           "foundry.headline": "Создайте собственное iOS-приложение + бэкэнд + AI-агентов OpenAI",
           "foundry.tag": "Codex Skillpack",
-          "foundry.text": "Раньше у меня на создание приложения уходило от 2 месяцев, а enterprise-продукты мы с командой развивали годами. Теперь я упаковал этот опыт в Codex Skillpack, и вы можете создать production-ready iOS-приложение с Firebase бэкендом и агентами на OpenAI Agents SDK за 2 часа.",
+          "foundry.text": "Я запустил четыре стартапа и развивал enterprise-приложение от 14M до 65M MAU (monthly active users). Теперь я упаковал этот опыт в Codex Skillpack так, что вы можете создавать собственные iOS-приложения с Firebase-бэкендом и AI-агентами под управлением OpenAI Agents SDK за 1-2 часа.",
           "music.headline": "Музыка и смыслы",
           "music.tag": "Моя музыка",
           "music.text": "Моменты, которые меняли меня изнутри: когда старое уже не работает, а новое еще только рождается. Это музыка про выбор, силу, движение и возвращение к себе. Планирую скоро выпустить полные треки.",
