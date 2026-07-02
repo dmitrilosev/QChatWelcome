@@ -499,31 +499,31 @@
           <figure class="shot">
             <figcaption data-i18n="shotHome">Ставьте задачи агентам голосом или текстом</figcaption>
             <div class="phone">
-              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/fa847572-slurp-qchat-gallery-home.webp" alt="Главный экран QChat с агентами, приложениями и недавними задачами" data-i18n-attr="alt:shotHomeAlt">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/fa847572-slurp-qchat-gallery-home.webp" data-src-ru="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/fa847572-slurp-qchat-gallery-home.webp" data-src-en="assets/screenshots/qchat-gallery-home-en.png" alt="Главный экран QChat с агентами, приложениями и недавними задачами" data-i18n-attr="alt:shotHomeAlt">
             </div>
           </figure>
           <figure class="shot">
             <figcaption data-i18n="shotCappuccino">Попросите агента голосом добавить капучино</figcaption>
             <div class="phone">
-              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8a808528-slurp-qchat-gallery-food-log.webp" alt="Дневник питания QChat с круассаном и капучино" data-i18n-attr="alt:shotCappuccinoAlt">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8a808528-slurp-qchat-gallery-food-log.webp" data-src-ru="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8a808528-slurp-qchat-gallery-food-log.webp" data-src-en="assets/screenshots/qchat-gallery-food-log-en.png" alt="Дневник питания QChat с круассаном и капучино" data-i18n-attr="alt:shotCappuccinoAlt">
             </div>
           </figure>
           <figure class="shot">
             <figcaption data-i18n="shotWorkout">Отслеживайте прогресс тренировок голосом</figcaption>
             <div class="phone">
-              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8ec1ea17-slurp-qchat-gallery-workout.webp" alt="Результат записи тренировки в QChat с кардио и силовыми метриками" data-i18n-attr="alt:shotWorkoutAlt">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8ec1ea17-slurp-qchat-gallery-workout.webp" data-src-ru="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8ec1ea17-slurp-qchat-gallery-workout.webp" data-src-en="assets/screenshots/qchat-gallery-workout-en.png" alt="Результат записи тренировки в QChat с кардио и силовыми метриками" data-i18n-attr="alt:shotWorkoutAlt">
             </div>
           </figure>
           <figure class="shot">
             <figcaption data-i18n="shotGroceries">Попросите агента собрать корзину продуктов</figcaption>
             <div class="phone">
-              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/79f63ca1-slurp-qchat-gallery-groceries.webp" alt="Корзина доставки продуктов в QChat" data-i18n-attr="alt:shotGroceriesAlt">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/79f63ca1-slurp-qchat-gallery-groceries.webp" data-src-ru="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/79f63ca1-slurp-qchat-gallery-groceries.webp" data-src-en="assets/screenshots/qchat-gallery-groceries-en.png" alt="Корзина доставки продуктов в QChat" data-i18n-attr="alt:shotGroceriesAlt">
             </div>
           </figure>
           <figure class="shot">
             <figcaption data-i18n="shotSweet">Захотелось сладкого? Попросите голосом, потом скажите: «Оплатить»</figcaption>
             <div class="phone">
-              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/f0617fee-slurp-qchat-gallery-cake.webp" alt="Результаты покупки торта в QChat" data-i18n-attr="alt:shotSweetAlt">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/f0617fee-slurp-qchat-gallery-cake.webp" data-src-ru="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/f0617fee-slurp-qchat-gallery-cake.webp" data-src-en="assets/screenshots/qchat-gallery-cake-en.png" alt="Результаты покупки торта в QChat" data-i18n-attr="alt:shotSweetAlt">
             </div>
           </figure>
         </div>
@@ -741,6 +741,10 @@
 
       document.querySelectorAll("[data-appstore-badge]").forEach((image) => {
         image.src = dictionary.appStoreBadge;
+      });
+
+      document.querySelectorAll("[data-src-ru][data-src-en]").forEach((image) => {
+        image.src = lang === "en" ? image.dataset.srcEn : image.dataset.srcRu;
       });
 
       document.querySelector("[data-current-language]").textContent = lang === "en" ? "En" : "Ru";
