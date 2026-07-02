@@ -1,94 +1,795 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Download QChat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-itunes-app" content="app-id=6739166946">
-
+  <title>QChat — городские задачи голосом</title>
+  <meta name="description" content="QChat поручает AI-агентам городские задачи: доставка еды, продукты, тренировки, питание и жилье. Просто скажите, что нужно сделать.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="QChat — AI-агенты для городской жизни">
+  <meta property="og:description" content="Заказывайте еду, собирайте корзину продуктов, записывайте тренировки и делегируйте рутину голосом.">
+  <meta property="og:image" content="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/c2479150-slurp-qchat.webp">
   <style>
-    /* === Animated Background === */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      color: white;
+    :root {
+      color-scheme: light;
+      --bg: #fff8f2;
+      --surface: rgba(255, 255, 255, 0.76);
+      --surface-strong: rgba(255, 255, 255, 0.9);
+      --text: #151515;
+      --muted: rgba(21, 21, 21, 0.62);
+      --line: rgba(72, 55, 38, 0.12);
+      --accent: #0c83d5;
+      --accent-soft: #e6f4ff;
+      --shadow: 0 18px 48px rgba(104, 82, 80, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #6c63ff, #48c6ef);
-      background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite;
+      min-height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(circle at 14% 4%, rgba(31, 138, 250, 0.11), transparent 32rem),
+        radial-gradient(circle at 86% 14%, rgba(255, 138, 61, 0.10), transparent 34rem),
+        radial-gradient(circle at 32% 56%, rgba(69, 211, 194, 0.08), transparent 36rem),
+        radial-gradient(circle at 78% 78%, rgba(142, 108, 255, 0.08), transparent 34rem),
+        radial-gradient(circle at 92% 26%, rgba(255, 91, 106, 0.045), transparent 28rem),
+        linear-gradient(180deg, #fbfbff 0%, var(--bg) 46%, #f5f4fb 100%);
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(100%, 48rem);
+      margin: 0 auto;
+      padding: 1.375rem 1.375rem 1.25rem;
     }
 
-    .container {
+    .language {
+      position: sticky;
+      top: 0.75rem;
+      z-index: 2;
+      display: flex;
+      justify-content: flex-end;
+      height: 0;
+    }
+
+    .language-switcher {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-trigger,
+    .language-menu {
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.62);
+      box-shadow: 0 14px 34px rgba(104, 82, 80, 0.13);
+      backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .language button {
+      appearance: none;
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+      height: 2.375rem;
+      padding: 0 0.9rem;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(21, 21, 21, 0.72);
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 800;
+      font-family: inherit;
+      line-height: 1;
+    }
+
+    .language-trigger {
+      gap: 0.35rem;
+      min-width: 4.8rem;
+      border-radius: 999px;
+    }
+
+    .language-trigger svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      stroke-width: 2.5;
+      transition: transform 0.16s ease;
+    }
+
+    .language-trigger[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    .language-menu {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      display: grid;
+      gap: 0.2rem;
+      min-width: 6rem;
+      padding: 0.3rem;
+      border-radius: 1rem;
+    }
+
+    .language-menu[hidden] {
+      display: none;
+    }
+
+    .language-menu button {
+      width: 100%;
+      justify-content: space-between;
+      height: 2.15rem;
+      padding: 0 0.65rem;
+      border-radius: 0.75rem;
+    }
+
+    .language-menu button[aria-selected="true"] {
+      background: rgba(255, 255, 255, 0.88);
+      color: rgba(21, 21, 21, 0.92);
+      box-shadow: inset 0 0 0 1px rgba(72, 55, 38, 0.08);
+    }
+
+    .hero {
+      display: grid;
+      justify-items: center;
+      gap: clamp(1rem, 3svh, 1.75rem);
+      padding-top: clamp(2rem, 7svh, 4rem);
       text-align: center;
-      max-width: 400px;
-      width: 90%;
     }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 20px;
-      border-radius: 24px;
-      background: #ffffff;
-      padding: 16px;
+    .eyebrow,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.75rem;
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      color: rgba(21, 21, 21, 0.72);
+      font-size: 0.75rem;
+      font-weight: 800;
+      line-height: 1;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(18px) saturate(1.2);
     }
+
+    .app-icon {
+      display: grid;
+      place-items: center;
+      width: clamp(4.5rem, 18vw, 5.75rem);
+      height: clamp(4.5rem, 18vw, 5.75rem);
+      padding: 0.25rem;
+      border-radius: 1.375rem;
+      background: white;
+      box-shadow: 0 18px 44px rgba(104, 82, 80, 0.18);
+      overflow: hidden;
+    }
+
+    .app-icon img {
+      width: 86%;
+      height: 86%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    h1,
+    h2,
+    p { margin: 0; }
 
     h1 {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 12px;
+      max-width: 18ch;
+      font-size: clamp(2.125rem, 8vw, 3.5rem);
+      line-height: 1.06;
+      font-weight: 900;
+      letter-spacing: 0;
     }
 
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
-      line-height: 1.5;
-      opacity: 0.9;
+    .lead {
+      max-width: 42ch;
+      color: var(--muted);
+      font-size: clamp(0.95rem, 2.4vw, 1.125rem);
+      font-weight: 650;
+      line-height: 1.36;
     }
 
-    /* === Official App Store Badge === */
-    .appstore-badge {
-      display: inline-block;
-      overflow: hidden;
-      border-radius: 12px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .appstore-badge:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
-    }
-
-    .appstore-badge img {
-      width: 180px;
-      height: auto;
+    .appstore {
       display: block;
+      width: min(80%, 12.5rem);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .appstore:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .appstore img {
+      display: block;
+      width: 100%;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      max-width: 34rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .note {
+      max-width: 46ch;
+      color: rgba(21, 21, 21, 0.52);
+      font-size: 0.875rem;
+      font-weight: 650;
+      line-height: 1.34;
+    }
+
+    section {
+      display: grid;
+      gap: 1.625rem;
+      padding-top: clamp(2.5rem, 8svh, 4.5rem);
+    }
+
+    .section-head {
+      display: grid;
+      justify-items: center;
+      gap: 0.65rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 7vw, 2.625rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      max-width: 48ch;
+      color: var(--muted);
+      font-weight: 560;
+      line-height: 1.38;
+    }
+
+    .gallery-wrap {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+    }
+
+    .gallery {
+      display: flex;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 100vw;
+      padding: 0.65rem 2.75rem 0.75rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .gallery::-webkit-scrollbar { display: none; }
+
+    .shot {
+      flex: 0 0 20.625rem;
+      display: grid;
+      grid-template-rows: 3rem auto;
+      gap: 0.65rem;
+      min-width: 0;
+      margin: 0;
+    }
+
+    .shot figcaption {
+      display: flex;
+      align-items: end;
+      height: 3rem;
+      overflow: hidden;
+      color: rgba(21, 21, 21, 0.74);
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.18;
+    }
+
+    .phone {
+      aspect-ratio: 690 / 1500;
+      border: 1px solid rgba(72, 55, 38, 0.08);
+      border-radius: 1.625rem;
+      background: white;
+      box-shadow: 0 20px 48px rgba(104, 82, 80, 0.16);
+      overflow: hidden;
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .step,
+    .download {
+      border: 1px solid var(--line);
+      border-radius: 1.5rem;
+      background: var(--surface);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(26px) saturate(1.25);
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 3.25rem 1fr;
+      gap: 0.85rem;
+      padding: 1rem;
+    }
+
+    .step-icon {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 1rem;
+      background: var(--accent-soft);
+      box-shadow: inset 0 0 0 1px rgba(12, 131, 213, 0.1);
+    }
+
+    .step-icon img {
+      width: 1.75rem;
+      height: 1.75rem;
+      display: block;
+    }
+
+    .step-copy {
+      display: grid;
+      gap: 0.45rem;
+      min-width: 0;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 1.05rem;
+      line-height: 1.18;
+      font-weight: 850;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 620;
+      line-height: 1.38;
+    }
+
+    .download-section {
+      padding-bottom: clamp(1.5rem, 5svh, 3rem);
+    }
+
+    .download {
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+      padding: clamp(0.5rem, 3vw, 1.25rem) 0 0;
+      text-align: center;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+
+    .download h2 { max-width: 22ch; font-size: clamp(1.625rem, 6vw, 2.375rem); }
+    .download p {
+      max-width: 40ch;
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.38;
+    }
+
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.85rem;
+      padding-top: 0.5rem;
+      color: rgba(21, 21, 21, 0.52);
+      font-size: 0.75rem;
+      font-weight: 650;
+      line-height: 1.25;
+    }
+
+    footer span {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 0.65rem;
+    }
+
+    footer a { color: rgba(21, 21, 21, 0.74); }
+
+    .footer-icon-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .footer-icon-link svg {
+      width: 0.85rem;
+      height: 0.85rem;
+      opacity: 0.86;
+    }
+
+    @media (max-width: 700px) {
+      .page { padding-inline: 1rem; }
+      .gallery { padding-inline: 1.4rem; }
+      .shot { flex-basis: min(19.25rem, 82vw); }
+      .steps { grid-template-columns: 1fr; }
+      .step { border-radius: 1.25rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="qchat.png" alt="QChat Logo" class="logo">
-    <h1>QChat</h1>
-    <p>Assign tasks to agents by voice or text</p>
+  <main class="page">
+    <div class="language" aria-label="Выбор языка">
+      <div class="language-switcher">
+        <button class="language-trigger" type="button" data-lang-trigger aria-haspopup="listbox" aria-expanded="false">
+          <span data-current-language>En</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+        <div class="language-menu" role="listbox" aria-label="Choose language" data-lang-menu hidden>
+          <button type="button" role="option" data-lang-option="en" aria-selected="true">English</button>
+          <button type="button" role="option" data-lang-option="ru" aria-selected="false">Русский</button>
+        </div>
+      </div>
+    </div>
 
-    <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener">
-      <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
-    </a>
-  </div>
+    <section class="hero" aria-label="QChat">
+      <span class="eyebrow" data-i18n="eyebrow">AI-агенты для городской жизни</span>
+      <span class="app-icon">
+        <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/c2479150-slurp-qchat.webp" alt="Иконка приложения QChat" data-i18n-attr="alt:appIconAlt">
+      </span>
+      <h1 data-i18n="heroTitle">Решайте городские задачи голосом</h1>
+      <p class="lead" data-i18n="heroLead">Заказывайте еду, собирайте корзину продуктов, записывайте тренировки и ищите жилье. Скажите агенту QChat, что нужно сделать, и он разберется за секунды.</p>
+      <a class="appstore" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Скачать QChat в App Store" data-i18n-attr="aria-label:appStoreAria">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ru-ru" alt="Загрузите в App Store" data-appstore-badge data-i18n-attr="alt:appStoreAlt">
+      </a>
+      <ul class="pills" aria-label="Что умеют агенты QChat">
+        <li class="pill" data-i18n="pillFitness">тренировки и питание</li>
+        <li class="pill" data-i18n="pillHealth">советы по здоровью</li>
+        <li class="pill" data-i18n="pillRestaurants">доставка из ресторанов</li>
+        <li class="pill" data-i18n="pillProduce">фрукты и овощи</li>
+        <li class="pill" data-i18n="pillBakeries">пекарни</li>
+        <li class="pill" data-i18n="pillBooking">запись на тренировки</li>
+        <li class="pill" data-i18n="pillRentals">аренда жилья</li>
+        <li class="pill" data-i18n="pillBusiness">запуск бизнеса</li>
+      </ul>
+      <p class="note" data-i18n="founderNote">Создано продуктовым лидом экс-Сбер, экс-Узум с опытом масштабирования продуктов с аудиторией 14-65 миллионов пользователей в месяц.</p>
+    </section>
+
+    <section aria-label="QChat в реальных задачах">
+      <div class="section-head">
+        <h2 data-i18n="tasksTitle">QChat в реальных задачах</h2>
+        <p data-i18n="tasksLead">Ставьте задачи агентам голосом или текстом, делегируйте дневную рутину и решайте вопросы за секунды вместо ручных кликов по экранам приложений.</p>
+      </div>
+
+      <div class="gallery-wrap">
+        <div class="gallery" aria-label="Скриншоты QChat">
+          <figure class="shot">
+            <figcaption data-i18n="shotHome">Ставьте задачи агентам голосом или текстом</figcaption>
+            <div class="phone">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/fa847572-slurp-qchat-gallery-home.webp" alt="Главный экран QChat с агентами, приложениями и недавними задачами" data-i18n-attr="alt:shotHomeAlt">
+            </div>
+          </figure>
+          <figure class="shot">
+            <figcaption data-i18n="shotCappuccino">Попросите агента голосом добавить капучино</figcaption>
+            <div class="phone">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8a808528-slurp-qchat-gallery-food-log.webp" alt="Дневник питания QChat с круассаном и капучино" data-i18n-attr="alt:shotCappuccinoAlt">
+            </div>
+          </figure>
+          <figure class="shot">
+            <figcaption data-i18n="shotWorkout">Отслеживайте прогресс тренировок голосом</figcaption>
+            <div class="phone">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/8ec1ea17-slurp-qchat-gallery-workout.webp" alt="Результат записи тренировки в QChat с кардио и силовыми метриками" data-i18n-attr="alt:shotWorkoutAlt">
+            </div>
+          </figure>
+          <figure class="shot">
+            <figcaption data-i18n="shotGroceries">Попросите агента собрать корзину продуктов</figcaption>
+            <div class="phone">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/79f63ca1-slurp-qchat-gallery-groceries.webp" alt="Корзина доставки продуктов в QChat" data-i18n-attr="alt:shotGroceriesAlt">
+            </div>
+          </figure>
+          <figure class="shot">
+            <figcaption data-i18n="shotSweet">Захотелось сладкого? Попросите голосом, потом скажите: «Оплатить»</figcaption>
+            <div class="phone">
+              <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/f0617fee-slurp-qchat-gallery-cake.webp" alt="Результаты покупки торта в QChat" data-i18n-attr="alt:shotSweetAlt">
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Как работает QChat">
+      <div class="section-head">
+        <h2 data-i18n="delegateTitle">Делегируйте свой день агентам</h2>
+        <p data-i18n="delegateLead">В QChat вы голосом или текстом говорите, что нужно сделать, а агент сам выполняет задачу. В обычных приложениях вы выполняете задачи сами.</p>
+      </div>
+
+      <ul class="steps">
+        <li class="step">
+          <span class="step-icon">
+            <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 8a7 7 0 0 0-7 7v8a7 7 0 0 0 14 0v-8a7 7 0 0 0-7-7Z' fill='%230c83d5'/%3E%3Cpath d='M13 22a11 11 0 0 0 22 0M24 33v7M18 40h12' fill='none' stroke='%23095f9e' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E">
+          </span>
+          <div class="step-copy">
+            <strong data-i18n="stepVoiceTitle">Просто скажите вслух</strong>
+            <p data-i18n="stepVoiceBody">Говорите с агентом голосом или текстом, как с человеком. Без меню и форм: он понимает задачу и запускает выполнение.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-icon">
+            <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M14 17h22l-3 18H17l-3-18Z' fill='%23ff8a3d' fill-opacity='0.24'/%3E%3Cpath d='M19 17a5 5 0 0 1 10 0M14 17h22l-3 18H17l-3-18ZM18 24h12M20 30h8' fill='none' stroke='%23d65a1f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+          </span>
+          <div class="step-copy">
+            <strong data-i18n="stepErrandsTitle">Настоящие поручения, настоящий результат</strong>
+            <p data-i18n="stepErrandsBody">Доставка из ресторана, корзина продуктов, запись на тренировку или поиск аренды. Агент ведет процесс до конца, включая оплату.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-icon">
+            <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='18' cy='18' r='5' fill='%232fbf71' fill-opacity='0.82'/%3E%3Ccircle cx='31' cy='16' r='4' fill='%232fbf71' fill-opacity='0.66'/%3E%3Ccircle cx='26' cy='31' r='6' fill='%232fbf71' fill-opacity='0.82'/%3E%3Cpath d='M18 25v8M31 23v9M13 36h22' fill='none' stroke='%23217f4e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+          </span>
+          <div class="step-copy">
+            <strong data-i18n="stepAgentsTitle">Отдельный агент для каждой части дня</strong>
+            <p data-i18n="stepAgentsBody">Еда, фитнес, продукты, жилье и другие задачи. Каждый агент знает свою область, поэтому ответ и результат приходят быстро.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-icon">
+            <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M15 33c0-7 4-13 10-13h5c4 0 7 3 7 7s-3 7-7 7h-6' fill='none' stroke='%23704fd6' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 20v-6c0-3 2-5 5-5 2 0 4 2 4 4v9M15 33l-4 4M19 37h12' fill='none' stroke='%238e6cff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 27c2-2 5-3 8-1' fill='none' stroke='%238e6cff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+          </span>
+          <div class="step-copy">
+            <strong data-i18n="stepTrackingTitle">QChat запоминает важные показатели</strong>
+            <p data-i18n="stepTrackingBody">Записывайте еду и тренировки голосом, а QChat сохранит цифры: калории, макросы, кардио и силовую нагрузку.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="download-section" aria-label="Скачать QChat">
+      <div class="download">
+        <h2 data-i18n="downloadTitle">Скачайте QChat и отдайте рутину агентам</h2>
+        <p data-i18n="downloadLead">Поставьте агенту первую задачу и смотрите, как город работает за вас.</p>
+        <a class="appstore" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Скачать QChat в App Store" data-i18n-attr="aria-label:appStoreAria">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ru-ru" alt="Загрузите в App Store" data-appstore-badge data-i18n-attr="alt:appStoreAlt">
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>
+        <a href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener">QChat</a>
+        <a class="footer-icon-link" href="https://www.linkedin.com/in/dmitri-losev/" target="_blank" rel="noopener" aria-label="LinkedIn: Dmitrii Losev">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"></path>
+          </svg>
+          <span data-i18n="aboutLink">О Дмитрии</span>
+        </a>
+      </span>
+      <a class="footer-icon-link" href="mailto:qchatwelcome@gmail.com" aria-label="Email QChat">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16v12H4z" stroke-width="2"></path>
+          <path d="m4 7 8 6 8-6" stroke-width="2"></path>
+        </svg>
+        <span data-i18n="contactLink">Написать</span>
+      </a>
+    </footer>
+  </main>
+  <script>
+    const copy = {
+      ru: {
+        title: "QChat — городские задачи голосом",
+        description: "QChat поручает AI-агентам городские задачи: доставка еды, продукты, тренировки, питание и жилье. Просто скажите, что нужно сделать.",
+        ogTitle: "QChat — AI-агенты для городской жизни",
+        ogDescription: "Заказывайте еду, собирайте корзину продуктов, записывайте тренировки и делегируйте рутину голосом.",
+        appStoreBadge: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ru-ru",
+        appStoreAlt: "Загрузите в App Store",
+        appStoreAria: "Скачать QChat в App Store",
+        appIconAlt: "Иконка приложения QChat",
+        eyebrow: "AI-агенты для городской жизни",
+        heroTitle: "Решайте городские задачи голосом",
+        heroLead: "Заказывайте еду, собирайте корзину продуктов, записывайте тренировки и ищите жилье. Скажите агенту QChat, что нужно сделать, и он разберется за секунды.",
+        pillFitness: "тренировки и питание",
+        pillHealth: "советы по здоровью",
+        pillRestaurants: "доставка из ресторанов",
+        pillProduce: "фрукты и овощи",
+        pillBakeries: "пекарни",
+        pillBooking: "запись на тренировки",
+        pillRentals: "аренда жилья",
+        pillBusiness: "запуск бизнеса",
+        founderNote: "Создано продуктовым лидом экс-Сбер, экс-Узум с опытом масштабирования продуктов с аудиторией 14-65 миллионов пользователей в месяц.",
+        tasksTitle: "QChat в реальных задачах",
+        tasksLead: "Ставьте задачи агентам голосом или текстом, делегируйте дневную рутину и решайте вопросы за секунды вместо ручных кликов по экранам приложений.",
+        shotHome: "Ставьте задачи агентам голосом или текстом",
+        shotHomeAlt: "Главный экран QChat с агентами, приложениями и недавними задачами",
+        shotCappuccino: "Попросите агента голосом добавить капучино",
+        shotCappuccinoAlt: "Дневник питания QChat с круассаном и капучино",
+        shotWorkout: "Отслеживайте прогресс тренировок голосом",
+        shotWorkoutAlt: "Результат записи тренировки в QChat с кардио и силовыми метриками",
+        shotGroceries: "Попросите агента собрать корзину продуктов",
+        shotGroceriesAlt: "Корзина доставки продуктов в QChat",
+        shotSweet: "Захотелось сладкого? Попросите голосом, потом скажите: «Оплатить»",
+        shotSweetAlt: "Результаты покупки торта в QChat",
+        delegateTitle: "Делегируйте свой день агентам",
+        delegateLead: "В QChat вы голосом или текстом говорите, что нужно сделать, а агент сам выполняет задачу. В обычных приложениях вы выполняете задачи сами.",
+        stepVoiceTitle: "Просто скажите вслух",
+        stepVoiceBody: "Говорите с агентом голосом или текстом, как с человеком. Без меню и форм: он понимает задачу и запускает выполнение.",
+        stepErrandsTitle: "Настоящие поручения, настоящий результат",
+        stepErrandsBody: "Доставка из ресторана, корзина продуктов, запись на тренировку или поиск аренды. Агент ведет процесс до конца, включая оплату.",
+        stepAgentsTitle: "Отдельный агент для каждой части дня",
+        stepAgentsBody: "Еда, фитнес, продукты, жилье и другие задачи. Каждый агент знает свою область, поэтому ответ и результат приходят быстро.",
+        stepTrackingTitle: "QChat запоминает важные показатели",
+        stepTrackingBody: "Записывайте еду и тренировки голосом, а QChat сохранит цифры: калории, макросы, кардио и силовую нагрузку.",
+        downloadTitle: "Скачайте QChat и отдайте рутину агентам",
+        downloadLead: "Поставьте агенту первую задачу и смотрите, как город работает за вас.",
+        aboutLink: "О Дмитрии",
+        contactLink: "Написать"
+      },
+      en: {
+        title: "QChat — get city errands done by voice",
+        description: "QChat puts AI agents to work on city errands: food delivery, groceries, workouts, nutrition, and housing. Just say what you need.",
+        ogTitle: "QChat — AI agents for city life",
+        ogDescription: "Order food, build a grocery cart, log workouts, and hand off busywork by voice.",
+        appStoreBadge: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us",
+        appStoreAlt: "Download on the App Store",
+        appStoreAria: "Download QChat on the App Store",
+        appIconAlt: "QChat app icon",
+        eyebrow: "AI agents for city life",
+        heroTitle: "Get city errands done by voice",
+        heroLead: "Order food, build a grocery cart, log workouts, and find housing. Tell a QChat agent what you need, and it gets handled in seconds.",
+        pillFitness: "workouts and nutrition",
+        pillHealth: "health guidance",
+        pillRestaurants: "restaurant delivery",
+        pillProduce: "fruit and vegetables",
+        pillBakeries: "bakeries",
+        pillBooking: "workout booking",
+        pillRentals: "home rentals",
+        pillBusiness: "business launch",
+        founderNote: "Built by an ex-Sber, ex-Uzum product leader with experience scaling products used by 14-65 million monthly users.",
+        tasksTitle: "QChat on real tasks",
+        tasksLead: "Give agents tasks by voice or text, hand off your daily routine, and get things done in seconds instead of tapping through app screens by hand.",
+        shotHome: "Give agents tasks by voice or text",
+        shotHomeAlt: "QChat home screen with agents, apps, and recent tasks",
+        shotCappuccino: "Ask an agent by voice to add a cappuccino",
+        shotCappuccinoAlt: "QChat food log with a croissant and cappuccino",
+        shotWorkout: "Track workout progress by voice",
+        shotWorkoutAlt: "QChat workout log with cardio and strength metrics",
+        shotGroceries: "Ask an agent to build a grocery cart",
+        shotGroceriesAlt: "QChat grocery delivery cart",
+        shotSweet: "Want something sweet? Ask by voice, then say: “Pay”",
+        shotSweetAlt: "QChat cake shopping results",
+        delegateTitle: "Delegate your day to agents",
+        delegateLead: "In QChat, you say what you need by voice or text, and the agent does the task for you. In regular apps, you do the work yourself.",
+        stepVoiceTitle: "Just say it out loud",
+        stepVoiceBody: "Talk to an agent by voice or text like you would talk to a person. No menus, no forms: it understands the task and gets started.",
+        stepErrandsTitle: "Real errands, real results",
+        stepErrandsBody: "Restaurant delivery, grocery carts, workout bookings, or rental search. The agent carries the task through to the end, including payment.",
+        stepAgentsTitle: "One agent for each part of your day",
+        stepAgentsBody: "Food, fitness, groceries, housing, and more. Each agent knows its lane, so answers and results come back fast.",
+        stepTrackingTitle: "QChat remembers the numbers that matter",
+        stepTrackingBody: "Log food and workouts by voice, and QChat keeps the numbers: calories, macros, cardio, and strength work.",
+        downloadTitle: "Download QChat and hand off the busywork",
+        downloadLead: "Give an agent your first task and watch the city work for you.",
+        aboutLink: "About Dmitrii",
+        contactLink: "Email us"
+      }
+    };
+
+    function normalizeLanguage(value) {
+      return value === "ru" ? "ru" : value === "en" ? "en" : null;
+    }
+
+    function languageFromUrl() {
+      return normalizeLanguage(new URLSearchParams(window.location.search).get("lang"));
+    }
+
+    function setLanguageInUrl(lang) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.history.replaceState({}, "", url);
+    }
+
+    function applyLanguage(lang) {
+      const dictionary = copy[lang] || copy.ru;
+      document.documentElement.lang = lang;
+      document.title = dictionary.title;
+      document.querySelector('meta[name="description"]')?.setAttribute("content", dictionary.description);
+      document.querySelector('meta[property="og:title"]')?.setAttribute("content", dictionary.ogTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute("content", dictionary.ogDescription);
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (dictionary[key]) element.textContent = dictionary[key];
+      });
+
+      document.querySelectorAll("[data-i18n-attr]").forEach((element) => {
+        element.dataset.i18nAttr.split(",").forEach((pair) => {
+          const [attribute, key] = pair.split(":");
+          if (attribute && key && dictionary[key]) element.setAttribute(attribute, dictionary[key]);
+        });
+      });
+
+      document.querySelectorAll("[data-appstore-badge]").forEach((image) => {
+        image.src = dictionary.appStoreBadge;
+      });
+
+      document.querySelector("[data-current-language]").textContent = lang === "en" ? "En" : "Ru";
+      document.querySelectorAll("[data-lang-option]").forEach((button) => {
+        const isActive = button.dataset.langOption === lang;
+        button.setAttribute("aria-selected", String(isActive));
+      });
+
+      try {
+        localStorage.setItem("qchatWelcomeLanguageDropdown", lang);
+      } catch (error) {}
+    }
+
+    const languageTrigger = document.querySelector("[data-lang-trigger]");
+    const languageMenu = document.querySelector("[data-lang-menu]");
+
+    function setLanguageMenuOpen(isOpen) {
+      languageTrigger.setAttribute("aria-expanded", String(isOpen));
+      languageMenu.hidden = !isOpen;
+    }
+
+    languageTrigger.addEventListener("click", () => {
+      setLanguageMenuOpen(languageTrigger.getAttribute("aria-expanded") !== "true");
+    });
+
+    document.querySelectorAll("[data-lang-option]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = normalizeLanguage(button.dataset.langOption) || "en";
+        applyLanguage(lang);
+        setLanguageInUrl(lang);
+        setLanguageMenuOpen(false);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest(".language-switcher")) {
+        setLanguageMenuOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setLanguageMenuOpen(false);
+    });
+
+    let initialLanguage = "en";
+    try {
+      initialLanguage = languageFromUrl() || "en";
+    } catch (error) {}
+    applyLanguage(normalizeLanguage(initialLanguage) || "en");
+  </script>
 </body>
 </html>
