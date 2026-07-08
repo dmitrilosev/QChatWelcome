@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="apple-itunes-app" content="app-id=6739166946">
   <title>Dmitrii Losev - Consumer AI Product Lead</title>
-  <meta name="description" content="Dmitrii Losev builds consumer AI systems that turn intent into completed real-world workflows across agents, commerce, travel, marketplaces, and mobile products.">
+  <meta name="description" content="Dmitrii Losev builds consumer AI systems, agent-native products, marketplaces, travel companions, and production mobile products.">
   <meta property="og:title" content="Dmitrii Losev - Consumer AI Product Lead">
-  <meta property="og:description" content="Consumer AI systems, agent-native products, QChat, Agent Foundry, Sber, Uzum, and production-scale mobile work.">
+  <meta property="og:description" content="Current work, portfolio, and short resume across consumer AI, agents, Sber, Uzum, QChat, and shipped mobile products.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dmitrilosev.github.io/QChatWelcome/bio/">
   <meta property="og:image" content="https://dmitrilosev.github.io/QChatWelcome/bio/assets/qchat.png">
@@ -47,7 +47,9 @@
       margin: 0;
       color: var(--ink);
       background:
-        linear-gradient(135deg, rgba(238, 247, 255, 0.95) 0%, rgba(255, 250, 246, 0.92) 42%, rgba(246, 248, 255, 0.95) 100%),
+        radial-gradient(circle at 12% 2%, rgba(34, 117, 215, 0.1), transparent 30rem),
+        radial-gradient(circle at 86% 12%, rgba(241, 111, 92, 0.1), transparent 32rem),
+        linear-gradient(135deg, rgba(238, 247, 255, 0.96) 0%, rgba(255, 250, 246, 0.92) 44%, rgba(246, 248, 255, 0.96) 100%),
         var(--bg);
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", sans-serif;
       overflow-x: hidden;
@@ -58,7 +60,7 @@
     h1, h2, h3, p { margin: 0; }
 
     .page {
-      width: min(100%, 1180px);
+      width: min(100%, 1160px);
       margin: 0 auto;
       padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
     }
@@ -98,7 +100,6 @@
       font-size: 12px;
       line-height: 1;
       font-weight: 760;
-      letter-spacing: 0;
       white-space: nowrap;
     }
 
@@ -108,25 +109,15 @@
     }
 
     .hero {
-      min-height: calc(100svh - 44px);
       display: grid;
-      align-content: center;
-      gap: clamp(28px, 5vw, 54px);
-      padding: clamp(52px, 10svh, 92px) 0 44px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.88fr);
-      gap: clamp(28px, 5vw, 60px);
-      align-items: center;
+      gap: 26px;
+      padding: clamp(56px, 10svh, 96px) 0 clamp(34px, 6vw, 58px);
     }
 
     .profile-line {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 28px;
     }
 
     .avatar {
@@ -148,6 +139,7 @@
     }
 
     .name {
+      display: block;
       color: var(--ink);
       font-size: 17px;
       line-height: 1.1;
@@ -155,11 +147,18 @@
     }
 
     .role {
+      display: block;
       margin-top: 4px;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.2;
       font-weight: 650;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 18px;
+      max-width: 900px;
     }
 
     .eyebrow {
@@ -175,36 +174,31 @@
       font-size: 12px;
       line-height: 1;
       font-weight: 820;
-      letter-spacing: 0;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
     }
 
     h1 {
-      max-width: 11ch;
-      margin-top: 14px;
-      font-size: clamp(48px, 8vw, 86px);
-      line-height: 0.96;
+      max-width: 12ch;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 0.95;
       font-weight: 900;
       letter-spacing: 0;
       text-wrap: balance;
     }
 
     .lead {
-      max-width: 57ch;
-      margin-top: 22px;
+      max-width: 64ch;
       color: rgba(14, 17, 23, 0.66);
-      font-size: clamp(18px, 2.4vw, 23px);
-      line-height: 1.28;
+      font-size: clamp(18px, 2.2vw, 23px);
+      line-height: 1.3;
       font-weight: 620;
-      letter-spacing: 0;
       text-wrap: balance;
     }
 
-    .hero-actions {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 28px;
     }
 
     .button {
@@ -218,7 +212,6 @@
       font-size: 14px;
       line-height: 1;
       font-weight: 820;
-      letter-spacing: 0;
       transition: transform 160ms ease, background 160ms ease;
     }
 
@@ -236,76 +229,6 @@
     }
 
     .button:hover { transform: translateY(-1px); }
-
-    .hero-card {
-      display: grid;
-      gap: 16px;
-      padding: clamp(16px, 3vw, 22px);
-      border: 1px solid rgba(255, 255, 255, 0.74);
-      border-radius: 32px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      -webkit-backdrop-filter: blur(28px) saturate(1.18);
-      backdrop-filter: blur(28px) saturate(1.18);
-    }
-
-    .phone-stage {
-      position: relative;
-      min-height: 520px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border-radius: 26px;
-      background:
-        linear-gradient(160deg, rgba(235, 244, 255, 0.88), rgba(255, 247, 242, 0.86) 52%, rgba(246, 244, 255, 0.82));
-    }
-
-    .phone {
-      width: min(78%, 310px);
-      border: 10px solid #111318;
-      border-radius: 42px;
-      background: #111318;
-      box-shadow: 0 28px 74px rgba(14, 17, 23, 0.28);
-      overflow: hidden;
-      transform: rotate(-3deg);
-    }
-
-    .phone img {
-      width: 100%;
-      aspect-ratio: 690 / 1500;
-      object-fit: cover;
-      border-radius: 31px;
-    }
-
-    .floating-note {
-      position: absolute;
-      display: grid;
-      gap: 3px;
-      max-width: 174px;
-      padding: 12px 13px;
-      border: 1px solid rgba(255, 255, 255, 0.76);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 18px 42px rgba(37, 45, 64, 0.12);
-      -webkit-backdrop-filter: blur(22px) saturate(1.2);
-      backdrop-filter: blur(22px) saturate(1.2);
-    }
-
-    .floating-note.one { top: 34px; left: 26px; }
-    .floating-note.two { right: 24px; bottom: 38px; }
-
-    .floating-note b {
-      font-size: 13px;
-      line-height: 1.08;
-      font-weight: 860;
-    }
-
-    .floating-note span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.16;
-      font-weight: 620;
-    }
 
     .stats {
       display: grid;
@@ -329,7 +252,6 @@
       font-size: clamp(24px, 4.2vw, 42px);
       line-height: 0.94;
       font-weight: 900;
-      letter-spacing: 0;
     }
 
     .stat span {
@@ -341,14 +263,14 @@
 
     .section {
       display: grid;
-      gap: 24px;
-      padding: clamp(54px, 9vw, 92px) 0 0;
+      gap: 22px;
+      padding: clamp(42px, 7vw, 72px) 0 0;
     }
 
     .section-head {
       display: grid;
       gap: 10px;
-      max-width: 680px;
+      max-width: 760px;
     }
 
     .kicker {
@@ -362,7 +284,7 @@
     }
 
     h2 {
-      max-width: 13ch;
+      max-width: 15ch;
       font-size: clamp(34px, 5.4vw, 64px);
       line-height: 1;
       font-weight: 900;
@@ -371,7 +293,7 @@
     }
 
     .section-copy {
-      max-width: 62ch;
+      max-width: 66ch;
       color: var(--muted);
       font-size: clamp(16px, 2vw, 19px);
       line-height: 1.35;
@@ -383,13 +305,16 @@
       gap: 14px;
     }
 
-    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.current { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.portfolio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.resume { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
-    .case-card,
-    .work-card,
-    .timeline-item,
-    .quote-card {
+    .card {
+      position: relative;
+      min-height: 250px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.74);
       border-radius: var(--radius);
       background: var(--card);
@@ -398,43 +323,67 @@
       backdrop-filter: blur(24px) saturate(1.18);
     }
 
-    .case-card {
-      min-height: 420px;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      overflow: hidden;
+    .card.visual {
+      min-height: 410px;
     }
 
-    .case-media {
-      min-height: 250px;
+    .media {
+      height: 190px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.48);
+      background: linear-gradient(135deg, rgba(233, 243, 255, 0.86), rgba(255, 247, 242, 0.84));
     }
 
-    .case-media img {
+    .media.phone {
+      height: 250px;
+    }
+
+    .media img {
       width: 100%;
       height: 100%;
-      min-height: 250px;
       object-fit: cover;
+      object-position: top center;
     }
 
-    .case-media.contain {
+    .media.contain {
       display: grid;
       place-items: center;
-      padding: 18px;
+      padding: 20px;
     }
 
-    .case-media.contain img {
-      width: min(100%, 340px);
-      min-height: 0;
+    .media.contain img {
+      width: min(100%, 180px);
+      height: auto;
       object-fit: contain;
       filter: drop-shadow(0 18px 38px rgba(37, 45, 64, 0.14));
     }
 
-    .case-body,
-    .work-body {
+    .lettermark {
+      height: 118px;
       display: grid;
-      gap: 13px;
+      place-items: center;
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(238, 247, 255, 0.82), rgba(255, 247, 242, 0.84));
+    }
+
+    .lettermark span {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      color: rgba(14, 17, 23, 0.86);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 18px 38px rgba(37, 45, 64, 0.12);
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .body {
+      display: grid;
+      align-content: start;
+      gap: 12px;
       padding: 18px;
     }
 
@@ -444,8 +393,7 @@
       gap: 6px;
     }
 
-    .tagline span,
-    .pill {
+    .tagline span {
       display: inline-flex;
       align-items: center;
       min-height: 27px;
@@ -457,7 +405,6 @@
       font-size: 11px;
       line-height: 1;
       font-weight: 790;
-      letter-spacing: 0;
     }
 
     h3 {
@@ -468,133 +415,39 @@
       text-wrap: balance;
     }
 
-    .body-copy {
+    .copy {
       color: var(--muted);
       font-size: 15px;
       line-height: 1.34;
       font-weight: 560;
     }
 
-    .bullets {
+    .resume-card {
+      min-height: 220px;
       display: grid;
-      gap: 8px;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      -webkit-backdrop-filter: blur(24px) saturate(1.18);
+      backdrop-filter: blur(24px) saturate(1.18);
+    }
+
+    .resume-list {
+      display: grid;
+      gap: 9px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .bullets li {
-      position: relative;
-      padding-left: 17px;
-      color: rgba(14, 17, 23, 0.68);
-      font-size: 14px;
-      line-height: 1.28;
-      font-weight: 620;
-    }
-
-    .bullets li::before {
-      content: "";
-      position: absolute;
-      top: 0.55em;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-
-    .work-card {
-      display: grid;
-      grid-template-rows: 230px auto;
-      min-height: 460px;
-      overflow: hidden;
-    }
-
-    .work-shot {
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(233, 243, 255, 0.86), rgba(255, 247, 242, 0.84));
-    }
-
-    .work-shot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .work-card.app .work-shot img {
-      object-position: top left;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 12px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 140px minmax(0, 1fr);
-      gap: 18px;
-      padding: 18px;
-    }
-
-    .time {
-      color: var(--soft);
-      font-size: 13px;
-      line-height: 1.1;
-      font-weight: 830;
-    }
-
-    .timeline-copy {
-      display: grid;
-      gap: 6px;
-    }
-
-    .timeline-copy p {
+    .resume-list li {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.34;
-      font-weight: 570;
-    }
-
-    .quote-card {
-      display: grid;
-      gap: 22px;
-      padding: clamp(22px, 4vw, 36px);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(238, 247, 255, 0.74));
-    }
-
-    .quote-card h2 {
-      max-width: 17ch;
-    }
-
-    .principles {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .principle {
-      display: grid;
-      gap: 7px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.56);
-    }
-
-    .principle b {
-      font-size: 15px;
-      line-height: 1.12;
-      font-weight: 840;
-    }
-
-    .principle span {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.24;
-      font-weight: 580;
+      line-height: 1.32;
+      font-weight: 590;
     }
 
     .footer {
@@ -602,7 +455,7 @@
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 24px;
       align-items: end;
-      padding: 72px 0 8px;
+      padding: 62px 0 8px;
       color: rgba(14, 17, 23, 0.54);
       font-size: 13px;
       line-height: 1.3;
@@ -632,45 +485,37 @@
       }
 
       .hero {
-        min-height: auto;
         padding-top: 44px;
       }
 
-      .hero-grid,
-      .grid.two,
-      .grid.three,
-      .principles {
+      .stats,
+      .grid.current,
+      .grid.portfolio,
+      .grid.resume {
         grid-template-columns: 1fr;
       }
 
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .card,
+      .card.visual {
+        min-height: auto;
       }
 
-      .phone-stage { min-height: 470px; }
-      .floating-note.one { top: 18px; left: 16px; }
-      .floating-note.two { right: 16px; bottom: 20px; }
-      .case-card { min-height: auto; }
-      .work-card { grid-template-rows: 210px auto; min-height: auto; }
-      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .media,
+      .media.phone {
+        height: 230px;
+      }
+
       .footer { grid-template-columns: 1fr; }
       .footer-links { justify-content: flex-start; }
     }
 
     @media (max-width: 520px) {
-      .profile-line { margin-bottom: 22px; }
       h1 { font-size: clamp(42px, 13vw, 58px); }
       .lead { font-size: 17px; }
-      .hero-card { border-radius: 26px; }
-      .phone-stage { min-height: 430px; }
-      .phone { width: 76%; border-width: 8px; border-radius: 36px; }
-      .phone img { border-radius: 27px; }
-      .floating-note { max-width: 145px; padding: 10px; border-radius: 15px; }
-      .floating-note b { font-size: 12px; }
-      .floating-note span { font-size: 11px; }
-      .stats { gap: 8px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .stat { min-height: 98px; padding: 12px; border-radius: 18px; }
-      .case-media, .case-media img { min-height: 220px; }
+      .media, .media.phone { height: 210px; }
+      .lettermark { height: 104px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -689,347 +534,230 @@
   <main class="page">
     <nav class="nav" aria-label="Portfolio navigation">
       <div class="nav-inner">
-        <a href="#proof">Scale</a>
-        <a href="#qchat">QChat</a>
-        <a href="#foundry">Agent Foundry</a>
-        <a href="#cases">Operating range</a>
-        <a href="#apps">Artifacts</a>
-        <a href="#contact">Contact</a>
+        <a href="#current">Now</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#resume">Resume</a>
+        <a href="mailto:hfc550@gmail.com">Contact</a>
       </div>
     </nav>
 
-    <section class="hero" aria-label="Dmitrii Losev portfolio">
-      <div class="hero-grid">
-        <div>
-          <div class="profile-line">
-            <span class="avatar">
-              <img src="assets/dmitrii-avatar.jpg" alt="Dmitrii Losev">
-            </span>
-            <span>
-              <span class="name">Dmitrii Losev</span>
-              <span class="role">Consumer AI Product Lead - agents, marketplaces, mobile systems</span>
-            </span>
-          </div>
-          <span class="eyebrow">Building the consumer agent layer between intent and real-world outcomes</span>
-          <h1>I build AI systems for everyday life.</h1>
-          <p class="lead">My work sits between product strategy, agent-native UX, marketplace operations, partner distribution, and production engineering. I am interested in products where AI becomes an operating layer for people, not a decorative feature inside an app.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="mailto:hfc550@gmail.com">Start a conversation</a>
-            <a class="button secondary" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="button secondary" href="https://qchat.nl/" target="_blank" rel="noopener">Reference product</a>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="QChat product preview">
-          <div class="phone-stage">
-            <div class="floating-note one">
-              <b>Intent to outcome</b>
-              <span>The product surface is a control layer for agents.</span>
-            </div>
-            <div class="phone">
-              <img src="assets/qchat-gallery-home.jpg" alt="QChat home screen with task agents">
-            </div>
-            <div class="floating-note two">
-              <b>Production proof</b>
-              <span>Strategy, interface, backend, agents, and launch in one loop.</span>
-            </div>
-          </div>
-        </aside>
+    <header class="hero">
+      <div class="profile-line">
+        <span class="avatar">
+          <img src="assets/dmitrii-avatar.jpg" alt="Dmitrii Losev">
+        </span>
+        <span>
+          <span class="name">Dmitrii Losev</span>
+          <span class="role">Consumer AI Product Lead - agents, marketplaces, mobile systems</span>
+        </span>
       </div>
 
-      <div class="stats" id="proof" aria-label="Product proof points">
+      <div class="hero-copy">
+        <span class="eyebrow">Building consumer AI products that turn intent into outcomes</span>
+        <h1>AI products for everyday life.</h1>
+        <p class="lead">I work on the layer between a user's intent and a completed real-world workflow: agents, commerce, travel, marketplaces, mobile UX, partner integrations, and production execution.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:hfc550@gmail.com">Start a conversation</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="button secondary" href="https://qchat.nl/" target="_blank" rel="noopener">QChat</a>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="Product proof points">
         <div class="stat">
           <strong>65M+</strong>
-          <span>consumer-scale distribution context through Sber ecosystem work</span>
+          <span>Sber ecosystem distribution context</span>
         </div>
         <div class="stat">
           <strong>3.64x</strong>
-          <span>GMV growth context from Uzum Tezkor product work in 2024</span>
+          <span>Uzum Tezkor GMV growth context</span>
         </div>
         <div class="stat">
           <strong>0-1</strong>
-          <span>AI Travel Companion taken from ambiguity to launch under NDA</span>
+          <span>AI Travel Companion launch under NDA</span>
         </div>
         <div class="stat">
           <strong>300+</strong>
-          <span>enterprise deals before product, useful for negotiation and partner systems</span>
+          <span>enterprise deals before product leadership</span>
         </div>
       </div>
-    </section>
+    </header>
 
-    <section class="section" id="qchat">
+    <section class="section" id="current">
       <div class="section-head">
-        <span class="kicker">Reference implementation</span>
-        <h2>QChat is a thesis in product form.</h2>
-        <p class="section-copy">QChat is my attempt to make consumer agents concrete: a user expresses intent, the system routes it into a domain workflow, and the product carries the task toward a completed outcome. Food, groceries, fitness, housing, and local services are not demos; they are domains where agent products must negotiate messy reality.</p>
+        <span class="kicker">Now</span>
+        <h2>What I am building now.</h2>
+        <p class="section-copy">Three related bets around consumer agents: an everyday AI distribution layer, a repeatable build system, and a reference product in production.</p>
       </div>
 
-      <div class="grid two">
-        <article class="case-card">
-          <div class="case-media contain">
-            <img src="assets/qchat-product-state.png" alt="QChat product state preview">
-          </div>
-          <div class="case-body">
+      <div class="grid current">
+        <article class="card">
+          <div class="lettermark"><span>∞</span></div>
+          <div class="body">
             <div class="tagline">
-              <span>consumer agent OS</span>
-              <span>workflow memory</span>
-              <span>outcome UX</span>
+              <span>No name yet</span>
+              <span>consumer AI OS</span>
             </div>
-            <h3>A control layer for daily life.</h3>
-            <p class="body-copy">The product question is not “can a model answer?” It is whether an agent can understand the user's intent, keep the right state, expose the right confirmation moments, and safely move across real product surfaces.</p>
-            <ul class="bullets">
-              <li>Commerce workflows with carts, totals, substitutions, and payment moments.</li>
-              <li>Fitness and nutrition workflows that convert natural language into structured state.</li>
-              <li>Real-estate workflows where user intent, inventory, and partner agencies have to line up.</li>
-            </ul>
+            <h3>An Ubuntu distro for everyday AI.</h3>
+            <p class="copy">If OpenClaw is like Linux, I am building the Ubuntu distribution for everyday people's lives: opinionated, usable, and focused on real tasks instead of raw model power.</p>
           </div>
         </article>
 
-        <article class="case-card">
-          <div class="case-media">
-            <img src="assets/qchat-gallery-groceries.jpg" alt="QChat grocery agent cart">
-          </div>
-          <div class="case-body">
+        <a class="card" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
+          <div class="lettermark"><span>AF</span></div>
+          <div class="body">
             <div class="tagline">
-              <span>production system</span>
-              <span>distribution</span>
-              <span>end-to-end ownership</span>
+              <span>Agent Foundry</span>
+              <span>Codex skills</span>
             </div>
-            <h3>A small product with a large surface area.</h3>
-            <p class="body-copy">QChat is valuable as proof because it forces the whole stack to exist at once: product taste, mobile interface, backend orchestration, agent behavior, partner-shaped workflows, telemetry, and consumer distribution.</p>
-            <div class="hero-actions">
-              <a class="button primary" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener">Download QChat</a>
-              <a class="button secondary" href="https://qchat.nl/" target="_blank" rel="noopener">Open website</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="foundry">
-      <div class="quote-card">
-        <div class="section-head">
-          <span class="kicker">Agent Foundry</span>
-          <h2>A product factory for agent-native software.</h2>
-          <p class="section-copy">Agent Foundry is not a template collection. It is an operating process encoded into Codex skills: clarify the user job, shape the product surface, create the iOS app and Firebase backend, wire the OpenAI agent, and leave the system with enough structure to keep evolving.</p>
-        </div>
-        <div class="principles">
-          <div class="principle">
-            <b>Intent first</b>
-            <span>Start from the job the user is trying to complete, not from a chat box.</span>
-          </div>
-          <div class="principle">
-            <b>Production-shaped</b>
-            <span>Architecture, telemetry, guardrails, and product state are part of the first build.</span>
-          </div>
-          <div class="principle">
-            <b>Leverage</b>
-            <span>The point is to compress product judgment into repeatable build systems.</span>
-          </div>
-        </div>
-        <div class="hero-actions">
-          <a class="button primary" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">View Agent Foundry</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="cases">
-      <div class="section-head">
-        <span class="kicker">Operating range</span>
-        <h2>Scale, ambiguity, and execution.</h2>
-        <p class="section-copy">The work below is less about individual screens and more about operating range: consumer distribution, marketplace dynamics, delivery operations, partner constraints, AI product discovery, and the ability to make a system shippable when the problem is still moving.</p>
-      </div>
-
-      <div class="grid three">
-        <article class="work-card">
-          <div class="work-shot">
-            <img src="assets/portfolio-uzum-tezkor.png" alt="Uzum Tezkor website screenshot">
-          </div>
-          <div class="work-body">
-            <div class="tagline">
-              <span>Uzum Tezkor</span>
-              <span>delivery</span>
-              <span>growth</span>
-            </div>
-            <h3>Delivery as an operating system.</h3>
-            <p class="body-copy">Uzum Tezkor work sharpened the operating muscle needed for consumer AI: fast feedback loops, local supply, conversion, service quality, and product decisions that touch real-world fulfillment.</p>
-            <ul class="bullets">
-              <li>Contributed to 3.64x GMV growth in 2024.</li>
-              <li>Worked inside a fast-growing consumer ecosystem where product quality meets operations.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-shot">
-            <img src="assets/portfolio-uzum-market.png" alt="Uzum Market mobile website screenshot">
-          </div>
-          <div class="work-body">
-            <div class="tagline">
-              <span>Uzum Market</span>
-              <span>marketplace</span>
-              <span>discovery</span>
-            </div>
-            <h3>Marketplace intelligence at national scale.</h3>
-            <p class="body-copy">Uzum Market brought the marketplace side of the agent thesis into focus: discovery, inventory, trust, growth loops, ecosystem surfaces, and the applied AI opportunities that appear once demand and supply are already dense.</p>
-            <ul class="bullets">
-              <li>Helped drive 1.4x GMV growth at Uzum Market in 2025.</li>
-              <li>Contributed to AI-agent product directions and applied AI concepts.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <div class="work-shot">
-            <img src="assets/qchat-voice.png" alt="Voice agent interaction screenshot">
-          </div>
-          <div class="work-body">
-            <div class="tagline">
-              <span>Sber</span>
-              <span>NDA case</span>
-              <span>AI travel</span>
-            </div>
-            <h3>AI companion inside a partner ecosystem.</h3>
-            <p class="body-copy">At Sber, the work was executive product leadership under ambiguity: make an AI travel concept launchable, align partner value, manage legal and marketing readiness, and turn a partially built system into a coherent release.</p>
-            <ul class="bullets">
-              <li>Rebuilt P0 scope, roadmap, architecture alignment, and launch path.</li>
-              <li>Coordinated product, engineering, legal, marketing, analytics, and partner communication.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="apps">
-      <div class="section-head">
-        <span class="kicker">Selected artifacts</span>
-        <h2>Evidence of shipped taste.</h2>
-        <p class="section-copy">These are supporting artifacts, not the main claim. They show repeated exposure to consumer mobile patterns: activation, subscription, commerce, wellness habits, visual merchandising, and App Store-grade product surfaces.</p>
-      </div>
-
-      <div class="grid two">
-        <a class="work-card app" href="https://apps.apple.com/uz/app/workout-home-7-minute-fitness/id6450172385" target="_blank" rel="noopener">
-          <div class="work-shot">
-            <img src="assets/portfolio-workout-home.png" alt="Workout Home App Store page">
-          </div>
-          <div class="work-body">
-            <div class="tagline"><span>Health and fitness</span><span>iOS</span></div>
-            <h3>Workout Home: 7 Minute Fitness</h3>
-            <p class="body-copy">Consumer fitness surface with planning, routines, habit loops, and monetization constraints.</p>
+            <h3>A product factory for AI-native apps.</h3>
+            <p class="copy">For founders and builders who want to go from product intent to iOS app, Firebase backend, and OpenAI agent workflow without starting from a blank repo.</p>
           </div>
         </a>
 
-        <a class="work-card app" href="https://apps.apple.com/uz/app/strawberry-grocery-delivery/id6749492633" target="_blank" rel="noopener">
-          <div class="work-shot">
-            <img src="assets/portfolio-strawberry.png" alt="Strawberry Grocery Delivery App Store page">
+        <a class="card visual" href="https://qchat.nl/" target="_blank" rel="noopener">
+          <div class="media phone">
+            <img src="assets/qchat-gallery-home.jpg" alt="QChat product screen">
           </div>
-          <div class="work-body">
-            <div class="tagline"><span>Grocery delivery</span><span>commerce</span></div>
-            <h3>Strawberry - Grocery Delivery</h3>
-            <p class="body-copy">Commerce surface relevant to agent-mediated grocery ordering and fulfillment workflows.</p>
-          </div>
-        </a>
-
-        <a class="work-card app" href="https://apps.apple.com/uz/app/yoga-flow-beginner-workouts/id6468572228" target="_blank" rel="noopener">
-          <div class="work-shot">
-            <img src="assets/portfolio-yoga-flow.png" alt="Yoga Flow App Store page">
-          </div>
-          <div class="work-body">
-            <div class="tagline"><span>Wellness</span><span>subscription</span></div>
-            <h3>Yoga Flow - Beginner Workouts</h3>
-            <p class="body-copy">Wellness product with programs, guided classes, progress loops, and premium plan mechanics.</p>
-          </div>
-        </a>
-
-        <a class="work-card app" href="https://apps.apple.com/uz/app/stretching-flexibility-flow/id6737474619" target="_blank" rel="noopener">
-          <div class="work-shot">
-            <img src="assets/portfolio-stretching-flow.png" alt="Stretching and Flexibility Flow App Store page">
-          </div>
-          <div class="work-body">
-            <div class="tagline"><span>Mobility</span><span>fitness</span></div>
-            <h3>Stretching & Flexibility Flow</h3>
-            <p class="body-copy">Mobility product focused on guided routines, habit formation, and lightweight daily utility.</p>
+          <div class="body">
+            <div class="tagline">
+              <span>QChat</span>
+              <span>reference product</span>
+            </div>
+            <h3>Agents for city life.</h3>
+            <p class="copy">For people who want to delegate everyday tasks by voice or text: food, groceries, fitness, housing, and local workflows. The product proves the agent interface in real consumer use.</p>
           </div>
         </a>
       </div>
     </section>
 
-    <section class="section" aria-label="Professional timeline">
+    <section class="section" id="portfolio">
       <div class="section-head">
-        <span class="kicker">Path</span>
-        <h2>A path through systems.</h2>
+        <span class="kicker">Portfolio</span>
+        <h2>Selected work.</h2>
+        <p class="section-copy">A compact map of the systems I have helped build, launch, or shape across AI, consumer ecosystems, marketplaces, commerce, and mobile products.</p>
       </div>
 
-      <div class="timeline">
-        <article class="timeline-item">
-          <span class="time">2026</span>
-          <div class="timeline-copy">
-            <h3>Sber - Executive Director / AI Product Lead</h3>
-            <p>Led AI product initiatives across two business verticals, including a proactive AI Travel Companion integrated into a partner surface. The job was to turn strategic ambiguity into launchable product structure.</p>
+      <div class="grid portfolio">
+        <article class="card">
+          <div class="lettermark"><span>AI</span></div>
+          <div class="body">
+            <div class="tagline"><span>Sber</span><span>NDA</span><span>travel</span></div>
+            <h3>AI Travel Companion</h3>
+            <p class="copy">Led a 0-1 proactive travel companion inside a partner surface: scope, architecture alignment, legal readiness, launch campaign, and partner communication.</p>
           </div>
         </article>
-        <article class="timeline-item">
-          <span class="time">2024-2026</span>
-          <div class="timeline-copy">
-            <h3>Uzum - Product and AI Initiatives Lead / Lead iOS Developer</h3>
-            <p>Operated across Uzum Market and Uzum Tezkor, contributing to GMV growth, discovery, ecosystem work, and applied AI product opportunities inside a fast-growing consumer company.</p>
+
+        <a class="card visual" href="https://tezkor.uz/" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-uzum-tezkor.png" alt="Uzum Tezkor mobile website"></div>
+          <div class="body">
+            <div class="tagline"><span>Uzum</span><span>delivery</span></div>
+            <h3>Uzum Tezkor</h3>
+            <p class="copy">Growth, discovery, ecosystem, and delivery work in a fast operational consumer product. Contributed to 3.64x GMV growth context in 2024.</p>
+          </div>
+        </a>
+
+        <a class="card visual" href="https://uzum.uz/" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-uzum-market.png" alt="Uzum Market mobile website"></div>
+          <div class="body">
+            <div class="tagline"><span>Uzum</span><span>marketplace</span></div>
+            <h3>Uzum Market</h3>
+            <p class="copy">Marketplace and ecosystem product work across discovery, growth, mobile UX, and applied AI directions at national consumer scale.</p>
+          </div>
+        </a>
+
+        <article class="card">
+          <div class="lettermark"><span>SA</span></div>
+          <div class="body">
+            <div class="tagline"><span>Sber</span><span>ecosystem</span></div>
+            <h3>SuperApp</h3>
+            <p class="copy">Joined the core team that launched Sber SuperApp and opened ecosystem access for 65M+ customers.</p>
           </div>
         </article>
-        <article class="timeline-item">
-          <span class="time">Founder work</span>
-          <div class="timeline-copy">
-            <h3>QChat and AI-native venture projects</h3>
-            <p>Built AI-native products and agent workflows across daily-task delegation, health and fitness, grocery shopping, local services, and real-estate search.</p>
+
+        <article class="card">
+          <div class="lettermark"><span>SB</span></div>
+          <div class="body">
+            <div class="tagline"><span>Sberbank Online</span><span>mobile</span></div>
+            <h3>Sberbank Online</h3>
+            <p class="copy">Lead iOS and product work across high-scale mobile banking surfaces, including Feed and Search ownership later as Product Manager.</p>
           </div>
         </article>
-        <article class="timeline-item">
-          <span class="time">2017-2021</span>
-          <div class="timeline-copy">
-            <h3>Sberbank - Product Manager / Lead iOS Developer</h3>
-            <p>Joined the core team that launched Sber SuperApp and opened ecosystem access for 65M+ customers; later owned Feed and Search as Product Manager.</p>
+
+        <a class="card visual" href="https://apps.apple.com/uz/app/strawberry-grocery-delivery/id6749492633" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-strawberry.png" alt="Strawberry App Store page"></div>
+          <div class="body">
+            <div class="tagline"><span>grocery</span><span>commerce</span></div>
+            <h3>Strawberry</h3>
+            <p class="copy">Grocery delivery surface relevant to agent-mediated commerce, carts, fulfillment, and everyday order workflows.</p>
           </div>
-        </article>
-        <article class="timeline-item">
-          <span class="time">2007-2014</span>
-          <div class="timeline-copy">
-            <h3>Commercial real estate - sales and business development</h3>
-            <p>Closed 300+ commercial real-estate deals with $110M in total transaction value, building negotiation, stakeholder, and deal-structuring instincts before moving into product.</p>
+        </a>
+
+        <a class="card visual" href="https://apps.apple.com/uz/app/workout-home-7-minute-fitness/id6450172385" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-workout-home.png" alt="Fit Flow App Store page"></div>
+          <div class="body">
+            <div class="tagline"><span>fitness</span><span>subscription</span></div>
+            <h3>Fit Flow</h3>
+            <p class="copy">Consumer fitness surface with planning, routines, habit loops, onboarding, and monetization constraints.</p>
           </div>
-        </article>
+        </a>
+
+        <a class="card visual" href="https://apps.apple.com/uz/app/yoga-flow-beginner-workouts/id6468572228" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-yoga-flow.png" alt="Yoga Flow App Store page"></div>
+          <div class="body">
+            <div class="tagline"><span>wellness</span><span>mobile</span></div>
+            <h3>Yoga Flow</h3>
+            <p class="copy">Programs, guided classes, progress loops, premium plans, and lightweight daily wellness utility.</p>
+          </div>
+        </a>
+
+        <a class="card visual" href="https://apps.apple.com/uz/app/stretching-flexibility-flow/id6737474619" target="_blank" rel="noopener">
+          <div class="media"><img src="assets/portfolio-stretching-flow.png" alt="Stretching Flow App Store page"></div>
+          <div class="body">
+            <div class="tagline"><span>mobility</span><span>habit loops</span></div>
+            <h3>Stretching Flow</h3>
+            <p class="copy">Guided mobility routines, flexibility programs, and habit-forming consumer fitness mechanics.</p>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="quote-card">
-        <div class="section-head">
-          <span class="kicker">What I am looking for</span>
-          <h2>I am looking for a system-level AI product.</h2>
-          <p class="section-copy">The right project is not “add AI to the app.” It is a product where AI changes how the user gets things done: consumer agents, marketplace intelligence, travel, commerce, local services, personal operating systems, or a founder-led team trying to create a new category.</p>
-        </div>
-        <div class="principles">
-          <div class="principle">
-            <b>Role</b>
-            <span>AI Product Lead, founding product lead, venture builder, or product-minded operator.</span>
-          </div>
-          <div class="principle">
-            <b>Strength</b>
-            <span>Bridging product taste, user insight, AI architecture, engineering, partner constraints, and launch execution.</span>
-          </div>
-          <div class="principle">
-            <b>Mode</b>
-            <span>Remote or relocation, with a bias toward teams that move fast without lowering the bar.</span>
-          </div>
-        </div>
-        <div class="hero-actions">
-          <a class="button primary" href="mailto:hfc550@gmail.com">hfc550@gmail.com</a>
-          <a class="button secondary" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="button secondary" href="https://github.com/dmitrilosev" target="_blank" rel="noopener">GitHub</a>
-        </div>
+    <section class="section" id="resume">
+      <div class="section-head">
+        <span class="kicker">Resume</span>
+        <h2>Short version.</h2>
+        <p class="section-copy">AI Product Lead with range across consumer AI, mobile engineering, marketplaces, ecosystem products, and partner-led launches.</p>
+      </div>
+
+      <div class="grid resume">
+        <article class="resume-card">
+          <h3>Product leadership</h3>
+          <ul class="resume-list">
+            <li>AI product strategy, 0-1 launches, MVP scope, product vision, agent UX, and roadmap ownership.</li>
+            <li>Led cross-functional execution with engineering, architecture, analytics, legal, marketing, and external partners.</li>
+          </ul>
+        </article>
+
+        <article class="resume-card">
+          <h3>Technical edge</h3>
+          <ul class="resume-list">
+            <li>Hands-on iOS, backend flows, AI-native architecture, telemetry, evals, guardrails, and agent orchestration.</li>
+            <li>Comfortable moving between product taste, code, systems thinking, and launch constraints.</li>
+          </ul>
+        </article>
+
+        <article class="resume-card">
+          <h3>Career path</h3>
+          <ul class="resume-list">
+            <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder.</li>
+            <li>Earlier: Sberbank Product Manager / Lead iOS, 300+ commercial real-estate deals before product.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
     <footer class="footer">
-      <span>Dmitrii Losev - Consumer AI Product Lead. Building agent-native systems across QChat, Agent Foundry, Sber, Uzum, and shipped consumer products.</span>
+      <span>Dmitrii Losev - Consumer AI Product Lead. Current work, portfolio, and short resume.</span>
       <span class="footer-links">
         <a href="https://qchat.nl/" target="_blank" rel="noopener">QChat</a>
         <a href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">Agent Foundry</a>
