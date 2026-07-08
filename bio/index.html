@@ -230,6 +230,75 @@
 
     .button:hover { transform: translateY(-1px); }
 
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .mini-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(30, 39, 55, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: rgba(14, 17, 23, 0.78);
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 820;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .mini-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .mini-button.github {
+      color: white;
+      border-color: rgba(16, 19, 24, 0.9);
+      background: #101318;
+      box-shadow: 0 12px 28px rgba(16, 19, 24, 0.16);
+    }
+
+    .mini-button.github img {
+      filter: invert(1);
+    }
+
+    .mini-button img,
+    .mini-button svg {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 auto;
+    }
+
+    .appstore-badge {
+      display: block;
+      width: min(100%, 138px);
+      border-radius: 9px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .appstore-badge:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    .appstore-badge img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -359,15 +428,21 @@
 
     .grid.current .card,
     .grid.portfolio .card {
-      height: 370px;
+      height: 440px;
       min-height: 0;
-      grid-template-rows: 190px 180px;
+      grid-template-rows: 170px 270px;
     }
 
     .grid.current .card.visual,
     .grid.portfolio .card.visual {
-      height: 370px;
+      height: 440px;
       min-height: 0;
+    }
+
+    .grid.portfolio .card,
+    .grid.portfolio .card.visual {
+      height: 370px;
+      grid-template-rows: 190px 180px;
     }
 
     .grid.current .media,
@@ -551,8 +626,14 @@
       .grid.current .card.visual,
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
-        height: 390px;
+        height: 460px;
         min-height: 0;
+        grid-template-rows: 190px 270px;
+      }
+
+      .grid.portfolio .card,
+      .grid.portfolio .card.visual {
+        height: 390px;
         grid-template-rows: 210px 180px;
       }
 
@@ -575,8 +656,14 @@
       .grid.current .card.visual,
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
-        height: 380px;
+        height: 450px;
         min-height: 0;
+        grid-template-rows: 180px 270px;
+      }
+
+      .grid.portfolio .card,
+      .grid.portfolio .card.visual {
+        height: 380px;
         grid-template-rows: 200px 180px;
       }
       .lettermark { height: 104px; }
@@ -622,8 +709,6 @@
         <p class="lead">I work on the layer between a user's intent and a completed real-world workflow: agents, commerce, travel, marketplaces, mobile UX, partner integrations, and production execution.</p>
         <div class="actions">
           <a class="button primary" href="mailto:hfc550@gmail.com">Start a conversation</a>
-          <a class="button secondary" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="button secondary" href="https://qchat.nl/" target="_blank" rel="noopener">QChat</a>
         </div>
       </div>
 
@@ -659,39 +744,52 @@
           <div class="lettermark"><span>∞</span></div>
           <div class="body">
             <div class="tagline">
-              <span>No name yet</span>
-              <span>consumer AI OS</span>
+              <span>Consumer AI OS</span>
+              <span>Open Core</span>
             </div>
             <h3>An Ubuntu distro for everyday AI.</h3>
             <p class="copy">An opinionated consumer layer for everyday AI: useful tasks, clear workflows, and less raw model complexity.</p>
           </div>
         </article>
 
-        <a class="card" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
+        <article class="card">
           <div class="lettermark"><span>AF</span></div>
           <div class="body">
             <div class="tagline">
               <span>Agent Foundry</span>
               <span>Codex skills</span>
+              <span>GitHub</span>
+              <span>Open Source</span>
             </div>
             <h3>A product factory for AI-native apps.</h3>
             <p class="copy">Codex skills for turning product intent into an iOS app, Firebase backend, and OpenAI agent workflow.</p>
+            <div class="card-actions">
+              <a class="mini-button github" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
+                <img src="assets/github-mark.svg" alt="" aria-hidden="true">
+                Create your app
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="card visual" href="https://qchat.nl/" target="_blank" rel="noopener">
+        <article class="card visual">
           <div class="media phone">
             <img src="assets/qchat-appstore.png" alt="QChat App Store product page">
           </div>
           <div class="body">
             <div class="tagline">
-              <span>QChat</span>
-              <span>reference product</span>
+              <span>AI Agents</span>
+              <span>B2C</span>
             </div>
             <h3>Agents for city life.</h3>
             <p class="copy">A production reference product for delegating everyday tasks: food, groceries, fitness, housing, and local workflows.</p>
+            <div class="card-actions">
+              <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
       </div>
     </section>
 
@@ -814,8 +912,11 @@
           <h3>Career Path</h3>
           <ul class="resume-list">
             <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder, earlier Sberbank Product Manager / Lead iOS.</li>
-            <li>I am open to serious conversations with AI-native companies building products where agents change the actual user workflow.</li>
           </ul>
+          <div class="card-actions">
+            <a class="mini-button" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="mini-button" href="assets/dmitrii-losev-ai-product-lead-resume.pdf" download>Download PDF</a>
+          </div>
         </article>
       </div>
     </section>
