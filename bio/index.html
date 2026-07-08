@@ -382,13 +382,14 @@
     }
 
     .media {
-      height: 190px;
+      aspect-ratio: 3 / 2;
+      height: auto;
       overflow: hidden;
       background: linear-gradient(135deg, rgba(233, 243, 255, 0.86), rgba(255, 247, 242, 0.84));
     }
 
     .media.phone {
-      height: 250px;
+      height: auto;
     }
 
     .media img {
@@ -413,7 +414,7 @@
 
     .grid.current .card {
       min-height: 470px;
-      grid-template-rows: 190px auto;
+      grid-template-rows: auto auto;
     }
 
     .grid.current .card.visual {
@@ -422,7 +423,7 @@
 
     .grid.portfolio .card {
       min-height: 430px;
-      grid-template-rows: 210px auto;
+      grid-template-rows: auto auto;
     }
 
     .grid.portfolio .card.visual {
@@ -430,20 +431,28 @@
     }
 
     .grid.current .media,
-    .grid.current .lettermark,
-    .grid.portfolio .media,
-    .grid.portfolio .lettermark {
-      height: 100%;
-      min-height: 0;
+    .grid.portfolio .media {
+      aspect-ratio: 3 / 2;
+      height: auto;
     }
 
     .grid.current .media img,
     .grid.portfolio .media img {
       width: 100%;
-      height: auto;
-      min-height: 0;
-      object-fit: contain;
+      height: 100%;
+      min-height: 100%;
+      object-fit: cover;
       object-position: top center;
+    }
+
+    .grid.current .lettermark {
+      height: 190px;
+      min-height: 0;
+    }
+
+    .grid.portfolio .lettermark {
+      height: 210px;
+      min-height: 0;
     }
 
     .grid.current .body,
@@ -608,18 +617,13 @@
       .grid.current .card,
       .grid.current .card.visual {
         min-height: 470px;
-        grid-template-rows: 190px auto;
+        grid-template-rows: auto auto;
       }
 
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
         min-height: 430px;
-        grid-template-rows: 210px auto;
-      }
-
-      .media,
-      .media.phone {
-        height: 230px;
+        grid-template-rows: auto auto;
       }
 
       .footer { grid-template-columns: 1fr; }
@@ -631,17 +635,16 @@
       .lead { font-size: 17px; }
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .stat { min-height: 98px; padding: 12px; border-radius: 18px; }
-      .media, .media.phone { height: 210px; }
       .grid.current .card,
       .grid.current .card.visual {
         min-height: 460px;
-        grid-template-rows: 180px auto;
+        grid-template-rows: auto auto;
       }
 
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
         min-height: 420px;
-        grid-template-rows: 200px auto;
+        grid-template-rows: auto auto;
       }
       .lettermark { height: 104px; }
     }
