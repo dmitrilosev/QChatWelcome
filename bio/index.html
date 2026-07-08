@@ -110,8 +110,8 @@
 
     .hero {
       display: grid;
-      gap: 26px;
-      padding: clamp(56px, 10svh, 96px) 0 clamp(34px, 6vw, 58px);
+      gap: 18px;
+      padding: clamp(28px, 5svh, 48px) 0 clamp(20px, 4vw, 34px);
     }
 
     .profile-line {
@@ -125,7 +125,7 @@
       height: 64px;
       padding: 3px;
       border-radius: 50%;
-      background: conic-gradient(from 220deg, var(--blue), var(--green), var(--coral), var(--violet), var(--blue));
+      background: conic-gradient(from 210deg, #f16f5c, #f7c948, #2275d7, #f16f5c);
       box-shadow: 0 18px 42px rgba(37, 45, 64, 0.14);
     }
 
@@ -157,7 +157,7 @@
 
     .hero-copy {
       display: grid;
-      gap: 18px;
+      gap: 14px;
       max-width: 900px;
     }
 
@@ -178,9 +178,9 @@
     }
 
     h1 {
-      max-width: 12ch;
-      font-size: clamp(48px, 8vw, 92px);
-      line-height: 0.95;
+      max-width: 13ch;
+      font-size: clamp(44px, 6.2vw, 76px);
+      line-height: 0.97;
       font-weight: 900;
       letter-spacing: 0;
       text-wrap: balance;
@@ -189,7 +189,7 @@
     .lead {
       max-width: 64ch;
       color: rgba(14, 17, 23, 0.66);
-      font-size: clamp(18px, 2.2vw, 23px);
+      font-size: clamp(17px, 1.9vw, 21px);
       line-height: 1.3;
       font-weight: 620;
       text-wrap: balance;
@@ -205,8 +205,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
-      padding: 0 17px;
+      min-height: 42px;
+      padding: 0 16px;
       border: 1px solid transparent;
       border-radius: 999px;
       font-size: 14px;
@@ -237,7 +237,7 @@
     }
 
     .stat {
-      min-height: 112px;
+      min-height: 88px;
       display: grid;
       align-content: end;
       gap: 7px;
@@ -264,7 +264,7 @@
     .section {
       display: grid;
       gap: 22px;
-      padding: clamp(42px, 7vw, 72px) 0 0;
+      padding: clamp(32px, 5vw, 52px) 0 0;
     }
 
     .section-head {
@@ -285,7 +285,7 @@
 
     h2 {
       max-width: 15ch;
-      font-size: clamp(34px, 5.4vw, 64px);
+      font-size: clamp(32px, 4.8vw, 56px);
       line-height: 1;
       font-weight: 900;
       letter-spacing: 0;
@@ -357,23 +357,28 @@
       filter: drop-shadow(0 18px 38px rgba(37, 45, 64, 0.14));
     }
 
+    .grid.current .card,
     .grid.portfolio .card {
       height: 370px;
       min-height: 0;
       grid-template-rows: 190px 180px;
     }
 
+    .grid.current .card.visual,
     .grid.portfolio .card.visual {
       height: 370px;
       min-height: 0;
     }
 
+    .grid.current .media,
+    .grid.current .lettermark,
     .grid.portfolio .media,
     .grid.portfolio .lettermark {
       height: 100%;
       min-height: 0;
     }
 
+    .grid.current .media img,
     .grid.portfolio .media img {
       width: 100%;
       height: auto;
@@ -382,6 +387,7 @@
       object-position: top center;
     }
 
+    .grid.current .body,
     .grid.portfolio .body {
       align-content: start;
       background: rgba(255, 255, 255, 0.58);
@@ -392,6 +398,7 @@
       padding: 16px;
     }
 
+    .grid.current .copy,
     .grid.portfolio .copy {
       font-size: 14px;
       line-height: 1.28;
@@ -525,7 +532,7 @@
       }
 
       .hero {
-        padding-top: 44px;
+        padding-top: 34px;
       }
 
       .stats,
@@ -540,6 +547,8 @@
         min-height: auto;
       }
 
+      .grid.current .card,
+      .grid.current .card.visual,
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
         height: 390px;
@@ -557,11 +566,13 @@
     }
 
     @media (max-width: 520px) {
-      h1 { font-size: clamp(42px, 13vw, 58px); }
+      h1 { font-size: clamp(38px, 12vw, 54px); }
       .lead { font-size: 17px; }
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .stat { min-height: 98px; padding: 12px; border-radius: 18px; }
       .media, .media.phone { height: 210px; }
+      .grid.current .card,
+      .grid.current .card.visual,
       .grid.portfolio .card,
       .grid.portfolio .card.visual {
         height: 380px;
@@ -588,7 +599,7 @@
     <nav class="nav" aria-label="Portfolio navigation">
       <div class="nav-inner">
         <a href="#current">Now</a>
-        <a href="#portfolio">Portfolio</a>
+        <a href="#portfolio">Work</a>
         <a href="#resume">Resume</a>
         <a href="mailto:hfc550@gmail.com">Contact</a>
       </div>
@@ -601,7 +612,7 @@
         </span>
         <span>
           <span class="name">Dmitrii Losev</span>
-          <span class="role">Consumer AI Product Lead - agents, marketplaces, mobile systems</span>
+          <span class="role">Founder, AI Product Lead</span>
         </span>
       </div>
 
@@ -639,8 +650,8 @@
     <section class="section" id="current">
       <div class="section-head">
         <span class="kicker">Now</span>
-        <h2>What I am building now.</h2>
-        <p class="section-copy">Three related bets around consumer agents: an everyday AI distribution layer, a repeatable build system, and a reference product in production.</p>
+        <h2>Current work.</h2>
+        <p class="section-copy">These are the directions where I see the future of everyday AI products and where I am spending my time now. If these themes are interesting to you too, I would be glad to talk.</p>
       </div>
 
       <div class="grid current">
@@ -652,7 +663,7 @@
               <span>consumer AI OS</span>
             </div>
             <h3>An Ubuntu distro for everyday AI.</h3>
-            <p class="copy">If OpenClaw is like Linux, I am building the Ubuntu distribution for everyday people's lives: opinionated, usable, and focused on real tasks instead of raw model power.</p>
+            <p class="copy">An opinionated consumer layer for everyday AI: useful tasks, clear workflows, and less raw model complexity.</p>
           </div>
         </article>
 
@@ -664,7 +675,7 @@
               <span>Codex skills</span>
             </div>
             <h3>A product factory for AI-native apps.</h3>
-            <p class="copy">For founders and builders who want to go from product intent to iOS app, Firebase backend, and OpenAI agent workflow without starting from a blank repo.</p>
+            <p class="copy">Codex skills for turning product intent into an iOS app, Firebase backend, and OpenAI agent workflow.</p>
           </div>
         </a>
 
@@ -678,7 +689,7 @@
               <span>reference product</span>
             </div>
             <h3>Agents for city life.</h3>
-            <p class="copy">For people who want to delegate everyday tasks by voice or text: food, groceries, fitness, housing, and local workflows. The product proves the agent interface in real consumer use.</p>
+            <p class="copy">A production reference product for delegating everyday tasks: food, groceries, fitness, housing, and local workflows.</p>
           </div>
         </a>
       </div>
@@ -686,9 +697,9 @@
 
     <section class="section" id="portfolio">
       <div class="section-head">
-        <span class="kicker">Portfolio</span>
-        <h2>Selected work.</h2>
-        <p class="section-copy">A compact map of the systems I have helped build, launch, or shape across AI, consumer ecosystems, marketplaces, commerce, and mobile products.</p>
+        <span class="kicker">Work</span>
+        <h2>My work.</h2>
+        <p class="section-copy">A few products I have worked on across AI, consumer ecosystems, marketplaces, commerce, and mobile. In some I led as an AI Product Lead, in others I built hands-on, worked as an individual contributor, or led parts of the team effort.</p>
       </div>
 
       <div class="grid portfolio">
@@ -810,7 +821,7 @@
     </section>
 
     <footer class="footer">
-      <span>Dmitrii Losev - Consumer AI Product Lead. Current work, portfolio, and short resume.</span>
+      <span>Dmitrii Losev - Founder, AI Product Lead. Current work, my work, and short resume.</span>
       <span class="footer-links">
         <a href="https://qchat.nl/" target="_blank" rel="noopener">QChat</a>
         <a href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">Agent Foundry</a>
