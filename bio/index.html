@@ -286,33 +286,33 @@
     .stats {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
 
     .stat {
-      min-height: 88px;
+      min-height: 54px;
       display: grid;
-      align-content: end;
-      gap: 7px;
-      padding: 14px;
-      border: 1px solid rgba(137, 190, 235, 0.22);
-      border-radius: 22px;
+      align-content: center;
+      gap: 3px;
+      padding: 9px 11px;
+      border: 1px solid rgba(137, 190, 235, 0.2);
+      border-radius: 16px;
       background:
-        linear-gradient(135deg, rgba(236, 248, 255, 0.92), rgba(248, 252, 255, 0.76));
-      box-shadow: 0 16px 42px rgba(78, 139, 190, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+        linear-gradient(135deg, rgba(236, 248, 255, 0.74), rgba(248, 252, 255, 0.62));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
     }
 
     .stat strong {
-      font-size: clamp(24px, 4.2vw, 42px);
-      line-height: 0.94;
-      font-weight: 900;
+      font-size: clamp(18px, 2.6vw, 28px);
+      line-height: 0.98;
+      font-weight: 880;
     }
 
     .stat span {
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.18;
-      font-weight: 690;
+      font-size: 10px;
+      line-height: 1.12;
+      font-weight: 700;
     }
 
     .section {
@@ -634,7 +634,7 @@
       h1 { font-size: clamp(38px, 12vw, 54px); }
       .lead { font-size: 17px; }
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-      .stat { min-height: 98px; padding: 12px; border-radius: 18px; }
+      .stat { min-height: 54px; padding: 9px 11px; border-radius: 16px; }
       .grid.current .card,
       .grid.current .card.visual {
         min-height: 460px;
