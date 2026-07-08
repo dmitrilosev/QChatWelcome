@@ -722,13 +722,60 @@
       return normalizeLanguage(new URLSearchParams(window.location.search).get("lang"));
     }
 
+    const languageStorageKey = "qchatWelcomeLanguageDropdown";
+
+    function languageFromStorage() {
+      try {
+        return normalizeLanguage(localStorage.getItem(languageStorageKey));
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function languageFromVisitor() {
+      const russianTimeZones = new Set([
+        "Europe/Kaliningrad",
+        "Europe/Moscow",
+        "Europe/Samara",
+        "Asia/Yekaterinburg",
+        "Asia/Omsk",
+        "Asia/Novosibirsk",
+        "Asia/Barnaul",
+        "Asia/Tomsk",
+        "Asia/Novokuznetsk",
+        "Asia/Krasnoyarsk",
+        "Asia/Irkutsk",
+        "Asia/Chita",
+        "Asia/Yakutsk",
+        "Asia/Khandyga",
+        "Asia/Vladivostok",
+        "Asia/Ust-Nera",
+        "Asia/Magadan",
+        "Asia/Sakhalin",
+        "Asia/Srednekolymsk",
+        "Asia/Kamchatka",
+        "Asia/Anadyr"
+      ]);
+
+      try {
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (russianTimeZones.has(timeZone)) return "ru";
+      } catch (error) {}
+
+      const languages = Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language];
+
+      return languages.some((language) => /^ru(?:-|$)/i.test(language || "")) ? "ru" : "en";
+    }
+
     function setLanguageInUrl(lang) {
       const url = new URL(window.location.href);
       url.searchParams.set("lang", lang);
       window.history.replaceState({}, "", url);
     }
 
-    function applyLanguage(lang) {
+    function applyLanguage(lang, options = {}) {
       const dictionary = copy[lang] || copy.ru;
       document.documentElement.lang = lang;
       document.title = dictionary.title;
@@ -762,9 +809,11 @@
         button.setAttribute("aria-selected", String(isActive));
       });
 
-      try {
-        localStorage.setItem("qchatWelcomeLanguageDropdown", lang);
-      } catch (error) {}
+      if (options.persist) {
+        try {
+          localStorage.setItem(languageStorageKey, lang);
+        } catch (error) {}
+      }
     }
 
     const languageTrigger = document.querySelector("[data-lang-trigger]");
@@ -782,7 +831,7 @@
     document.querySelectorAll("[data-lang-option]").forEach((button) => {
       button.addEventListener("click", () => {
         const lang = normalizeLanguage(button.dataset.langOption) || "en";
-        applyLanguage(lang);
+        applyLanguage(lang, { persist: true });
         setLanguageInUrl(lang);
         setLanguageMenuOpen(false);
       });
@@ -800,7 +849,7 @@
 
     let initialLanguage = "en";
     try {
-      initialLanguage = languageFromUrl() || "en";
+      initialLanguage = languageFromUrl() || languageFromStorage() || languageFromVisitor();
     } catch (error) {}
     applyLanguage(normalizeLanguage(initialLanguage) || "en");
   </script>
