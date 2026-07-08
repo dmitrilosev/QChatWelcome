@@ -215,6 +215,8 @@
     .button:hover { transform: translateY(-1px); }
 
     .card-actions {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -256,6 +258,17 @@
       filter: invert(1);
     }
 
+    .mini-button.dark {
+      color: white;
+      border-color: rgba(16, 19, 24, 0.9);
+      background: #101318;
+      box-shadow: 0 12px 28px rgba(16, 19, 24, 0.16);
+    }
+
+    .mini-button.dark:hover {
+      background: #1a1f27;
+    }
+
     .mini-button.resume-action {
       min-height: 38px;
       padding: 0 14px;
@@ -283,6 +296,8 @@
     }
 
     .appstore-badge {
+      position: relative;
+      z-index: 2;
       display: block;
       width: min(100%, 138px);
       border-radius: 9px;
@@ -300,6 +315,13 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .card-hitbox {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
     }
 
     .stats {
@@ -752,6 +774,7 @@
         </article>
 
         <article class="card visual">
+          <a class="card-hitbox" href="https://qchat.nl/" target="_blank" rel="noopener" aria-label="Learn more about QChat"></a>
           <div class="media phone">
             <img src="assets/qchat-appstore.png" alt="QChat App Store product page">
           </div>
@@ -766,6 +789,7 @@
               <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
               </a>
+              <a class="mini-button dark" href="https://qchat.nl/" target="_blank" rel="noopener">Learn more</a>
             </div>
           </div>
         </article>
