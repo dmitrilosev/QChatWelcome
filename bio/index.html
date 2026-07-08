@@ -256,11 +256,30 @@
       filter: invert(1);
     }
 
+    .mini-button.resume-action {
+      min-height: 38px;
+      padding: 0 14px;
+      color: white;
+      border-color: rgba(16, 19, 24, 0.92);
+      background: #101318;
+      box-shadow: 0 14px 30px rgba(16, 19, 24, 0.16);
+    }
+
+    .mini-button.resume-action:hover {
+      background: #1a1f27;
+    }
+
     .mini-button img,
     .mini-button svg {
       width: 15px;
       height: 15px;
       flex: 0 0 auto;
+    }
+
+    .mini-button.resume-action svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
     }
 
     .appstore-badge {
@@ -893,8 +912,24 @@
             <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder, earlier Sberbank Product Manager / Lead iOS.</li>
           </ul>
           <div class="card-actions">
-            <a class="mini-button" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="mini-button" href="assets/dmitrii-losev-ai-product-lead-resume.pdf" download>Download PDF</a>
+            <a class="mini-button resume-action" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path d="M7 10v8" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M11 18v-4.4c0-2 1.2-3.4 3.1-3.4 1.8 0 2.9 1.3 2.9 3.4V18" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M7 6.8v.1" stroke="currentColor" stroke-linecap="round"/>
+                <rect x="4" y="4" width="16" height="16" rx="3.5" stroke="currentColor"/>
+              </svg>
+              LinkedIn
+            </a>
+            <a class="mini-button resume-action" href="assets/dmitrii-losev-ai-product-lead-resume.pdf" download>
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path d="M7 3.5h6l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 7 20V3.5Z" stroke="currentColor" stroke-linejoin="round"/>
+                <path d="M13 3.5V8h4" stroke="currentColor" stroke-linejoin="round"/>
+                <path d="M9.5 12.5h5" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M9.5 15.5h5" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+              Download PDF
+            </a>
           </div>
         </article>
       </div>
