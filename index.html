@@ -268,9 +268,18 @@
       line-height: 1.38;
     }
 
-    .gallery-wrap {
+    .real-tasks {
       width: 100vw;
       margin-left: calc(50% - 50vw);
+    }
+
+    .real-tasks .section-head {
+      width: min(100% - 2.75rem, 48rem);
+      margin-inline: auto;
+    }
+
+    .gallery-wrap {
+      width: 100%;
     }
 
     .gallery {
@@ -488,7 +497,7 @@
       <p class="note" data-i18n="founderNote">Создано продуктовым лидом экс-Сбер, экс-Узум с опытом масштабирования продуктов с аудиторией 14-65 миллионов пользователей в месяц.</p>
     </section>
 
-    <section aria-label="QChat в реальных задачах">
+    <section class="real-tasks" aria-label="QChat в реальных задачах">
       <div class="section-head">
         <h2 data-i18n="tasksTitle">QChat в реальных задачах</h2>
         <p data-i18n="tasksLead">Ставьте задачи агентам голосом или текстом, делегируйте дневную рутину и решайте вопросы за секунды вместо ручных кликов по экранам приложений.</p>
