@@ -357,6 +357,35 @@
       filter: drop-shadow(0 18px 38px rgba(37, 45, 64, 0.14));
     }
 
+    .grid.portfolio .card {
+      height: 500px;
+      min-height: 0;
+      grid-template-rows: 250px 250px;
+    }
+
+    .grid.portfolio .card.visual {
+      height: 500px;
+      min-height: 0;
+    }
+
+    .grid.portfolio .media,
+    .grid.portfolio .lettermark {
+      height: 100%;
+      min-height: 0;
+    }
+
+    .grid.portfolio .media img {
+      min-height: 0;
+    }
+
+    .grid.portfolio .body {
+      align-content: start;
+      background: rgba(255, 255, 255, 0.58);
+      border-top: 1px solid rgba(30, 39, 55, 0.07);
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .lettermark {
       height: 118px;
       display: grid;
@@ -500,6 +529,13 @@
         min-height: auto;
       }
 
+      .grid.portfolio .card,
+      .grid.portfolio .card.visual {
+        height: 500px;
+        min-height: 0;
+        grid-template-rows: 250px 250px;
+      }
+
       .media,
       .media.phone {
         height: 230px;
@@ -515,6 +551,12 @@
       .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
       .stat { min-height: 98px; padding: 12px; border-radius: 18px; }
       .media, .media.phone { height: 210px; }
+      .grid.portfolio .card,
+      .grid.portfolio .card.visual {
+        height: 480px;
+        min-height: 0;
+        grid-template-rows: 240px 240px;
+      }
       .lettermark { height: 104px; }
     }
 
@@ -554,7 +596,7 @@
 
       <div class="hero-copy">
         <span class="eyebrow">Building consumer AI products that turn intent into outcomes</span>
-        <h1>AI products for everyday life.</h1>
+        <h1>AI Native Products for Everyday Life.</h1>
         <p class="lead">I work on the layer between a user's intent and a completed real-world workflow: agents, commerce, travel, marketplaces, mobile UX, partner integrations, and production execution.</p>
         <div class="actions">
           <a class="button primary" href="mailto:hfc550@gmail.com">Start a conversation</a>
@@ -642,7 +684,7 @@
         <article class="card">
           <div class="lettermark"><span>AI</span></div>
           <div class="body">
-            <div class="tagline"><span>Sber</span><span>NDA</span><span>travel</span></div>
+            <div class="tagline"><span>AI Native</span><span>Travel</span></div>
             <h3>AI Travel Companion</h3>
             <p class="copy">Led a 0-1 proactive travel companion inside a partner surface: scope, architecture alignment, legal readiness, launch campaign, and partner communication.</p>
           </div>
@@ -651,7 +693,7 @@
         <a class="card visual" href="https://tezkor.uz/" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-uzum-tezkor.png" alt="Uzum Tezkor mobile website"></div>
           <div class="body">
-            <div class="tagline"><span>Uzum</span><span>delivery</span></div>
+            <div class="tagline"><span>Uzum</span><span>Delivery</span></div>
             <h3>Uzum Tezkor</h3>
             <p class="copy">Growth, discovery, ecosystem, and delivery work in a fast operational consumer product. Contributed to 3.64x GMV growth context in 2024.</p>
           </div>
@@ -660,7 +702,7 @@
         <a class="card visual" href="https://uzum.uz/" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-uzum-market.png" alt="Uzum Market mobile website"></div>
           <div class="body">
-            <div class="tagline"><span>Uzum</span><span>marketplace</span></div>
+            <div class="tagline"><span>Uzum</span><span>Marketplace</span></div>
             <h3>Uzum Market</h3>
             <p class="copy">Marketplace and ecosystem product work across discovery, growth, mobile UX, and applied AI directions at national consumer scale.</p>
           </div>
@@ -669,7 +711,7 @@
         <article class="card">
           <div class="lettermark"><span>SA</span></div>
           <div class="body">
-            <div class="tagline"><span>Sber</span><span>ecosystem</span></div>
+            <div class="tagline"><span>Mobile</span><span>Ecosystem</span></div>
             <h3>SuperApp</h3>
             <p class="copy">Joined the core team that launched Sber SuperApp and opened ecosystem access for 65M+ customers.</p>
           </div>
@@ -678,7 +720,7 @@
         <article class="card">
           <div class="lettermark"><span>SB</span></div>
           <div class="body">
-            <div class="tagline"><span>Sberbank Online</span><span>mobile</span></div>
+            <div class="tagline"><span>Mobile</span><span>Banking</span><span>Marketing</span></div>
             <h3>Sberbank Online</h3>
             <p class="copy">Lead iOS and product work across high-scale mobile banking surfaces, including Feed and Search ownership later as Product Manager.</p>
           </div>
@@ -687,7 +729,7 @@
         <a class="card visual" href="https://apps.apple.com/uz/app/strawberry-grocery-delivery/id6749492633" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-strawberry.png" alt="Strawberry App Store page"></div>
           <div class="body">
-            <div class="tagline"><span>grocery</span><span>commerce</span></div>
+            <div class="tagline"><span>Mobile</span><span>Commerce</span></div>
             <h3>Strawberry</h3>
             <p class="copy">Grocery delivery surface relevant to agent-mediated commerce, carts, fulfillment, and everyday order workflows.</p>
           </div>
@@ -696,7 +738,7 @@
         <a class="card visual" href="https://apps.apple.com/uz/app/workout-home-7-minute-fitness/id6450172385" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-workout-home.png" alt="Fit Flow App Store page"></div>
           <div class="body">
-            <div class="tagline"><span>fitness</span><span>subscription</span></div>
+            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Fit Flow</h3>
             <p class="copy">Consumer fitness surface with planning, routines, habit loops, onboarding, and monetization constraints.</p>
           </div>
@@ -705,7 +747,7 @@
         <a class="card visual" href="https://apps.apple.com/uz/app/yoga-flow-beginner-workouts/id6468572228" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-yoga-flow.png" alt="Yoga Flow App Store page"></div>
           <div class="body">
-            <div class="tagline"><span>wellness</span><span>mobile</span></div>
+            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Yoga Flow</h3>
             <p class="copy">Programs, guided classes, progress loops, premium plans, and lightweight daily wellness utility.</p>
           </div>
@@ -714,7 +756,7 @@
         <a class="card visual" href="https://apps.apple.com/uz/app/stretching-flexibility-flow/id6737474619" target="_blank" rel="noopener">
           <div class="media"><img src="assets/portfolio-stretching-flow.png" alt="Stretching Flow App Store page"></div>
           <div class="body">
-            <div class="tagline"><span>mobility</span><span>habit loops</span></div>
+            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Stretching Flow</h3>
             <p class="copy">Guided mobility routines, flexibility programs, and habit-forming consumer fitness mechanics.</p>
           </div>
@@ -725,32 +767,32 @@
     <section class="section" id="resume">
       <div class="section-head">
         <span class="kicker">Resume</span>
-        <h2>Short version.</h2>
-        <p class="section-copy">AI Product Lead with range across consumer AI, mobile engineering, marketplaces, ecosystem products, and partner-led launches.</p>
+        <h2>Resume.</h2>
+        <p class="section-copy">Three vectors that define my work: AI product leadership, AI-native engineering, and a career path across scale, 0-1 products, and partner ecosystems.</p>
       </div>
 
       <div class="grid resume">
         <article class="resume-card">
-          <h3>Product leadership</h3>
+          <h3>AI Product Lead</h3>
           <ul class="resume-list">
-            <li>AI product strategy, 0-1 launches, MVP scope, product vision, agent UX, and roadmap ownership.</li>
-            <li>Led cross-functional execution with engineering, architecture, analytics, legal, marketing, and external partners.</li>
+            <li>I create AI products from 0 to 1: strategy, MVP scope, product vision, agent UX, roadmap, launch readiness, and partner value.</li>
+            <li>I also scale products inside large consumer ecosystems, aligning engineering, legal, analytics, marketing, and external partners.</li>
           </ul>
         </article>
 
         <article class="resume-card">
-          <h3>Technical edge</h3>
+          <h3>AI Native Engineering</h3>
           <ul class="resume-list">
-            <li>Hands-on iOS, backend flows, AI-native architecture, telemetry, evals, guardrails, and agent orchestration.</li>
-            <li>Comfortable moving between product taste, code, systems thinking, and launch constraints.</li>
+            <li>I build with my own hands and with AI agents: iOS apps, Firebase backends, OpenAI agent workflows, telemetry, evals, guardrails, and release paths.</li>
+            <li>QChat was built end-to-end with AI agents, including product iteration, CI/CD, release automation, and the operating loop around shipping.</li>
           </ul>
         </article>
 
         <article class="resume-card">
-          <h3>Career path</h3>
+          <h3>Career Path</h3>
           <ul class="resume-list">
-            <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder.</li>
-            <li>Earlier: Sberbank Product Manager / Lead iOS, 300+ commercial real-estate deals before product.</li>
+            <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder, earlier Sberbank Product Manager / Lead iOS.</li>
+            <li>I am open to serious conversations with AI-native companies building products where agents change the actual user workflow.</li>
           </ul>
         </article>
       </div>
