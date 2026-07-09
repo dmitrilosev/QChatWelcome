@@ -322,6 +322,17 @@
       stroke-width: 2.2;
     }
 
+    .mini-button.coming-soon {
+      color: #101318;
+      border-color: rgba(34, 117, 215, 0.22);
+      background: linear-gradient(135deg, rgba(236, 248, 255, 0.88), rgba(255, 255, 255, 0.92));
+      box-shadow: 0 14px 30px rgba(34, 117, 215, 0.12);
+    }
+
+    .mini-button.coming-soon:hover {
+      background: linear-gradient(135deg, rgba(222, 242, 255, 0.94), rgba(255, 255, 255, 0.98));
+    }
+
     .appstore-badge {
       position: relative;
       z-index: 2;
@@ -342,6 +353,102 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .waitlist-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(14, 17, 23, 0.42);
+      backdrop-filter: blur(12px);
+    }
+
+    .waitlist-backdrop.is-open {
+      display: flex;
+    }
+
+    .waitlist-modal {
+      width: min(100%, 420px);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 28px 80px rgba(16, 19, 24, 0.24);
+      padding: 22px;
+    }
+
+    .waitlist-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .waitlist-head h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .waitlist-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .waitlist-close {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.72);
+      cursor: pointer;
+    }
+
+    .waitlist-close:hover {
+      background: white;
+    }
+
+    .waitlist-body {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .waitlist-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .waitlist-mail {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 14px;
+      color: white;
+      background: #101318;
+      font-weight: 830;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(16, 19, 24, 0.16);
+    }
+
+    .waitlist-mail:hover {
+      background: #1a1f27;
+      transform: translateY(-1px);
     }
 
     .card-hitbox {
@@ -891,9 +998,12 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>AI Native</span><span>Travel</span></div>
+            <div class="tagline"><span>AI Native</span><span>Travel</span><span>Stealth partner</span></div>
             <h3>AI Travel Companion</h3>
             <p class="copy">AI Product Lead for a 0-1 proactive travel companion inside a partner surface. Led the product team and owned strategy, scope, architecture alignment, legal readiness, launch campaign, and partner communication.</p>
+            <div class="card-actions">
+              <button class="mini-button coming-soon" type="button" data-waitlist-open>Stealth partner · Coming soon</button>
+            </div>
           </div>
         </article>
 
@@ -1117,5 +1227,62 @@
       </span>
     </footer>
   </main>
+
+  <div class="waitlist-backdrop" data-waitlist-modal hidden>
+    <section class="waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="waitlist-title">
+      <div class="waitlist-head">
+        <div>
+          <h2 id="waitlist-title">AI Travel Companion</h2>
+          <p>A stealth partner launch is in progress.</p>
+        </div>
+        <button class="waitlist-close" type="button" aria-label="Close launch request" data-waitlist-close>
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16" fill="none">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="waitlist-body">The product is not public yet. Send a quick note and I will let you know when the official AI Travel Companion launch is live and share the product link.</p>
+      <div class="waitlist-actions">
+        <a class="waitlist-mail" href="mailto:hfc550@gmail.com?subject=AI%20Travel%20Companion%20launch%20request&body=Hi%20Dmitrii%2C%0A%0APlease%20let%20me%20know%20when%20AI%20Travel%20Companion%20officially%20launches%20and%20send%20me%20the%20product%20link%20when%20it%20is%20available.%0A%0AThanks%21">Request launch link</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      const modal = document.querySelector("[data-waitlist-modal]");
+      const openButton = document.querySelector("[data-waitlist-open]");
+      const closeButton = document.querySelector("[data-waitlist-close]");
+
+      if (!modal || !openButton || !closeButton) {
+        return;
+      }
+
+      const closeModal = () => {
+        modal.classList.remove("is-open");
+        modal.hidden = true;
+      };
+
+      const openModal = () => {
+        modal.hidden = false;
+        modal.classList.add("is-open");
+        closeButton.focus();
+      };
+
+      openButton.addEventListener("click", openModal);
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !modal.hidden) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
