@@ -88,10 +88,13 @@
 
     .nav-inner {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
       gap: 4px;
-      max-width: 100%;
+      width: max-content;
+      max-width: calc(100vw - 32px);
+      overflow-x: auto;
+      scrollbar-width: none;
       padding: 5px;
       border: 1px solid rgba(255, 255, 255, 0.72);
       border-radius: 999px;
@@ -100,6 +103,10 @@
       -webkit-backdrop-filter: blur(24px) saturate(1.2);
       backdrop-filter: blur(24px) saturate(1.2);
       pointer-events: auto;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
     }
 
     .nav a {
@@ -283,14 +290,13 @@
     .mini-button.guide {
       min-height: 38px;
       padding: 0 14px;
-      background: #101318;
-      border-color: rgba(16, 19, 24, 0.9);
-      color: white;
-      box-shadow: 0 12px 28px rgba(16, 19, 24, 0.16);
+      background: rgba(241, 248, 255, 0.9);
+      border-color: rgba(84, 153, 214, 0.24);
+      color: rgba(14, 17, 23, 0.82);
     }
 
     .mini-button.guide:hover {
-      background: #1a1f27;
+      background: rgba(230, 243, 255, 0.96);
     }
 
     .mini-button.resume-action {
@@ -363,10 +369,11 @@
       align-content: center;
       gap: 2px;
       padding: 8px 12px;
-      border: 1px solid rgba(30, 39, 55, 0.13);
+      border: 1px solid rgba(137, 190, 235, 0.2);
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 10px 24px rgba(37, 45, 64, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      background:
+        linear-gradient(135deg, rgba(236, 248, 255, 0.74), rgba(248, 252, 255, 0.62));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
     }
 
     .stat strong {
@@ -679,6 +686,17 @@
       gap: 8px;
     }
 
+    .footer-bio {
+      display: grid;
+      gap: 4px;
+      max-width: 58ch;
+    }
+
+    .footer-bio strong {
+      color: rgba(14, 17, 23, 0.72);
+      font-weight: 780;
+    }
+
     .footer a {
       color: rgba(14, 17, 23, 0.78);
       font-weight: 760;
@@ -690,8 +708,6 @@
       .nav {
         justify-content: center;
       }
-
-      .nav-inner { width: 100%; }
 
       .hero {
         padding-top: 34px;
@@ -769,8 +785,8 @@
     <nav class="nav" aria-label="Portfolio navigation">
       <div class="nav-inner">
         <a href="#current">Now</a>
-        <a href="#portfolio">My Work</a>
-        <a href="#resume">Career Path</a>
+        <a href="#portfolio">Work</a>
+        <a href="#resume">Career</a>
         <a href="mailto:hfc550@gmail.com">Contact</a>
       </div>
     </nav>
@@ -811,12 +827,12 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline">
-              <span>Consumer AI OS</span>
-              <span><img src="assets/openclaw-icon.png" alt="" aria-hidden="true">OpenClaw</span>
+            <h3>Tokenmaxxing</h3>
+            <p class="copy">An experimental space for making OpenClaw handle enough routine work for me that friends now ask me to set it up for them.</p>
+            <p class="copy">If you want OpenClaw for any repeatable workflow, like job search, cover letters, recruiter conversations, or bot-recruiter interviews, write me and I&rsquo;ll help you set it up.</p>
+            <div class="card-actions">
+              <a class="mini-button guide" href="mailto:hfc550@gmail.com?subject=OpenClaw%20setup&body=Hi%20Dmitrii%2C%0A%0AI%20want%20OpenClaw%20for%20my%20own%20tasks.%0A%0AHere%20are%20the%20tasks%20I%20want%20OpenClaw%20to%20handle%20for%20me%3A%0A-%20Example%3A%20job%20search%2C%20cover%20letters%2C%20recruiter%20conversations%2C%20and%20bot-recruiter%20interviews.%0A-%20My%20tasks%3A%20%0A%0AThanks%21">Set up OpenClaw for me</a>
             </div>
-            <h3>Everyday AI OpenClaw Distro</h3>
-            <p class="copy">A consumer AI OS that turns broad OpenClaw capability into focused workflows people can actually use in daily life.</p>
           </div>
         </article>
 
@@ -828,19 +844,11 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline">
-              <span>Codex skills</span>
-              <span><img src="assets/github-mark.svg" alt="" aria-hidden="true">GitHub</span>
-              <span>Open Source</span>
-            </div>
             <h3>Agent Foundry</h3>
-            <p class="copy">An open-source Codex Skill Pack for building production-ready AI-native products.</p>
+            <p class="copy">An open-source Codex Skill Pack for building production-ready AI-native products: SwiftUI iOS apps using TCA / The Composable Architecture, Firebase backends, and backend-owned AI agent runtimes powered by the OpenAI Agents SDK.</p>
             <div class="card-actions">
-              <a class="mini-button github" href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M12 .3c-6.6 0-12 5.4-12 12 0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.8-1.6 8.2-6.1 8.2-11.4 0-6.6-5.4-12-12-12Z"></path>
-                </svg>
-                Install Agent Foundry
+              <a class="mini-button guide" href="https://github.com/dmitrilosev/AgentFoundry" target="_blank" rel="noopener">
+                View on GitHub
               </a>
             </div>
           </div>
@@ -855,13 +863,8 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline">
-              <span>Mobile App</span>
-              <span>AI Agents</span>
-              <span>B2C</span>
-            </div>
             <h3>AI agents for everyday life</h3>
-            <p class="copy">A live consumer app where people delegate real errands to agents: groceries, food, fitness, housing, and local tasks.</p>
+            <p class="copy">Order food, build a grocery cart, log workouts, and find housing. Tell a QChat agent what you need, and it gets handled in seconds.</p>
             <div class="card-actions qchat-actions">
               <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
@@ -889,9 +892,8 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>AI Native</span><span>Travel</span><span>Stealth partner</span></div>
             <h3>AI Travel Companion</h3>
-            <p class="copy">AI Product Lead for a 0-1 proactive travel companion inside a partner surface. Led the product team and owned strategy, scope, architecture alignment, legal readiness, launch campaign, and partner communication.</p>
+            <p class="copy">AI Product Lead for a 0-1 proactive travel companion launching across multiple partner surfaces. Led the product team and owned strategy, scope, business model, financial impact, architecture, integration, legal setup, partner communication, and the marketing campaign.</p>
             <div class="card-actions">
               <a class="mini-button guide" href="https://www.sberbank.ru/ru/person/dist_services/sberbank-online" target="_blank" rel="noopener" aria-label="Open SBOL installation instructions">
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
@@ -900,7 +902,7 @@
                 </svg>
                 Install SBOL
               </a>
-              <a class="mini-button dark" href="mailto:hfc550@gmail.com?subject=AI%20Travel%20Companion%20product%20link&body=Hi%20Dmitrii%2C%0A%0APlease%20send%20me%20the%20AI%20Travel%20Companion%20product%20link%20when%20you%20can.%0A%0AThanks%21">Get product link</a>
+              <a class="mini-button guide" href="mailto:hfc550@gmail.com?subject=AI%20Travel%20Companion%20product%20link&body=Hi%20Dmitrii%2C%0A%0APlease%20send%20me%20the%20AI%20Travel%20Companion%20product%20link%20when%20you%20can.%0A%0AThanks%21">Get product link</a>
             </div>
           </div>
         </article>
@@ -913,7 +915,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Uzum</span><span>Delivery</span></div>
             <h3>Uzum Tezkor</h3>
             <p class="copy">Growth, discovery, ecosystem, and delivery work in a fast operational consumer product. Contributed to 3.64x GMV growth context in 2024.</p>
             <div class="card-actions">
@@ -932,7 +933,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Uzum</span><span>Marketplace</span></div>
             <h3>Uzum Market</h3>
             <p class="copy">Marketplace and ecosystem product work across discovery, growth, mobile UX, and applied AI directions at national consumer scale.</p>
             <div class="card-actions">
@@ -951,7 +951,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Mobile</span><span>Banking</span><span>Marketing</span></div>
             <h3>SBOL</h3>
             <p class="copy">Earlier, led iOS across high-scale mobile banking surfaces. Later joined the Sber SuperApp core team as Product Manager, opening ecosystem access for 65M+ customers and owning Feed and Search.</p>
             <div class="card-actions">
@@ -974,7 +973,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Fit Flow</h3>
             <p class="copy">Consumer fitness surface with planning, routines, habit loops, onboarding, and monetization constraints.</p>
             <div class="card-actions">
@@ -993,7 +991,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Yoga Flow</h3>
             <p class="copy">Programs, guided classes, progress loops, premium plans, and lightweight daily wellness utility.</p>
             <div class="card-actions">
@@ -1012,7 +1009,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Stretching Flow</h3>
             <p class="copy">Guided mobility routines, flexibility programs, and habit-forming consumer fitness mechanics.</p>
             <div class="card-actions">
@@ -1031,7 +1027,6 @@
             </picture>
           </div>
           <div class="body">
-            <div class="tagline"><span>Mobile</span><span>Commerce</span></div>
             <h3>Strawberry</h3>
             <p class="copy">Grocery delivery surface relevant to agent-mediated commerce, carts, fulfillment, and everyday order workflows.</p>
             <div class="card-actions">
@@ -1048,7 +1043,7 @@
       <div class="section-head">
         <span class="kicker">Career</span>
         <h2>Career path</h2>
-        <p class="section-copy">The short version: AI product leadership, AI-native engineering, and a path across 0-1 products, large consumer ecosystems, and partner-heavy launches.</p>
+        <p class="section-copy">I&rsquo;m an AI product builder with a path across hands-on engineering, 0-1 products, large consumer ecosystems, commerce, and partner-heavy launches.</p>
       </div>
 
       <div class="stats" aria-label="Product proof points">
@@ -1062,7 +1057,7 @@
         </div>
         <div class="stat">
           <strong>0-1</strong>
-          <span>AI Travel Companion launch under NDA</span>
+          <span>AI Travel Companion launch</span>
         </div>
         <div class="stat">
           <strong>300+</strong>
@@ -1074,8 +1069,8 @@
         <article class="resume-card">
           <h3>AI Product Lead</h3>
           <ul class="resume-list">
-            <li>I create AI products from 0 to 1: strategy, MVP scope, product vision, agent UX, roadmap, launch readiness, and partner value.</li>
-            <li>I also scale products inside large consumer ecosystems, aligning engineering, legal, analytics, marketing, and external partners.</li>
+            <li>I build products from zero to one, launch internal ventures inside large companies, and scale digital products with 14M-65M MAU.</li>
+            <li>My work spans GMV growth, team leadership, product vision and strategy, partnerships, AI-native UX, technical architecture, and GTM.</li>
           </ul>
         </article>
 
@@ -1090,7 +1085,7 @@
         <article class="resume-card">
           <h3>Resume</h3>
           <ul class="resume-list">
-            <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat founder, earlier Sberbank Product Manager / Lead iOS.</li>
+            <li>Sber AI Product Lead, Uzum Product and AI Initiatives Lead / Lead iOS, QChat Founder, Sber Product Manager / Lead iOS.</li>
           </ul>
           <div class="card-actions">
             <a class="mini-button resume-action" href="https://www.linkedin.com/in/dmitri-losev" target="_blank" rel="noopener">
@@ -1117,7 +1112,10 @@
     </section>
 
     <footer class="footer">
-      <span>Dmitrii Losev - AI Product Lead. Current bets, selected work, and career path.</span>
+      <span class="footer-bio">
+        <strong>Dmitrii Losev</strong>
+        <span>AI Product Lead · AI-native product builder focused on everyday AI, consumer agents, and products that turn conversation into action.</span>
+      </span>
       <span class="footer-links">
         <a href="https://qchat.nl/" target="_blank" rel="noopener">QChat</a>
         <a href="https://github.com/dmitrilosev/AgentFoundry#readme" target="_blank" rel="noopener">Agent Foundry</a>
