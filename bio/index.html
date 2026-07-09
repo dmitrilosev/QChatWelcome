@@ -435,6 +435,7 @@
       height: auto;
       overflow: hidden;
       background: linear-gradient(135deg, rgba(233, 243, 255, 0.86), rgba(255, 247, 242, 0.84));
+      line-height: 0;
     }
 
     .media.phone {
@@ -442,10 +443,17 @@
     }
 
     .media img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: top center;
+    }
+
+    .media.fill-center img {
+      object-position: center center;
+      transform: scale(1.22);
+      transform-origin: center center;
     }
 
     .media.contain {
@@ -596,6 +604,8 @@
     .resume-card {
       min-height: 220px;
       display: grid;
+      align-content: start;
+      justify-items: start;
       gap: 12px;
       padding: 18px;
       border: 1px solid rgba(255, 255, 255, 0.74);
@@ -608,6 +618,7 @@
 
     .resume-list {
       display: grid;
+      justify-items: start;
       gap: 9px;
       margin: 0;
       padding: 0;
@@ -616,6 +627,7 @@
 
     .resume-list li {
       color: var(--muted);
+      text-align: left;
       font-size: 14px;
       line-height: 1.32;
       font-weight: 590;
@@ -847,7 +859,7 @@
         </a>
 
         <article class="card visual">
-          <div class="media"><img src="assets/portfolio-superapp.png" alt="SuperApp ecosystem illustration"></div>
+          <div class="media fill-center"><img src="assets/portfolio-superapp.png" alt="SuperApp ecosystem illustration"></div>
           <div class="body">
             <div class="tagline"><span>Mobile</span><span>Ecosystem</span></div>
             <h3>SuperApp</h3>
@@ -864,41 +876,61 @@
           </div>
         </article>
 
-        <a class="card visual" href="https://apps.apple.com/uz/app/workout-home-7-minute-fitness/id6450172385" target="_blank" rel="noopener">
+        <article class="card visual">
           <div class="media"><img src="assets/portfolio-workout-home.png" alt="Fit Flow App Store page"></div>
           <div class="body">
             <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Fit Flow</h3>
             <p class="copy">Consumer fitness surface with planning, routines, habit loops, onboarding, and monetization constraints.</p>
+            <div class="card-actions">
+              <a class="appstore-badge" href="https://apps.apple.com/uz/app/workout-home-7-minute-fitness/id6450172385" target="_blank" rel="noopener" aria-label="Download Fit Flow on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="card visual" href="https://apps.apple.com/uz/app/yoga-flow-beginner-workouts/id6468572228" target="_blank" rel="noopener">
+        <article class="card visual">
           <div class="media"><img src="assets/portfolio-yoga-flow.png" alt="Yoga Flow App Store page"></div>
           <div class="body">
             <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Yoga Flow</h3>
             <p class="copy">Programs, guided classes, progress loops, premium plans, and lightweight daily wellness utility.</p>
+            <div class="card-actions">
+              <a class="appstore-badge" href="https://apps.apple.com/uz/app/yoga-flow-beginner-workouts/id6468572228" target="_blank" rel="noopener" aria-label="Download Yoga Flow on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="card visual" href="https://apps.apple.com/uz/app/stretching-flexibility-flow/id6737474619" target="_blank" rel="noopener">
+        <article class="card visual">
           <div class="media"><img src="assets/portfolio-stretching-flow.png" alt="Stretching Flow App Store page"></div>
           <div class="body">
             <div class="tagline"><span>Mobile</span><span>Health &amp; Fitness</span></div>
             <h3>Stretching Flow</h3>
             <p class="copy">Guided mobility routines, flexibility programs, and habit-forming consumer fitness mechanics.</p>
+            <div class="card-actions">
+              <a class="appstore-badge" href="https://apps.apple.com/uz/app/stretching-flexibility-flow/id6737474619" target="_blank" rel="noopener" aria-label="Download Stretching Flow on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
 
-        <a class="card visual" href="https://apps.apple.com/uz/app/strawberry-grocery-delivery/id6749492633" target="_blank" rel="noopener">
+        <article class="card visual">
           <div class="media"><img src="assets/portfolio-strawberry.png" alt="Strawberry App Store page"></div>
           <div class="body">
             <div class="tagline"><span>Mobile</span><span>Commerce</span></div>
             <h3>Strawberry</h3>
             <p class="copy">Grocery delivery surface relevant to agent-mediated commerce, carts, fulfillment, and everyday order workflows.</p>
+            <div class="card-actions">
+              <a class="appstore-badge" href="https://apps.apple.com/uz/app/strawberry-grocery-delivery/id6749492633" target="_blank" rel="noopener" aria-label="Download Strawberry on the App Store">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+              </a>
+            </div>
           </div>
-        </a>
+        </article>
       </div>
     </section>
 
