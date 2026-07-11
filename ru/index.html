@@ -259,11 +259,22 @@
     }
 
     .note {
+      display: inline-block;
       max-width: 46ch;
-      color: rgba(21, 21, 21, 0.52);
+      color: var(--accent);
       font-size: 0.875rem;
-      font-weight: 650;
+      font-weight: 720;
       line-height: 1.34;
+      text-decoration: underline;
+      text-decoration-color: rgba(12, 131, 213, 0.5);
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.2em;
+      transition: color 160ms ease, text-decoration-color 160ms ease;
+    }
+
+    .note:hover {
+      color: #086ba9;
+      text-decoration-color: currentColor;
     }
 
     section {
@@ -459,7 +470,22 @@
       gap: 0.25rem 0.65rem;
     }
 
-    footer a { color: rgba(21, 21, 21, 0.74); }
+    footer a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: rgba(12, 131, 213, 0.42);
+      text-underline-offset: 0.18em;
+    }
+
+    footer a:hover {
+      color: #086ba9;
+      text-decoration-color: currentColor;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(12, 131, 213, 0.32);
+      outline-offset: 3px;
+    }
 
     .footer-icon-link {
       display: inline-flex;

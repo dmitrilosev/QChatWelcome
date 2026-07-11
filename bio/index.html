@@ -1031,8 +1031,21 @@
     }
 
     .footer a {
-      color: rgba(14, 17, 23, 0.78);
+      color: var(--blue);
       font-weight: 760;
+      text-decoration: underline;
+      text-decoration-color: rgba(34, 117, 215, 0.42);
+      text-underline-offset: 0.18em;
+    }
+
+    .footer a:hover {
+      color: #195ca6;
+      text-decoration-color: currentColor;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(34, 117, 215, 0.3);
+      outline-offset: 3px;
     }
 
     @media (max-width: 1020px) {
