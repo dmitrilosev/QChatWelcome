@@ -92,10 +92,17 @@
 
     .nav-controls {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 4px;
       max-width: calc(100vw - 32px);
+      padding: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 12px 36px rgba(37, 45, 64, 0.12);
+      -webkit-backdrop-filter: blur(24px) saturate(1.2);
+      backdrop-filter: blur(24px) saturate(1.2);
       pointer-events: auto;
     }
 
@@ -108,13 +115,6 @@
       max-width: calc(100vw - 32px);
       overflow-x: auto;
       scrollbar-width: none;
-      padding: 5px;
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 12px 36px rgba(37, 45, 64, 0.12);
-      -webkit-backdrop-filter: blur(24px) saturate(1.2);
-      backdrop-filter: blur(24px) saturate(1.2);
       pointer-events: auto;
     }
 
@@ -124,7 +124,10 @@
 
     .nav a {
       flex: 0 0 auto;
-      padding: 9px 12px;
+      display: inline-flex;
+      align-items: center;
+      height: 30px;
+      padding: 0 12px;
       border-radius: 999px;
       color: rgba(14, 17, 23, 0.62);
       font-size: 12px;
@@ -143,7 +146,6 @@
       flex: 0 0 auto;
     }
 
-    .language-trigger,
     .language-menu {
       border: 1px solid rgba(255, 255, 255, 0.72);
       background: rgba(255, 255, 255, 0.7);
@@ -158,8 +160,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      height: 44px;
-      padding: 0 13px;
+      height: 30px;
+      padding: 0 12px;
       border: 0;
       border-radius: 999px;
       color: rgba(14, 17, 23, 0.62);
@@ -168,13 +170,19 @@
       font: inherit;
       font-size: 12px;
       line-height: 1;
-      font-weight: 800;
+      font-weight: 760;
     }
 
     .language-trigger {
       gap: 5px;
-      min-width: 58px;
+      min-width: 54px;
       border-radius: 999px;
+    }
+
+    .language-trigger:hover,
+    .language-trigger[aria-expanded="true"] {
+      color: rgba(14, 17, 23, 0.92);
+      background: rgba(238, 246, 255, 0.9);
     }
 
     .language-trigger svg {
@@ -1055,7 +1063,8 @@
     @media (max-width: 520px) {
       h1 { font-size: 46px; }
       .lead { font-size: 17px; }
-      .nav a { padding: 8px 10px; }
+      .nav a,
+      .language-trigger { height: 28px; padding-inline: 10px; }
       .stats { gap: 7px; }
       .stat { max-width: min(100%, 220px); min-height: 40px; padding: 7px 10px; border-radius: 14px; }
       .grid.current .card,
