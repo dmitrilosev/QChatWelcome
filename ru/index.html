@@ -80,7 +80,9 @@
       backdrop-filter: blur(18px) saturate(1.2);
     }
 
-    .language button {
+    .language button,
+    .language a,
+    .language summary {
       appearance: none;
       align-items: center;
       display: inline-flex;
@@ -96,7 +98,11 @@
       font-weight: 800;
       font-family: inherit;
       line-height: 1;
+      text-decoration: none;
     }
+
+    .language summary { list-style: none; }
+    .language summary::-webkit-details-marker { display: none; }
 
     .language-trigger {
       gap: 0.35rem;
@@ -111,7 +117,7 @@
       transition: transform 0.16s ease;
     }
 
-    .language-trigger[aria-expanded="true"] svg {
+    .language-switcher[open] .language-trigger svg {
       transform: rotate(180deg);
     }
 
@@ -130,7 +136,7 @@
       display: none;
     }
 
-    .language-menu button {
+    .language-menu a {
       width: 100%;
       justify-content: space-between;
       height: 2.15rem;
@@ -138,7 +144,7 @@
       border-radius: 0.75rem;
     }
 
-    .language-menu button[aria-selected="true"] {
+    .language-menu a[aria-selected="true"] {
       background: rgba(255, 255, 255, 0.88);
       color: rgba(21, 21, 21, 0.92);
       box-shadow: inset 0 0 0 1px rgba(72, 55, 38, 0.08);
@@ -465,18 +471,18 @@
 <body>
   <main class="page">
     <div class="language" aria-label="Выбор языка">
-      <div class="language-switcher">
-        <button class="language-trigger" type="button" data-lang-trigger aria-haspopup="listbox" aria-expanded="false">
+      <details class="language-switcher">
+        <summary class="language-trigger" data-lang-trigger aria-haspopup="listbox">
           <span data-current-language>Ru</span>
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
             <path d="m6 9 6 6 6-6"></path>
           </svg>
-        </button>
-        <div class="language-menu" role="listbox" aria-label="Choose language" data-lang-menu hidden>
-          <button type="button" role="option" data-lang-option="en" aria-selected="true">English</button>
-          <button type="button" role="option" data-lang-option="ru" aria-selected="false">Русский</button>
+        </summary>
+        <div class="language-menu" role="listbox" aria-label="Choose language" data-lang-menu>
+          <a href="/en/" role="option" data-lang-option="en" aria-selected="true">English</a>
+          <a href="/ru/" role="option" data-lang-option="ru" aria-selected="false">Русский</a>
         </div>
-      </div>
+      </details>
     </div>
 
     <section class="hero" aria-label="QChat">
@@ -781,10 +787,6 @@
       return languages.some((language) => /^ru(?:-|$)/i.test(language || "")) ? "ru" : "en";
     }
 
-    function setLanguageInUrl(lang) {
-      window.location.href = lang === "ru" ? "/ru/" : "/en/";
-    }
-
     function applyLanguage(lang, options = {}) {
       const dictionary = copy[lang] || copy.ru;
       document.documentElement.lang = lang;
@@ -825,37 +827,6 @@
         } catch (error) {}
       }
     }
-
-    const languageTrigger = document.querySelector("[data-lang-trigger]");
-    const languageMenu = document.querySelector("[data-lang-menu]");
-
-    function setLanguageMenuOpen(isOpen) {
-      languageTrigger.setAttribute("aria-expanded", String(isOpen));
-      languageMenu.hidden = !isOpen;
-    }
-
-    languageTrigger.addEventListener("click", () => {
-      setLanguageMenuOpen(languageTrigger.getAttribute("aria-expanded") !== "true");
-    });
-
-    document.querySelectorAll("[data-lang-option]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const lang = normalizeLanguage(button.dataset.langOption) || "en";
-        applyLanguage(lang, { persist: true });
-        setLanguageInUrl(lang);
-        setLanguageMenuOpen(false);
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!event.target.closest(".language-switcher")) {
-        setLanguageMenuOpen(false);
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setLanguageMenuOpen(false);
-    });
 
     let initialLanguage = "en";
     try {
