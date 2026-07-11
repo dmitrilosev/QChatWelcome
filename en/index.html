@@ -259,12 +259,16 @@
     }
 
     .note {
-      display: inline-block;
       max-width: 46ch;
-      color: var(--accent);
+      color: rgba(21, 21, 21, 0.52);
       font-size: 0.875rem;
-      font-weight: 720;
+      font-weight: 650;
       line-height: 1.34;
+    }
+
+    .note a {
+      color: var(--accent);
+      font-weight: 720;
       text-decoration: underline;
       text-decoration-color: rgba(12, 131, 213, 0.5);
       text-decoration-thickness: 0.08em;
@@ -272,7 +276,7 @@
       transition: color 160ms ease, text-decoration-color 160ms ease;
     }
 
-    .note:hover {
+    .note a:hover {
       color: #086ba9;
       text-decoration-color: currentColor;
     }
@@ -544,7 +548,7 @@
         <li class="pill" data-i18n="pillRentals">home rentals</li>
         <li class="pill" data-i18n="pillBusiness">business launch</li>
       </ul>
-      <a class="note" href="/bio/en/" data-i18n="founderNote">Built by Dmitrii Losev, an ex-Sber, ex-Uzum product leader with experience scaling products used by 14-65 million monthly users.</a>
+      <p class="note"><span data-i18n="founderPrefix">Built by </span><a href="/bio/en/" data-i18n="founderName">Dmitrii Losev</a><span data-i18n="founderSuffix">, an ex-Sber, ex-Uzum product leader with experience scaling products used by 14-65 million monthly users.</span></p>
     </section>
 
     <section class="real-tasks" aria-label="QChat в реальных задачах">
@@ -685,7 +689,9 @@
         pillBooking: "запись на тренировки",
         pillRentals: "аренда жилья",
         pillBusiness: "запуск бизнеса",
-        founderNote: "Создано Дмитрием Лосевым, продуктовым лидом экс-Сбер, экс-Узум с опытом масштабирования продуктов с аудиторией 14-65 миллионов пользователей в месяц.",
+        founderPrefix: "Создано ",
+        founderName: "Дмитрием Лосевым",
+        founderSuffix: ", продуктовым лидом экс-Сбер, экс-Узум с опытом масштабирования продуктов с аудиторией 14-65 миллионов пользователей в месяц.",
         tasksTitle: "QChat в реальных задачах",
         tasksLead: "Ставьте задачи агентам голосом или текстом, делегируйте дневную рутину и решайте вопросы за секунды вместо ручных кликов по экранам приложений.",
         shotHome: "Ставьте задачи агентам голосом или текстом",
@@ -732,7 +738,9 @@
         pillBooking: "workout booking",
         pillRentals: "home rentals",
         pillBusiness: "business launch",
-        founderNote: "Built by Dmitrii Losev, an ex-Sber, ex-Uzum product leader with experience scaling products used by 14-65 million monthly users.",
+        founderPrefix: "Built by ",
+        founderName: "Dmitrii Losev",
+        founderSuffix: ", an ex-Sber, ex-Uzum product leader with experience scaling products used by 14-65 million monthly users.",
         tasksTitle: "QChat on real tasks",
         tasksLead: "Give agents tasks by voice or text, hand off your daily routine, and get things done in seconds instead of tapping through app screens by hand.",
         shotHome: "Give agents tasks by voice or text",
