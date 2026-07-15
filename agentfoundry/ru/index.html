@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AgentFoundry — создайте полноценный AI-native продукт для iOS</title>
-  <meta name="description" content="AgentFoundry — открытая система для Codex, которая превращает идею продукта в нативное SwiftUI-приложение с бэкендом и серверными AI-агентами.">
+  <title>Agent Foundry — создайте полноценный AI-native продукт для iOS</title>
+  <meta name="description" content="Agent Foundry — открытая система для Codex, которая превращает идею продукта в нативное SwiftUI-приложение с бэкендом и серверными AI-агентами.">
   <meta name="theme-color" content="#f7f7f2">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AgentFoundry">
-  <meta property="og:title" content="AgentFoundry — создайте полноценный AI-native продукт для iOS">
+  <meta property="og:site_name" content="Agent Foundry">
+  <meta property="og:title" content="Agent Foundry — создайте полноценный AI-native продукт для iOS">
   <meta property="og:description" content="Пять открытых skills для Codex: создавайте, тестируйте и развивайте нативные iOS-продукты с реальным бэкендом и AI-агентами.">
   <meta property="og:url" content="https://qchat.nl/agentfoundry/ru/">
   <meta property="og:image" content="https://qchat.nl/bio/assets/generated/agent-foundry-proof-1200.jpg">
@@ -17,7 +17,8 @@
   <link rel="alternate" hreflang="en" href="https://qchat.nl/agentfoundry/en/">
   <link rel="alternate" hreflang="ru" href="https://qchat.nl/agentfoundry/ru/">
   <link rel="alternate" hreflang="x-default" href="https://qchat.nl/agentfoundry/">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/qchat-favicon.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/agentfoundry/assets/agentfoundry-monogram.png">
+  <link rel="apple-touch-icon" href="/agentfoundry/assets/agentfoundry-monogram.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
@@ -25,7 +26,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
-    "name": "AgentFoundry",
+    "name": "Agent Foundry",
     "description": "Открытый набор skills для Codex, предназначенный для создания готовых к продакшену AI-native продуктов для iOS.",
     "url": "https://qchat.nl/agentfoundry/ru/",
     "codeRepository": "https://github.com/dmitrilosev/AgentFoundry",
@@ -82,6 +83,8 @@
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
+
+    [hidden] { display: none !important; }
 
     a { color: inherit; }
 
@@ -336,7 +339,7 @@
     h2,
     h3 {
       font-family: "Plus Jakarta Sans", sans-serif;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.035em;
     }
 
     .hero {
@@ -369,10 +372,17 @@
     h1 {
       max-width: 16ch;
       margin: 1.2rem 0 0;
-      font-size: clamp(3.7rem, 6.7vw, 6.15rem);
+      font-size: clamp(2.25rem, 4.35vw, 4rem);
       font-weight: 600;
-      line-height: 0.99;
+      letter-spacing: -0.035em;
+      line-height: 1.04;
     }
+
+    html[lang="ru"] h1,
+    html[lang="ru"] h2,
+    html[lang="ru"] h3 { letter-spacing: -0.025em; }
+
+    html[lang="ru"] h1 { font-weight: 500; }
 
     h1 .accent {
       color: var(--accent);
@@ -441,9 +451,9 @@
       position: absolute;
       right: clamp(1rem, 7vw, 6rem);
       bottom: 0;
-      width: clamp(10rem, 16vw, 13rem);
-      padding: clamp(0.25rem, 0.4vw, 0.325rem);
-      border: clamp(0.5px, 0.08vw, 1px) solid rgba(23, 21, 42, 0.18);
+      width: clamp(10.5rem, 18vw, 14rem);
+      padding: clamp(0.32rem, 0.48vw, 0.42rem);
+      border: clamp(0.75px, 0.1vw, 1.25px) solid rgba(23, 21, 42, 0.18);
       border-radius: clamp(1.8rem, 2.88vw, 2.35rem);
       background: #171820;
       box-shadow: 0 28px 55px rgba(36, 20, 47, 0.18);
@@ -451,8 +461,10 @@
     }
 
     .hero-phone img {
+      display: block;
       width: 100%;
-      border-radius: clamp(1.55rem, 2.48vw, 2.02rem);
+      height: auto;
+      border-radius: clamp(1.48rem, 2.36vw, 1.92rem);
     }
 
     .scene-card {
@@ -505,7 +517,7 @@
 
     .scroll-note {
       position: absolute;
-      right: var(--gutter);
+      right: clamp(0.25rem, 0.5vw, 0.75rem);
       bottom: 1.4rem;
       color: var(--muted);
       font-size: 0.72rem;
@@ -515,6 +527,8 @@
     .chapter {
       padding-block: var(--chapter);
     }
+
+    #what { padding-bottom: var(--chapter); }
 
     .chapter-head {
       display: grid;
@@ -526,9 +540,9 @@
 
     .chapter-copy h2,
     .wide-heading {
-      max-width: 16ch;
+      max-width: 22ch;
       margin-bottom: 1.3rem;
-      font-size: clamp(2.7rem, 5vw, 4.7rem);
+      font-size: clamp(2rem, 3.05vw, 3rem);
       font-weight: 500;
       line-height: 1.02;
     }
@@ -665,7 +679,7 @@
 
     .lifecycle-tabs {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       border-bottom: 1px solid rgba(76, 80, 217, 0.18);
     }
 
@@ -698,7 +712,7 @@
 
     .lifecycle-panel {
       display: none;
-      grid-template-columns: minmax(0, 0.82fr) minmax(22rem, 1.18fr);
+      grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 1.05fr);
       min-height: 35rem;
     }
 
@@ -712,9 +726,9 @@
     }
 
     .panel-copy h3 {
-      max-width: 12ch;
+      max-width: 16ch;
       margin-bottom: 1rem;
-      font-size: clamp(2.1rem, 3.5vw, 3.4rem);
+      font-size: clamp(1.75rem, 2.25vw, 2.2rem);
       font-weight: 500;
       line-height: 1.04;
     }
@@ -817,6 +831,320 @@
       transform: rotate(-4deg);
     }
 
+    .proof-panel {
+      grid-template-columns: minmax(20rem, 0.88fr) minmax(28rem, 1.12fr);
+      min-height: 46rem;
+    }
+
+    .proof-panel .panel-copy { gap: 2rem; }
+    .proof-panel .panel-copy h3 { max-width: 20ch; }
+
+    .founder-dialogue {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+    }
+
+    .dialogue-bubble {
+      padding: 0.9rem 1rem;
+      border-radius: 1rem;
+    }
+
+    .dialogue-bubble small {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--muted);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .dialogue-bubble p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .dialogue-bubble--founder {
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .dialogue-bubble--proof {
+      margin-left: clamp(1rem, 3vw, 3rem);
+      background: var(--lavender);
+    }
+
+    .dialogue-bubble--proof small { color: var(--accent-deep); }
+
+    .panel-scene--product,
+    .panel-scene--evolution,
+    .panel-scene--subskills {
+      display: flex;
+      align-items: center;
+      padding: clamp(1.25rem, 3vw, 2.5rem);
+    }
+
+    .panel-scene--product {
+      min-height: 46rem;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(255, 255, 255, 0.55), transparent 28%),
+        linear-gradient(145deg, #dcd7ff 0%, #8d91ff 54%, #6f74ff 100%);
+    }
+
+    .panel-scene--evolution { background: linear-gradient(145deg, #17152a 0%, #382143 100%); }
+    .panel-scene--subskills { background: linear-gradient(145deg, #edf1ff 0%, #dcd7ff 100%); }
+
+    .proof-screenshots {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: clamp(32rem, 36vw, 40rem);
+    }
+
+    .proof-screenshot {
+      position: absolute;
+      display: block;
+      width: 40%;
+      border: 0.2rem solid rgba(255, 255, 255, 0.82);
+      border-radius: clamp(1.55rem, 2.2vw, 2.25rem);
+      background: #eef6f8;
+      box-shadow: 0 24px 52px rgba(23, 21, 42, 0.24);
+    }
+
+    .proof-screenshot--request {
+      left: -3%;
+      top: 17%;
+      z-index: 1;
+      transform: rotate(-9deg);
+    }
+
+    .proof-screenshot--cart {
+      left: 29%;
+      top: 8%;
+      z-index: 2;
+      width: 42%;
+      box-shadow: 0 32px 70px rgba(23, 21, 42, 0.32);
+      transform: rotate(-2deg);
+    }
+
+    .proof-screenshot--confirmation {
+      right: -3%;
+      top: 1%;
+      z-index: 3;
+      transform: rotate(6deg);
+    }
+
+    .evolution-flow,
+    .subskill-stack {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .evolution-flow { display: grid; gap: 0.65rem; }
+
+    .evolution-step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+    }
+
+    .evolution-step-index {
+      display: grid;
+      width: 2rem;
+      height: 2rem;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    .evolution-step small {
+      display: block;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .evolution-step strong { display: block; margin-top: 0.12rem; font-size: 0.82rem; }
+
+    .evolution-state {
+      padding: 0.28rem 0.48rem;
+      border-radius: 999px;
+      background: rgba(205, 235, 220, 0.16);
+      color: var(--mint);
+      font-size: 0.56rem;
+      font-weight: 700;
+    }
+
+    .evolution-pipeline {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(9.5rem, 1.45fr) auto minmax(4.8rem, 0.72fr) auto minmax(4.8rem, 0.72fr) auto minmax(4.8rem, 0.72fr);
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .pipeline-observations,
+    .pipeline-stage {
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      box-shadow: 0 16px 30px rgba(8, 6, 20, 0.16);
+    }
+
+    .pipeline-observations {
+      min-height: 9.2rem;
+      padding: 1rem;
+      border-radius: 1.2rem;
+    }
+
+    .pipeline-label {
+      display: block;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pipeline-observation-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+    }
+
+    .pipeline-observation-heading small {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .observation-stack {
+      position: relative;
+      height: 6.25rem;
+      margin-top: 0.65rem;
+    }
+
+    .observation-card {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: 0.5rem minmax(0, 1fr);
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 2.1rem;
+      padding: 0.58rem 0.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 0.75rem;
+      background: rgba(255, 255, 255, 0.13);
+    }
+
+    .observation-card::before,
+    .observation-card::after {
+      content: "";
+      display: block;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .observation-card::before { width: 0.42rem; height: 0.42rem; }
+    .observation-card::after { width: 68%; height: 0.3rem; }
+
+    .observation-card:nth-child(1) { top: 0; transform: rotate(-2deg); }
+    .observation-card:nth-child(2) { top: 1.35rem; transform: translateX(0.3rem) rotate(1deg); }
+    .observation-card:nth-child(3) { top: 2.7rem; transform: translateX(-0.15rem) rotate(-0.5deg); }
+    .observation-card:nth-child(4) { top: 4.05rem; transform: translateX(0.18rem) rotate(1.5deg); }
+    .observation-card:nth-child(2)::after { width: 54%; }
+    .observation-card:nth-child(3)::after { width: 76%; }
+    .observation-card:nth-child(4)::after { width: 61%; }
+
+    .pipeline-stage {
+      display: grid;
+      min-height: 7.3rem;
+      padding: 0.8rem 0.45rem;
+      place-content: center;
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .pipeline-stage small {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .pipeline-stage strong {
+      display: block;
+      margin-top: 0.32rem;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.15;
+    }
+
+    .pipeline-stage--release {
+      border-color: rgba(175, 169, 255, 0.5);
+      background: rgba(111, 116, 255, 0.28);
+    }
+
+    .pipeline-arrow {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .subskill-stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
+    .subskill-card:first-child { grid-column: 1 / -1; }
+
+    .subskill-card {
+      padding: 1rem;
+      border: 1px solid rgba(76, 80, 217, 0.15);
+      border-radius: 1.1rem;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      box-shadow: 0 10px 25px rgba(76, 80, 217, 0.08);
+    }
+
+    .subskill-card small {
+      display: block;
+      margin-bottom: 0.3rem;
+      color: var(--accent-deep);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subskill-card strong {
+      display: block;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1rem;
+    }
+
+    .subskill-card p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.45;
+    }
+
     .proof-section {
       overflow: hidden;
       background: var(--plum);
@@ -835,9 +1163,9 @@
     }
 
     .proof-head h2 {
-      max-width: 15ch;
+      max-width: 20ch;
       margin: 0;
-      font-size: clamp(2.8rem, 5.4vw, 5rem);
+      font-size: clamp(2rem, 3.2vw, 3.05rem);
       font-weight: 500;
       line-height: 1.02;
     }
@@ -900,9 +1228,9 @@
 
     .skills-layout {
       display: grid;
-      grid-template-columns: minmax(17rem, 0.62fr) minmax(0, 1.38fr);
+      grid-template-columns: minmax(22rem, 0.78fr) minmax(0, 1.22fr);
       align-items: start;
-      gap: clamp(3rem, 8vw, 8rem);
+      gap: clamp(3rem, 6vw, 6rem);
     }
 
     .skills-intro {
@@ -911,9 +1239,9 @@
     }
 
     .skills-intro h2 {
-      max-width: 10ch;
+      max-width: 16ch;
       margin: 1.2rem 0 1.25rem;
-      font-size: clamp(2.8rem, 4.7vw, 4.4rem);
+      font-size: clamp(1.95rem, 3vw, 2.9rem);
       font-weight: 500;
       line-height: 1.02;
     }
@@ -972,9 +1300,9 @@
       z-index: 2;
       left: 50%;
       top: 50%;
-      width: min(26rem, 70vw);
+      width: min(34rem, 78vw);
       margin: 0;
-      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-size: clamp(1.9rem, 2.65vw, 2.7rem);
       font-weight: 500;
       line-height: 1.04;
       text-align: center;
@@ -1042,13 +1370,13 @@
 
     .faq-layout {
       display: grid;
-      grid-template-columns: minmax(16rem, 0.5fr) minmax(0, 1fr);
-      gap: clamp(3rem, 9vw, 9rem);
+      grid-template-columns: minmax(20rem, 0.65fr) minmax(0, 1fr);
+      gap: clamp(3rem, 7vw, 7rem);
     }
 
     .faq-intro h2 {
       margin: 1.2rem 0 0;
-      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      font-size: clamp(1.95rem, 2.65vw, 2.8rem);
       font-weight: 500;
       line-height: 1.02;
     }
@@ -1102,8 +1430,8 @@
 
     .install-card {
       display: grid;
-      grid-template-columns: minmax(0, 0.8fr) minmax(24rem, 1.2fr);
-      gap: clamp(3rem, 8vw, 8rem);
+      grid-template-columns: minmax(0, 1fr) minmax(24rem, 1fr);
+      gap: clamp(3rem, 6vw, 6rem);
       width: min(100%, calc(var(--max) + 5rem));
       margin-inline: auto;
       padding: clamp(2rem, 6vw, 5rem);
@@ -1116,9 +1444,9 @@
     .install-copy .chapter-label::before { background: #afa9ff; }
 
     .install-copy h2 {
-      max-width: 10ch;
+      max-width: 16ch;
       margin: 1.2rem 0 1.25rem;
-      font-size: clamp(3rem, 5vw, 4.7rem);
+      font-size: clamp(2rem, 3.05vw, 3rem);
       font-weight: 500;
       line-height: 1.01;
     }
@@ -1301,6 +1629,21 @@
       h1 { max-width: 100%; }
     }
 
+    @media (min-width: 1280px) {
+      .hero-phone {
+        right: clamp(-2rem, calc(16rem - 20vw), 0rem);
+        bottom: -2rem;
+        width: clamp(17rem, 19vw, 21rem);
+        padding: clamp(0.42rem, 0.5vw, 0.52rem);
+        border-radius: clamp(2.35rem, 2.6vw, 2.85rem);
+      }
+
+      .hero-phone img { border-radius: clamp(1.92rem, 2.1vw, 2.3rem); }
+
+      .scene-card:first-of-type { left: 8%; }
+      .scene-card:nth-of-type(2) { left: 34%; }
+    }
+
     @media (max-width: 980px) {
       .hero-lower,
       .proof-head,
@@ -1312,12 +1655,12 @@
       .hero-lower { margin-top: 1rem; gap: 1.5rem; }
       .hero-scene { min-height: 17rem; }
       .skills-intro { position: static; }
-      .skills-intro h2 { max-width: 13ch; }
+      .skills-intro h2 { max-width: 18ch; }
       .proof-head { gap: 1.5rem; }
       .proof-head p { max-width: 35rem; }
       .proof-gallery { grid-template-columns: repeat(4, minmax(11rem, 1fr)); }
       .install-card { gap: 3rem; }
-      .install-copy h2 { max-width: 13ch; }
+      .install-copy h2 { max-width: 18ch; }
     }
 
     @media (max-width: 760px) {
@@ -1335,17 +1678,17 @@
       }
 
       .hero::before { display: none; }
-      h1 { max-width: 10ch; font-size: clamp(3.3rem, 15vw, 5.2rem); }
+      h1 { max-width: 100%; font-size: 2.25rem; }
       .hero-lower { grid-template-columns: 1fr; margin-top: 0.75rem; }
       .hero-scene { min-height: 19rem; margin-top: 1rem; }
       .hero-phone {
         right: 7%;
         width: 9rem;
-        padding: 0.225rem;
-        border-width: 0.5px;
+        padding: 0.3rem;
+        border-width: 0.75px;
         border-radius: 1.62rem;
       }
-      .hero-phone img { border-radius: 1.42rem; }
+      .hero-phone img { border-radius: 1.28rem; }
       .scene-card { width: 47%; }
       .scene-card:first-of-type { left: 0; top: 14%; }
       .scene-card:nth-of-type(2) { left: 9%; bottom: 4%; }
@@ -1359,7 +1702,77 @@
 
       .chapter-head { margin-bottom: 3.5rem; }
       .beliefs { grid-template-columns: 1fr; }
-      .belief { min-height: 20rem; }
+      .belief {
+        display: grid;
+        grid-template-columns: 4.75rem minmax(0, 1fr);
+        grid-template-areas:
+          "visual index"
+          "visual title"
+          "visual copy";
+        min-height: 0;
+        column-gap: 1rem;
+        padding: 1.4rem var(--gutter);
+      }
+
+      .belief-visual {
+        grid-area: visual;
+        width: 4.5rem;
+        height: 4.5rem;
+        margin: 0;
+      }
+
+      .belief:nth-child(1) .belief-visual::before { width: 4.15rem; height: 4.15rem; }
+      .belief:nth-child(1) .belief-visual::after {
+        left: 1.55rem;
+        top: 1.55rem;
+        width: 1.05rem;
+        height: 1.05rem;
+        box-shadow: 1.65rem 0 0 var(--lavender);
+      }
+
+      .belief:nth-child(2) .belief-visual::before {
+        top: 0.65rem;
+        width: 4.1rem;
+        height: 2.85rem;
+        border-radius: 0.85rem;
+      }
+
+      .belief:nth-child(2) .belief-visual::after {
+        left: 1.8rem;
+        top: 0.15rem;
+        width: 2.6rem;
+        height: 3.7rem;
+        border-radius: 0.8rem;
+      }
+
+      .belief:nth-child(3) .belief-visual::before {
+        top: 0.15rem;
+        width: 4.15rem;
+        height: 4.15rem;
+      }
+
+      .belief:nth-child(3) .belief-visual::after {
+        left: 1.43rem;
+        top: 1.55rem;
+        width: 1.3rem;
+        height: 1.3rem;
+        box-shadow: 0 0 0 0.52rem white;
+      }
+
+      .belief-index { grid-area: index; margin: 0 0 0.35rem; }
+      .belief h3 {
+        grid-area: title;
+        max-width: none;
+        margin-bottom: 0.55rem;
+        font-size: 1.22rem;
+      }
+
+      .belief p {
+        grid-area: copy;
+        max-width: none;
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
 
       .lifecycle-tabs {
         display: flex;
@@ -1375,6 +1788,12 @@
       .lifecycle-panel.is-active { grid-template-columns: 1fr; }
       .panel-copy { min-height: 25rem; }
       .panel-scene { min-height: 31rem; }
+      .proof-panel,
+      .evolution-panel,
+      .subskills-panel { min-height: 0; }
+      .proof-panel .panel-scene { min-height: 42rem; }
+      .panel-scene--evolution,
+      .panel-scene--subskills { min-height: 31rem; }
 
       .proof-gallery {
         display: flex;
@@ -1431,12 +1850,25 @@
       .scene-card { width: 51%; padding: 0.8rem; }
       .scene-card:nth-of-type(2) { left: 2%; }
       .chapter-copy h2,
-      .wide-heading { font-size: 2.65rem; }
+      .wide-heading { font-size: 2rem; }
       .panel-phone { width: 14.2rem; }
       .panel-float.top { right: 1rem; }
       .panel-float.bottom { left: 1rem; }
+      .panel-scene--product { min-height: 52rem; padding: 0.7rem; }
+      .proof-screenshots { min-height: 32rem; }
+      .proof-screenshot { width: 45%; }
+      .proof-screenshot--request { left: -5%; top: 19%; }
+      .proof-screenshot--cart { left: 25%; top: 9%; width: 51%; }
+      .proof-screenshot--confirmation { right: -5%; top: 1%; }
+      .evolution-step { grid-template-columns: auto minmax(0, 1fr); }
+      .evolution-state { grid-column: 2; }
+      .evolution-pipeline { grid-template-columns: 1fr; }
+      .pipeline-arrow { justify-self: center; transform: rotate(90deg); }
+      .pipeline-stage { min-height: 4.7rem; }
+      .subskill-stack { grid-template-columns: 1fr; }
+      .subskill-card:first-child { grid-column: auto; }
       .proof-shot { flex-basis: 11.5rem; }
-      .orbit-title { width: 17rem; font-size: 2.3rem; }
+      .orbit-title { width: min(20rem, calc(100% - 2rem)); font-size: 1.95rem; }
       .orbit-ring { width: 21rem; }
       .orbit-tag { min-height: 2.4rem; padding: 0.45rem 0.7rem; }
       .faq-item summary { min-height: 4.5rem; }
@@ -1495,12 +1927,12 @@
     <section class="hero shell" aria-labelledby="hero-title">
       <div class="hero-title-row">
         <p class="chapter-label">Открытый код · Создано для Codex</p>
-        <h1 id="hero-title">Создайте iOS-продукт, <span class="accent">которого заслуживает ваша идея.</span></h1>
+        <h1 id="hero-title">Создайте AI-native продукт, <span class="accent">которого заслуживает ваша идея.</span></h1>
       </div>
 
       <div class="hero-lower">
         <div class="hero-intro">
-          <p>Пять специализированных skills превращают бриф основателя в нативное SwiftUI-приложение с реальным бэкендом и серверными AI-агентами. Код, продуктовые решения и дальнейший путь остаются у вас.</p>
+          <p>Agent Foundry Skill Pack превращает бриф основателя в нативное SwiftUI-приложение с реальным бэкендом и серверными AI-агентами. Код, продуктовые решения и полный контроль над продуктом остаются у вас.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#install">Установить в Codex</a>
             <a class="button button-soft" href="#system">Посмотреть путь сборки</a>
@@ -1516,13 +1948,13 @@
         <div class="hero-scene" aria-label="AgentFoundry превращает бриф основателя в работающий продукт">
           <div class="scene-card">
             <small>Бриф основателя</small>
-            <strong>Помогите владельцам домов решать срочные проблемы.</strong>
-            <p>Фото → диагностика → предложения → подтверждённый заказ</p>
+            <strong>Опишите словами, что должны делать продукт и агенты.</strong>
+            <p>Например: фото → диагностика → предложения → подтверждённый заказ</p>
           </div>
           <div class="scene-card">
-            <small>Результат сборки</small>
-            <strong>Один законченный сценарий.</strong>
-            <p>Нативный UI, бэкенд, инструменты агентов, восстановление, QA</p>
+            <small>Результат скилла Proof</small>
+            <strong>Рабочий продукт с бэкендом и агентами.</strong>
+            <p>Нативный UI, продакшн-реди бэкенд, инструменты агентов, тестирование</p>
           </div>
           <div class="hero-phone" aria-hidden="true">
             <img src="/assets/screenshots/qchat-gallery-home-en.png" alt="" decoding="async">
@@ -1537,8 +1969,8 @@
         <div class="chapter-head reveal">
           <p class="chapter-label">01 // Что такое AgentFoundry</p>
           <div class="chapter-copy">
-            <h2 id="what-title">Идея должна стать <span>продуктом</span>, а не набором промптов.</h2>
-            <p class="chapter-lead">AgentFoundry даёт Codex систему создания продукта: начните с одного полезного сценария, сделайте AI безопасным и надёжным, а затем развивайте продукт на основе фактов, а не догадок.</p>
+            <h2 id="what-title">Идея должна сразу стать <span>рабочим продуктом</span>, а не прототипом.</h2>
+            <p class="chapter-lead">AgentFoundry даёт Codex систему создания продукта: отметьте скилл Agent Foundry Proof и воплотите в жизнь первый полезный сценарий. Продолжайте развивать продукт далее на основе фактов, а не догадок.</p>
           </div>
         </div>
       </div>
@@ -1547,19 +1979,19 @@
         <article class="belief">
           <div class="belief-visual" aria-hidden="true"></div>
           <span class="belief-index">01</span>
-          <h3>Начните с реального результата для пользователя</h3>
-          <p>Определите, что должен сделать человек, прежде чем выбирать экраны, инструменты и поведение агента.</p>
+          <h3>Начните с результата для пользователя</h3>
+          <p>Опишите, какую информацию агент должен собрать у пользователя, какой результат должен выдать, как этот результат должен выглядеть визуально и как в дальнейшем пользователь сможет менять его через агента.</p>
         </article>
         <article class="belief">
           <div class="belief-visual" aria-hidden="true"></div>
           <span class="belief-index">02</span>
-          <h3>Соберите весь продуктовый путь</h3>
-          <p>Нативный интерфейс, авторизация, хранилище, серверные функции, AI-инструменты, подтверждения и восстановление после ошибок работают вместе.</p>
+          <h3>Добавьте детали продуктового пути</h3>
+          <p>Agent Foundry добавит нативный интерфейс, авторизацию, хранилище, серверные функции, AI-инструменты, подтверждения и восстановление после ошибок — всё будет работать вместе.</p>
         </article>
         <article class="belief">
           <div class="belief-visual" aria-hidden="true"></div>
           <span class="belief-index">03</span>
-          <h3>Сохраните контроль над созданным</h3>
+          <h3>Сохраните контроль над продуктом</h3>
           <p>Ваш репозиторий, ваши аккаунты, ваш бренд и исходный код. AgentFoundry — система сборки, а не привязка к платформе.</p>
         </article>
       </div>
@@ -1570,53 +2002,73 @@
         <div class="chapter-head reveal">
           <p class="chapter-label">02 // Как это работает</p>
           <div class="chapter-copy">
-            <h2 id="system-title">Ваш продукт задаёт темп. <span>AgentFoundry следует за ним.</span></h2>
-            <p class="chapter-lead">Пройдите пять этапов по порядку или откройте тот, который нужен продукту сейчас. После каждого остаются работающий код и зафиксированные решения.</p>
+            <h2 id="system-title">Сначала создайте продукт. <span>Затем развивайте его.</span></h2>
+            <p class="chapter-lead">Proof превращает разговор с фаундером в первый полноценный продукт. Product Evolution учится на фактах от пользователей и готовит следующие изменения. Sub-skills усиливают интерфейс, дизайн, доменные инструменты, айдентику и проактивность там, где это нужно.</p>
           </div>
         </div>
 
         <div class="lifecycle reveal">
           <div class="lifecycle-tabs" role="tablist" aria-label="Этапы сборки AgentFoundry">
-            <button class="lifecycle-tab" id="tab-proof" type="button" role="tab" aria-selected="true" aria-controls="panel-proof" data-tab="proof"><span>01</span>Проверка</button>
-            <button class="lifecycle-tab" id="tab-artifact" type="button" role="tab" aria-selected="false" aria-controls="panel-artifact" data-tab="artifact"><span>02</span>Интерфейс</button>
-            <button class="lifecycle-tab" id="tab-design" type="button" role="tab" aria-selected="false" aria-controls="panel-design" data-tab="design"><span>03</span>Дизайн</button>
-            <button class="lifecycle-tab" id="tab-proactive" type="button" role="tab" aria-selected="false" aria-controls="panel-proactive" data-tab="proactive"><span>04</span>Проактивность</button>
-            <button class="lifecycle-tab" id="tab-evolution" type="button" role="tab" aria-selected="false" aria-controls="panel-evolution" data-tab="evolution"><span>05</span>Развитие</button>
+            <button class="lifecycle-tab" id="tab-proof" type="button" role="tab" aria-selected="true" aria-controls="panel-proof" data-tab="proof"><span>01</span>Proof</button>
+            <button class="lifecycle-tab" id="tab-evolution" type="button" role="tab" aria-selected="false" aria-controls="panel-evolution" data-tab="evolution"><span>02</span>Product Evolution</button>
+            <button class="lifecycle-tab" id="tab-subskills" type="button" role="tab" aria-selected="false" aria-controls="panel-subskills" data-tab="subskills"><span>03</span>Sub-skills</button>
           </div>
 
-          <article class="lifecycle-panel is-active" id="panel-proof" role="tabpanel" aria-labelledby="tab-proof" data-panel="proof">
+          <article class="lifecycle-panel proof-panel is-active" id="panel-proof" role="tabpanel" aria-labelledby="tab-proof" data-panel="proof">
             <div class="panel-copy">
               <div>
-                <p class="chapter-label">HomeCrew · Первая проверка</p>
-                <h3>Сделайте рабочим один полный сценарий.</h3>
-                <p>Владелец дома фотографирует сломанную технику, получает диагностику с помощью AI, сравнивает предложения и подтверждает заказ.</p>
+                <p class="chapter-label">AgentFoundry Proof Skill</p>
+                <h3>Опишите идею и получите первый полноценный продукт.</h3>
+                <p>Начните обычными словами. Proof превратит разговор в работающий пользовательский сценарий, интерфейс, бэкенд и поведение агента.</p>
+                <div class="founder-dialogue" aria-label="Пример разговора фаундера с Proof">
+                  <div class="dialogue-bubble dialogue-bubble--founder">
+                    <small>Фаундер</small>
+                    <p>Пользователь пишет, что хочет купить в магазине. Агент собирает заказ, запрашивает подтверждение оплаты, оформляет доставку и присылает push-уведомление о создании нового заказа.</p>
+                  </div>
+                </div>
               </div>
-              <div class="panel-output"><small>Что будет готово</small><strong>SwiftUI-сценарий · Авторизация · Надёжные данные · Firebase Functions · Серверный агент</strong></div>
+              <div class="panel-output"><small>Что создаст Proof</small><strong>Полный пользовательский сценарий · Интерфейс · Бэкенд · AI-агент · Безопасность · Тестирование</strong></div>
             </div>
-            <div class="panel-scene">
-              <div class="panel-phone"><img src="/assets/screenshots/qchat-gallery-home-en.png" alt="Главный экран QChat с нативными точками входа к агентам" loading="lazy" decoding="async"></div>
-              <div class="panel-float top"><strong>Диагностика готова</strong><span>Нужно подтверждение основателя</span></div>
-              <div class="panel-float bottom"><strong>Найдено 4 предложения</strong><span>Сохранены как надёжные записи</span></div>
+            <div class="panel-scene panel-scene--product">
+              <div class="proof-screenshots" aria-label="Полный сценарий покупки: запрос, корзина с подтверждением оплаты и уведомление о новом заказе">
+                <img class="proof-screenshot proof-screenshot--request" src="../assets/proof-order-request.png" alt="Пользователь описывает заказ в чате" loading="lazy">
+                <img class="proof-screenshot proof-screenshot--cart" src="../assets/proof-cart-approval.png" alt="Собранная корзина и запрос подтверждения оплаты" loading="lazy">
+                <img class="proof-screenshot proof-screenshot--confirmation" src="../assets/proof-order-created.png" alt="Созданный заказ и push-уведомление с подтверждением" loading="lazy">
+              </div>
             </div>
           </article>
 
-          <article class="lifecycle-panel" id="panel-artifact" role="tabpanel" aria-labelledby="tab-artifact" data-panel="artifact" hidden>
+          <article class="lifecycle-panel evolution-panel" id="panel-evolution" role="tabpanel" aria-labelledby="tab-evolution" data-panel="evolution" hidden>
             <div class="panel-copy">
               <div>
-                <p class="chapter-label">Artifact UI</p>
-                <h3>Превратите результат агента в часть продукта.</h3>
-                <p>Результаты становятся нативными записями с понятным статусом, действиями, деталями и историей, а не исчезают внутри ответа в чате.</p>
+                <p class="chapter-label">AgentFoundry Product Evolution</p>
+                <h3>Превращайте факты от пользователей в следующий релиз.</h3>
+                <p>Product Evolution анализирует реальные разговоры, формирует проверенные предложения, ждёт подтверждения и готовит изменения в репозитории и кандидата на выпуск.</p>
               </div>
-              <div class="panel-output"><small>Что изменится</small><strong>Типизированные модели · Нативные карточки · Детальные экраны · Действия · История · Пустые состояния и ошибки</strong></div>
+              <div class="panel-output"><small>Что замыкает цикл</small><strong>Факты пользователей · Проверенное предложение · Подтверждение · Задача для Codex · QA · Кандидат на выпуск</strong></div>
             </div>
-            <div class="panel-scene">
-              <div class="panel-phone"><img src="/assets/screenshots/qchat-gallery-food-log-en.png" alt="Дневник питания QChat как сохраняемый нативный артефакт" loading="lazy" decoding="async"></div>
-              <div class="panel-float top"><strong>Сохранено, не потеряно</strong><span>Доступно после перезапуска</span></div>
-              <div class="panel-float bottom"><strong>Нативные действия</strong><span>Изменить · подтвердить · продолжить</span></div>
+            <div class="panel-scene panel-scene--evolution">
+              <div class="evolution-pipeline" aria-label="Несколько наблюдений проходят анализ, превращаются в pull request и входят в релиз">
+                <div class="pipeline-observations">
+                  <div class="pipeline-observation-heading"><small>01</small><span class="pipeline-label">Observations</span></div>
+                  <div class="observation-stack">
+                    <span class="observation-card" aria-hidden="true"></span>
+                    <span class="observation-card" aria-hidden="true"></span>
+                    <span class="observation-card" aria-hidden="true"></span>
+                    <span class="observation-card" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <span class="pipeline-arrow" aria-hidden="true">→</span>
+                <div class="pipeline-stage"><small>02</small><strong>Анализ</strong></div>
+                <span class="pipeline-arrow" aria-hidden="true">→</span>
+                <div class="pipeline-stage"><small>03</small><strong>PR</strong></div>
+                <span class="pipeline-arrow" aria-hidden="true">→</span>
+                <div class="pipeline-stage pipeline-stage--release"><small>04</small><strong>Release</strong></div>
+              </div>
             </div>
           </article>
 
-          <article class="lifecycle-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design" data-panel="design" hidden>
+          <article class="lifecycle-panel" data-archived-subskill="design" hidden>
             <div class="panel-copy">
               <div>
                 <p class="chapter-label">Продуктовый дизайн</p>
@@ -1632,7 +2084,7 @@
             </div>
           </article>
 
-          <article class="lifecycle-panel" id="panel-proactive" role="tabpanel" aria-labelledby="tab-proactive" data-panel="proactive" hidden>
+          <article class="lifecycle-panel" data-archived-subskill="proactive" hidden>
             <div class="panel-copy">
               <div>
                 <p class="chapter-label">Проактивная система</p>
@@ -1648,19 +2100,23 @@
             </div>
           </article>
 
-          <article class="lifecycle-panel" id="panel-evolution" role="tabpanel" aria-labelledby="tab-evolution" data-panel="evolution" hidden>
+          <article class="lifecycle-panel subskills-panel" id="panel-subskills" role="tabpanel" aria-labelledby="tab-subskills" data-panel="subskills" hidden>
             <div class="panel-copy">
               <div>
-                <p class="chapter-label">Развитие продукта</p>
-                <h3>Превратите факты в следующий релиз.</h3>
-                <p>Реальные разговоры с пользователями становятся проверенными предложениями, задачами реализации, подтверждёнными изменениями, release notes и кандидатом на выпуск.</p>
+                <p class="chapter-label">AgentFoundry Sub-skills</p>
+                <h3>Точечные возможности там, где они нужны.</h3>
+                <p>Sub-skills не разбивают продукт на отдельные фазы. Они усиливают цельный сценарий, созданный Proof и развиваемый через Product Evolution.</p>
               </div>
-              <div class="panel-output"><small>Что замыкает цикл</small><strong>Факты от пользователей · Предложения · Подтверждение человеком · Реализация · QA · Кандидат на выпуск</strong></div>
+              <div class="panel-output"><small>Доступные sub-skills</small><strong>Интерфейс · Дизайн · Проактивность · App Icon · Proof Domain Tools</strong></div>
             </div>
-            <div class="panel-scene">
-              <div class="panel-phone"><img src="/assets/screenshots/qchat-gallery-home-en.png" alt="Главный экран QChat после развития продукта" loading="lazy" decoding="async"></div>
-              <div class="panel-float top"><strong>Предложение одобрено</strong><span>Факты приложены</span></div>
-              <div class="panel-float bottom"><strong>Кандидат на выпуск</strong><span>Проверки пройдены</span></div>
+            <div class="panel-scene panel-scene--subskills">
+              <div class="subskill-stack" aria-label="Sub-skills AgentFoundry">
+                <div class="subskill-card"><small>Sub-skill · Интерфейс</small><strong>Artifact UI</strong><p>Превращает результат агента в типизированные записи, нативные карточки, детали, действия, статусы и историю.</p></div>
+                <div class="subskill-card"><small>Sub-skill · Дизайн</small><strong>AgentFoundry Design</strong><p>Добавляет цельную нативную дизайн-систему, доступность, проверку зон касания и визуальный QA.</p></div>
+                <div class="subskill-card"><small>Sub-skill · Проактивность</small><strong>AgentFoundry Proactive</strong><p>Добавляет наблюдателей, сигналы, сохраняемые задачи, подтверждения, уведомления, повторы и журнал действий.</p></div>
+                <div class="subskill-card"><small>Sub-skill · Айдентика</small><strong>AgentFoundry App Icon</strong><p>Создаёт, интегрирует и проверяет уникальную иконку приложения, готовую к публикации.</p></div>
+                <div class="subskill-card"><small>Sub-skill · Домен</small><strong>Proof Domain Tools</strong><p>Добавляет записи владельца, типизированные схемы, безопасные изменения, транзакции и инструменты агента.</p></div>
+              </div>
             </div>
           </article>
         </div>
@@ -1697,7 +2153,7 @@
       </div>
     </section>
 
-    <section class="chapter" id="skills" aria-labelledby="skills-title">
+    <section class="chapter" id="skills" aria-labelledby="skills-title" hidden>
       <div class="shell skills-layout">
         <div class="skills-intro reveal">
           <p class="chapter-label">04 // Набор skills</p>
@@ -1732,13 +2188,13 @@
     <section class="chapter" id="faq" aria-labelledby="faq-title">
       <div class="shell faq-layout">
         <div class="faq-intro reveal">
-          <p class="chapter-label">05 // Вопросы</p>
+          <p class="chapter-label">04 // Вопросы</p>
           <h2 id="faq-title">Перед установкой</h2>
         </div>
         <div class="faq-list reveal">
           <details class="faq-item">
-            <summary>AgentFoundry — это no-code конструктор приложений?</summary>
-            <p>Нет. Это открытый набор skills, который помогает Codex принимать продуктовые и технические решения. Результат — исходный код в вашем репозитории.</p>
+            <summary>Что такое Agent Foundry?</summary>
+            <p>Agent Foundry — это открытый Skill Pack для Codex, который помогает превратить описание продукта в рабочее AI-native приложение: с нативным интерфейсом, бэкендом, AI-агентами, безопасностью и тестированием. Результат — исходный код и продуктовая инфраструктура в ваших аккаунтах и репозитории, без привязки к платформе.</p>
           </details>
           <details class="faq-item">
             <summary>Что нужно для начала?</summary>
@@ -1763,8 +2219,8 @@
     <section class="install-section" id="install" aria-labelledby="install-title">
       <div class="install-card">
         <div class="install-copy">
-          <p class="chapter-label">06 // Начните создавать</p>
-          <h2 id="install-title">Принесите идею. <span>Сохраните продукт.</span></h2>
+          <p class="chapter-label">05 // Начните создавать</p>
+          <h2 id="install-title">Принесите идею. <span>Создайте продукт.</span></h2>
           <p>Скопируйте установочный промпт в Codex. Затем опишите первый полный сценарий, который должен пройти пользователь.</p>
           <div class="requirements" aria-label="Что понадобится">
             <span>Codex</span><span>Репозиторий GitHub</span><span>Firebase позже</span><span>OpenAI позже</span>
@@ -1793,7 +2249,7 @@ skills/agent-foundry-product-evolution</code></pre>
     <div class="shell footer-top">
       <div class="footer-brand">
         <strong>AgentFoundry</strong>
-        <p>Создано и поддерживается Дмитрием Лосевым. Продуктовое лидерство, iOS-разработка и опыт создания настоящих AI-native продуктов собраны в переиспользуемую систему.</p>
+        <p>Создано и поддерживается Дмитрием Лосевым. Продуктовое лидерство и опыт создания AI-native продуктов собраны в переиспользуемую систему.</p>
       </div>
       <div class="footer-links">
         <strong>AgentFoundry</strong>
