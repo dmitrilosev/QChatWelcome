@@ -512,6 +512,32 @@
       .steps { grid-template-columns: 1fr; }
       .step { border-radius: 1.25rem; }
     }
+
+    /* Calm hierarchy with glass reserved for controls and compact surfaces. */
+    .hero { gap: 0; padding-top: clamp(3rem, 7svh, 5rem); }
+    .app-icon { width: 76px; height: 76px; border-radius: 21px; box-shadow: 0 12px 30px rgba(36,55,85,.10); margin-bottom: 28px; }
+    .hero h1 { max-width: 720px; white-space: normal; font-weight: 650; letter-spacing: -.035em; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.08; }
+    .hero-title-detail { display: block; max-width: 650px; margin: 20px auto 0; font-size: clamp(1.125rem, 2.8vw, 1.5rem); font-weight: 400; line-height: 1.5; letter-spacing: -.015em; color: #4c5565; text-wrap: pretty; }
+    .hero > .appstore { margin-top: 30px; width: 176px; border-radius: 10px; box-shadow: 0 7px 18px rgba(25,38,63,.10); }
+    .hero .pills { margin-top: 30px; max-width: 680px; gap: 8px; }
+    .hero .pill { min-height: 34px; padding: 8px 13px; font-size: 12px; line-height: 1.2; font-weight: 500; color: #465266; border-color: rgba(255,255,255,.92); background: rgba(255,255,255,.58); box-shadow: inset 0 1px 0 white, 0 2px 7px rgba(41,61,89,.035); -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3); }
+    .hero > .note { margin-top: 22px; max-width: 470px; font-size: 12px; font-weight: 400; line-height: 1.55; color: #626b7a; }
+    .language summary { font-weight: 600; min-height: 44px; background: rgba(255,255,255,.68); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 5px 20px rgba(43,63,93,.07); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+    .language-menu { box-shadow: 0 10px 26px rgba(43,63,93,.12); -webkit-backdrop-filter: blur(24px); }
+    .language a { font-weight: 500; }
+    summary:focus-visible, button:focus-visible { outline: 3px solid #3478cc; outline-offset: 4px; }
+    @media (max-width: 600px) {
+      .hero { padding-top: 3.75rem; }
+      .app-icon { width: 68px; height: 68px; border-radius: 19px; margin-bottom: 24px; }
+      .hero h1 { font-size: clamp(2.25rem, 9.5vw, 3rem); }
+      .hero-title-detail { margin-top: 16px; font-size: 18px; line-height: 1.5; max-width: 35ch; }
+      .hero > .appstore { margin-top: 26px; }
+      .hero .pills { margin-top: 26px; gap: 7px; }
+      .hero .pill { padding: 7px 10px; min-height: 31px; font-size: 11px; }
+      .hero > .note { max-width: 37ch; margin-top: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+    @media (prefers-reduced-transparency: reduce) { .pill, .language summary, .language-menu { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; } }
   </style>
 </head>
 <body>
@@ -535,7 +561,7 @@
       <span class="app-icon">
         <img src="https://storage.googleapis.com/ployai/fa93d450-17d5-4edf-a36b-8e7b46ea57a5/user/c2479150-slurp-qchat.webp" alt="QChat app icon" data-i18n-attr="alt:appIconAlt">
       </span>
-      <h1 data-i18n="heroTitle">An AI assistant with grocery delivery, a food and workout diary, workout booking and other services for an active life</h1>
+      <h1><span data-i18n="heroTitle">An AI assistant</span><span class="hero-title-detail" data-i18n="heroDetail">with grocery delivery, a food and workout diary, workout booking and other services for an active life</span></h1>
       <a class="appstore" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store" data-i18n-attr="aria-label:appStoreAria">
         <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" data-appstore-badge data-i18n-attr="alt:appStoreAlt">
       </a>
@@ -662,7 +688,8 @@
         appStoreAlt: "Загрузите в App Store",
         appStoreAria: "Скачать QChat в App Store",
         appIconAlt: "Иконка приложения QChat",
-        heroTitle: "ИИ ассистент с доставкой продуктов, дневником питания и тренировок, записью на тренировки и другими сервисами для активной жизни",
+        heroTitle: "ИИ ассистент",
+        heroDetail: "с доставкой продуктов, дневником питания и тренировок, записью на тренировки и другими сервисами для активной жизни",
         pillFitness: "дневник питания",
         pillHealth: "калории и БЖУ",
         pillRestaurants: "готовая еда",
@@ -717,7 +744,8 @@
         appStoreAlt: "Download on the App Store",
         appStoreAria: "Download QChat on the App Store",
         appIconAlt: "QChat app icon",
-        heroTitle: "An AI assistant with grocery delivery, a food and workout diary, workout booking and other services for an active life",
+        heroTitle: "An AI assistant",
+        heroDetail: "with grocery delivery, a food and workout diary, workout booking and other services for an active life",
         pillFitness: "food diary",
         pillHealth: "calories and macros",
         pillRestaurants: "prepared meals",
