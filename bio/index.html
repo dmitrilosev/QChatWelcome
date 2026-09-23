@@ -801,6 +801,7 @@
     .grid.current { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.portfolio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid.resume { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.resume > .resume-card { grid-column: 1 / -1; }
 
     .card {
       position: relative;
@@ -1203,7 +1204,7 @@
       <div class="nav-controls">
         <div class="nav-inner">
           <a href="#portfolio">My work</a>
-          <a href="#resume">Career</a>
+          <a href="#resume">Resume</a>
           <a href="mailto:hfc550@gmail.com">Contact</a>
         </div>
         <div class="language-switcher">
@@ -1484,28 +1485,10 @@
 
     <section class="section" id="resume">
       <div class="section-head">
-        <span class="kicker">Career</span>
-        <h2>Career path</h2>
-        <p class="section-copy">Product leadership, hands-on development, launching products from zero to one, work across large B2C ecosystems, commerce, and partner launches.</p>
+        <h2>Resume</h2>
       </div>
 
       <div class="grid resume">
-        <article class="resume-card">
-          <h3>AI Product Lead</h3>
-          <ul class="resume-list">
-            <li>I build products from zero to one, launch internal ventures inside large companies, and scale digital products with 14M&ndash;65M MAU.</li>
-            <li>My work spans GMV growth, team leadership, product vision and strategy, partnerships, AI-native UX, technical architecture, and GTM.</li>
-          </ul>
-        </article>
-
-        <article class="resume-card">
-          <h3>AI Native Engineering</h3>
-          <ul class="resume-list">
-            <li>While leading product teams, I also build hands-on and with AI agents: iOS apps, Firebase backends, OpenAI agent workflows, telemetry, evals, guardrails, and release paths.</li>
-            <li>QChat was built end-to-end with AI agents, including product iteration, CI/CD, release automation, and the operating loop around shipping.</li>
-          </ul>
-        </article>
-
         <article class="resume-card">
           <h3>Resume</h3>
           <ul class="resume-list">
