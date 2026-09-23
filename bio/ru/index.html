@@ -1209,7 +1209,10 @@
 
       .product-frame { animation: none !important; }
     }
-  </style>
+  img[src*="screenshots/current"] { object-fit: contain !important; background: #EAF3FF; }
+  .qchat-preview-strip { display:flex; gap:8px; height:100%; width:100%; padding:12px; background:#EAF3FF; }
+.qchat-preview-strip img { width:calc((100% - 16px)/3) !important; height:100% !important; object-fit:contain !important; }
+</style>
 </head>
 <body>
   <main class="page">
@@ -1276,8 +1279,8 @@
           <span class="frame-label">Uzum · рост GMV в 3,64 раза</span>
         </div>
         <div class="product-frame bottom">
-          <img src="../assets/qchat-appstore.png" alt="Потребительские AI-агенты QChat" decoding="async">
-          <span class="frame-label">AI-агенты для повседневной жизни</span>
+          <img src="/assets/screenshots/current/ru/iphone/04.png" alt="Дневник питания и баланс энергии QChat" decoding="async">
+          <span class="frame-label">Питание и активность с ИИ</span>
         </div>
       </div>
 
@@ -1338,15 +1341,12 @@
         <article class="card visual">
           <a class="card-hitbox" href="https://qchat.nl/ru/" target="_blank" rel="noopener" aria-label="Подробнее о QChat"></a>
           <div class="media">
-            <picture>
-              <source type="image/jpeg" srcset="../assets/generated/qchat-appstore-480.jpg 480w, ../assets/generated/qchat-appstore-800.jpg 800w, ../assets/generated/qchat-appstore-1200.jpg 1200w" sizes="(max-width: 680px) calc(100vw - 32px), (max-width: 1020px) calc((100vw - 46px) / 2), min(31vw, 457px)">
-              <img src="../assets/qchat-appstore.png" alt="Страница QChat в App Store" loading="lazy" decoding="async">
-            </picture>
+            <div class="qchat-preview-strip"><img src="/assets/screenshots/current/ru/iphone/04.png" alt="QChat баланс энергии" loading="lazy" decoding="async"><img src="/assets/screenshots/current/ru/iphone/02.png" alt="QChat ужин под цель" loading="lazy" decoding="async"><img src="/assets/screenshots/current/ru/iphone/05.png" alt="QChat свежие продукты" loading="lazy" decoding="async"></div>
           </div>
           <div class="body">
             <h3>QChat</h3>
-            <p class="copy">AI-агенты для повседневной жизни.</p>
-            <p class="copy">Закажите еду, соберите корзину продуктов, запишите тренировку или найдите жильё. Скажите агенту QChat, что вам нужно, и он решит задачу за секунды.</p>
+            <p class="copy">Питание, активность и доставка с ИИ-помощником.</p>
+            <p class="copy">Записывайте еду и тренировки обычными словами, следите за балансом калорий и подбирайте ужин под свою цель. Доставка свежих продуктов и готовой еды доступна в отдельных районах Москвы.</p>
             <div class="card-actions qchat-actions">
               <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Скачать QChat в App Store">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ru-ru" alt="Скачать в App Store">
