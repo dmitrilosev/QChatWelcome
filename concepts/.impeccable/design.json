@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T12:28:47.964090+00:00",
+  "title": "Design System: QChat concept previews",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "fresh-food-message",
+        "value": "0 12px 36px #14312426",
+        "purpose": "Floating conversation on food photography."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button",
+        "value": "background .18s, transform .18s",
+        "purpose": "Shared primary action hover."
+      },
+      {
+        "name": "day-screens",
+        "value": "height .4s ease, opacity .4s ease, transform .4s ease",
+        "purpose": "Desktop day selection."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation:none!important; transition:none!important; scroll-behavior:auto",
+        "purpose": "Reduced-motion preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "fresh-wide",
+        "value": "1600px"
+      },
+      {
+        "name": "fresh-compact",
+        "value": "1050px"
+      },
+      {
+        "name": "shared-and-pulse-compact",
+        "value": "900px"
+      },
+      {
+        "name": "fresh-stack",
+        "value": "700px"
+      },
+      {
+        "name": "pulse-stack",
+        "value": "650px"
+      },
+      {
+        "name": "shared-mobile",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Fresh download button",
+      "kind": "button",
+      "refersTo": "button-fresh",
+      "description": "Pill-shaped primary action.",
+      "html": "<button class=\"ds-button-fresh\">Download QChat</button>",
+      "css": ".ds-button-fresh{font:700 15px Manrope,sans-serif;min-height:56px;padding:16px 24px;border:0;border-radius:50px;background:#143124;color:#fff;cursor:pointer;transition:background .18s,transform .18s}.ds-button-fresh:hover{transform:translateY(-2px);background:#2958d6;color:white}.ds-button-fresh:focus-visible{outline:3px solid #b5356d;outline-offset:5px}"
+    },
+    {
+      "name": "Pulse download button",
+      "kind": "button",
+      "refersTo": "button-pulse",
+      "description": "Pill-shaped primary action.",
+      "html": "<button class=\"ds-button-pulse\">Download QChat</button>",
+      "css": ".ds-button-pulse{font:700 15px Manrope,sans-serif;min-height:56px;padding:16px 24px;border:0;border-radius:50px;background:#173d47;color:#e9f7f7;cursor:pointer;transition:background .18s,transform .18s}.ds-button-pulse:hover{transform:translateY(-2px);background:#2958d6;color:white}.ds-button-pulse:focus-visible{outline:3px solid #b5356d;outline-offset:5px}"
+    },
+    {
+      "name": "Fresh scenario selector",
+      "kind": "chip",
+      "description": "Selected scenario control.",
+      "html": "<button class=\"ds-tab\" aria-selected=\"true\">Diary</button>",
+      "css": ".ds-tab{font:600 13px Manrope,sans-serif;padding:12px 17px;border:1px solid #bed0c1;border-radius:30px;background:transparent;color:#143124;cursor:pointer}.ds-tab[aria-selected=true]{background:#143124;border-color:#143124;color:white}.ds-tab:hover{border-color:#143124}.ds-tab:focus-visible{outline:3px solid #b5356d;outline-offset:5px}"
+    },
+    {
+      "name": "Pulse day selector",
+      "kind": "nav",
+      "description": "Time-marked active selector.",
+      "html": "<button class=\"ds-day\" aria-selected=\"true\"><time>08:30</time><span>Breakfast</span></button>",
+      "css": ".ds-day{display:flex;justify-content:space-between;gap:30px;background:#173d47;color:#ffa287;border:0;border-top:2px solid #ffa287;padding:20px 0 10px;font:17px Manrope,sans-serif;cursor:pointer}.ds-day time{font-size:22px;font-variant-numeric:tabular-nums}.ds-day:focus-visible{outline:3px solid #b5356d;outline-offset:5px}"
+    },
+    {
+      "name": "Fresh conversation surface",
+      "kind": "card",
+      "description": "Static surface for illustrative scenario copy.",
+      "html": "<blockquote class=\"ds-quote\"><span>EXAMPLE</span><p>What could I have for dinner?</p></blockquote>",
+      "css": ".ds-quote{margin:0;padding:26px;background:#f3f7ef;border-radius:16px;max-width:450px;color:#143124;font-family:Manrope,sans-serif}.ds-quote span{font-size:12px;font-weight:800;color:#527453}.ds-quote p{font-size:18px;margin:8px 0 0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Fresh: food editorial. Pulse: rhythm of a day.",
+    "overview": "Two implemented alternative preview systems for user review, scoped to concepts/. No claim of user approval or device verification.",
+    "keyCharacteristics": [
+      "Distinct page structures and palettes",
+      "Local Manrope and real product screenshots",
+      "Keyboard-operated scenario selectors"
+    ],
+    "rules": [],
+    "dos": [
+      "Preserve concept-specific structure and colors.",
+      "Keep illustrative scenarios explicit."
+    ],
+    "donts": [
+      "Do not invent product outcomes or metrics.",
+      "Do not apply preview styles to the main site without authorization."
+    ]
+  }
+}
