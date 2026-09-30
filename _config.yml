@@ -1,2 +1,8 @@
 include:
   - .well-known
+
+# Archived QChat landing pages: keep sources, do not publish them.
+exclude:
+  - index.html
+  - en
+  - ru
