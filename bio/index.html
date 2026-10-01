@@ -1196,6 +1196,34 @@
   img[src*="screenshots/current"] { object-fit: contain !important; background: #EAF3FF; }
   .qchat-preview-strip { display:flex; gap:8px; height:100%; width:100%; padding:12px; background:#EAF3FF; }
 .qchat-preview-strip img { width:calc((100% - 16px)/3) !important; height:100% !important; object-fit:contain !important; }
+
+    /* QChat: three product screens, shared by the hero and portfolio card. */
+    .qchat-showcase {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; height: 100%; padding: 24px 18px;
+      background: radial-gradient(ellipse at 80% 15%, #e7ddff 0, transparent 60%), linear-gradient(135deg, #eef6ff, #dceaff 65%, #e2e9ff);
+    }
+    .qchat-showcase img {
+      flex: 1 1 0; min-width: 0; width: calc((100% - 16px) / 3) !important;
+      height: auto !important; max-height: 100%; object-fit: contain !important;
+      border-radius: 12px; background: #eaf3ff; box-shadow: 0 12px 24px rgba(33, 64, 117, .14);
+    }
+    .qchat-showcase img:nth-child(1) { transform: translateY(10px) rotate(-4deg); }
+    .qchat-showcase img:nth-child(2) { transform: translateY(-8px); z-index: 1; }
+    .qchat-showcase img:nth-child(3) { transform: translateY(10px) rotate(4deg); }
+    .product-frame.qchat-main .qchat-showcase { padding: 84px 20px 34px; }
+    .qchat-main .frame-title {
+      top: 24px; left: 24px; transform: none; text-align: left;
+      padding: 0; border: 0; background: none; box-shadow: none; backdrop-filter: none;
+    }
+    .qchat-main .frame-title strong { font-size: 26px; letter-spacing: -.04em; }
+    .qchat-main .frame-title span { font-size: 11px; max-width: 17ch; line-height: 1.3; }
+    .product-frame.travel-small img { object-position: 50% 55%; }
+    @media (max-width: 680px) {
+      .product-frame.qchat-main .qchat-showcase { padding: 72px 14px 28px; gap: 6px; }
+      .qchat-main .frame-title { top: 20px; left: 20px; }
+      .qchat-main .frame-title strong { font-size: 23px; }
+    }
 </style>
 </head>
 <body>
@@ -1249,20 +1277,17 @@
       </div>
 
       <div class="hero-stage" aria-label="Selected product work">
-        <div class="product-frame main">
-          <img src="assets/portfolio-ai-travel.png" alt="AI Travel Companion product concept" decoding="async" fetchpriority="high">
-          <span class="frame-title">
-            <strong>AI Travel Companion</strong>
-            <span>0-1 product · Sber&rsquo;s 65M ecosystem</span>
-          </span>
+        <div class="product-frame main qchat-main">
+          <div class="qchat-showcase"><img src="/assets/screenshots/current/en/iphone/04.png" alt="QChat daily energy balance" decoding="async"><img src="/assets/screenshots/current/en/iphone/02.png" alt="QChat dinner recommendations" decoding="async"><img src="/assets/screenshots/current/en/iphone/03.png" alt="QChat delivery tracking" decoding="async"></div>
+          <span class="frame-title"><strong>QChat</strong><span>Personal AI assistant · iOS & Web</span></span>
         </div>
         <div class="product-frame top">
           <img src="assets/portfolio-uzum-tezkor.png" alt="Uzum Tezkor consumer commerce product" decoding="async">
           <span class="frame-label">Uzum · 3.64x GMV growth</span>
         </div>
-        <div class="product-frame bottom">
-          <img src="/assets/screenshots/current/en/iphone/04.png" alt="QChat food diary and energy balance" decoding="async">
-          <span class="frame-label">Food and activity with AI</span>
+        <div class="product-frame bottom travel-small">
+          <img src="assets/portfolio-ai-travel.png" alt="AI Travel Companion" decoding="async">
+          <span class="frame-label">AI Travel Companion · 0–1</span>
         </div>
       </div>
 
@@ -1316,17 +1341,17 @@
         <article class="card visual">
           <a class="card-hitbox" href="https://qchat.nl/" target="_blank" rel="noopener" aria-label="Learn more about QChat"></a>
           <div class="media">
-            <div class="qchat-preview-strip"><img src="/assets/screenshots/current/en/iphone/04.png" alt="QChat energy balance" loading="lazy" decoding="async"><img src="/assets/screenshots/current/en/iphone/02.png" alt="QChat dinner for your goals" loading="lazy" decoding="async"><img src="/assets/screenshots/current/en/iphone/03.png" alt="QChat order delivered" loading="lazy" decoding="async"></div>
+            <div class="qchat-showcase"><img src="/assets/screenshots/current/en/iphone/04.png" alt="QChat daily energy balance" loading="lazy" decoding="async"><img src="/assets/screenshots/current/en/iphone/02.png" alt="QChat dinner recommendations" loading="lazy" decoding="async"><img src="/assets/screenshots/current/en/iphone/03.png" alt="QChat delivery tracking" loading="lazy" decoding="async"></div>
           </div>
           <div class="body">
             <h3>QChat</h3>
-            <p class="copy">Food, activity and delivery with an AI assistant.</p>
-            <p class="copy">Log meals and workouts in your own words, see your daily energy balance and find dinner that fits your goals. Fresh groceries and prepared meals are available for delivery in selected areas of Moscow.</p>
+            <p class="copy">A personal AI assistant for everyday life — on iOS and the web.</p>
+            <p class="copy">Chat with your assistant, browse store catalogs, and order groceries and prepared meals. On iOS, log food and workouts in your own words and track calories, macros, and energy balance including steps. Delivery is available in selected areas of Moscow.</p>
             <div class="card-actions qchat-actions">
               <a class="appstore-badge" href="https://apps.apple.com/app/id6739166946" target="_blank" rel="noopener" aria-label="Download QChat on the App Store">
                 <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
               </a>
-              <a class="mini-button guide" href="https://qchat.nl/" target="_blank" rel="noopener">Learn more</a>
+              <a class="mini-button guide" href="https://qchat.nl/" target="_blank" rel="noopener">Open QChat</a>
             </div>
           </div>
         </article>
